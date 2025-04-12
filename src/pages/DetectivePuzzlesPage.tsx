@@ -38,12 +38,18 @@ export default function DetectivePuzzlesPage() {
   );
   
   const handleCorrectAnswer = () => {
+    // Add the current puzzle to completed array if not already there
     if (!completedPuzzles.includes(currentPuzzleId)) {
-      setCompletedPuzzles([...completedPuzzles, currentPuzzleId]);
+      setCompletedPuzzles(prev => [...prev, currentPuzzleId]);
     }
     
+    // Don't navigate automatically - we'll let the user click "Next" for that
+    // Check if all puzzles are completed only when the user clicks "Next"
+  };
+
+  const handleNextPuzzle = () => {
     // If all puzzles are completed, go to result page
-    if (completedPuzzles.length === detectivePuzzles.length - 1) {
+    if (completedPuzzles.length >= detectivePuzzles.length) {
       navigate('/result?type=detective');
       return;
     }
@@ -101,7 +107,8 @@ export default function DetectivePuzzlesPage() {
           {currentPuzzle && (
             <DetectivePuzzleCard 
               puzzle={currentPuzzle} 
-              onCorrectAnswer={handleCorrectAnswer} 
+              onCorrectAnswer={handleCorrectAnswer}
+              onNextPuzzle={handleNextPuzzle}
               isRetry={completedPuzzles.includes(currentPuzzleId)}
             />
           )}

@@ -46,6 +46,11 @@ export default function DetectivePuzzleCard({
     if (isCorrect) {
       setIsCorrectAnswer(true);
       setShowResult(true);
+      
+      // Call onCorrectAnswer immediately when the answer is correct
+      // This marks the puzzle as completed without waiting for "Next" button
+      onCorrectAnswer();
+      
       if (isRetry) {
         console.log("Detective puzzle retried successfully!");
       }
