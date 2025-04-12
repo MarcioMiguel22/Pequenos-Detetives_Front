@@ -10,8 +10,8 @@ export const riddles: Riddle[] = [
     hint: "Usamos para arrumar o cabelo",
     contextualOptions: [
       { text: "Podemos encontrar na casa de banho para arrumar o cabelo", isCorrect: true },
-      { text: "É algo que temos na cozinha para cortar alimentos", isCorrect: false },
-      { text: "Usamos para escrever e desenhar todos os dias", isCorrect: false }
+      { text: "Não está na cozinha e não serve para cortar alimentos", isCorrect: false },
+      { text: "Não usamos para escrever nem para desenhar", isCorrect: false }
     ]
   },
   {
@@ -23,8 +23,8 @@ export const riddles: Riddle[] = [
     hint: "Ilumina quando há escuridão",
     contextualOptions: [
       { text: "Encontramos nos aniversários para fazer um pedido", isCorrect: true },
-      { text: "Usamos no quarto para descansar à noite", isCorrect: false },
-      { text: "É algo que levamos para a escola todos os dias", isCorrect: false }
+      { text: "Não é usado no quarto nem serve para descansar", isCorrect: false },
+      { text: "Não levamos para a escola nem é um material escolar", isCorrect: false }
     ]
   },
   {
@@ -36,8 +36,8 @@ export const riddles: Riddle[] = [
     hint: "Abre e fecha sem sair do lugar",
     contextualOptions: [
       { text: "Está em todas as divisões da casa para entrar e sair", isCorrect: true },
-      { text: "Encontramos no jardim para brincar", isCorrect: false },
-      { text: "Levamos connosco para todo lado quando saímos", isCorrect: false }
+      { text: "Não está no jardim nem serve para brincar", isCorrect: false },
+      { text: "Não levamos connosco quando saímos", isCorrect: false }
     ]
   },
   {
@@ -49,8 +49,8 @@ export const riddles: Riddle[] = [
     hint: "É uma fruta tropical",
     contextualOptions: [
       { text: "Encontramos na frutaria ou no supermercado", isCorrect: true },
-      { text: "Temos no quarto para nos proteger", isCorrect: false },
-      { text: "Usamos na escola para estudar", isCorrect: false }
+      { text: "Usamos para decorar a cabeça em festas", isCorrect: false },
+      { text: "É uma planta que cresce no jardim", isCorrect: false }
     ]
   },
   {
@@ -62,8 +62,8 @@ export const riddles: Riddle[] = [
     hint: "Os carros passam por cima",
     contextualOptions: [
       { text: "Está lá fora onde passam os carros e as pessoas", isCorrect: true },
-      { text: "Podemos encontrar na cozinha para comer", isCorrect: false },
-      { text: "Guardamos no armário do quarto", isCorrect: false }
+      { text: "É um caminho que leva a diferentes lugares", isCorrect: false },
+      { text: "Pode ser feito de pedra ou asfalto", isCorrect: false }
     ]
   },
   {
@@ -75,8 +75,8 @@ export const riddles: Riddle[] = [
     hint: "Usamos para subir e descer",
     contextualOptions: [
       { text: "Encontramos em casas com vários andares para subir e descer", isCorrect: true },
-      { text: "Guardamos na cozinha para fazer comida", isCorrect: false },
-      { text: "Levamos na mochila para a escola", isCorrect: false }
+      { text: "Não está na cozinha nem serve para fazer comida", isCorrect: false },
+      { text: "Não levamos na mochila para a escola", isCorrect: false }
     ]
   },
   {
@@ -88,8 +88,8 @@ export const riddles: Riddle[] = [
     hint: "Podemos ler histórias nele",
     contextualOptions: [
       { text: "Encontramos na escola ou biblioteca para ler histórias", isCorrect: true },
-      { text: "Usamos na cozinha para cozinhar", isCorrect: false },
-      { text: "Guardamos na casa de banho para tomar banho", isCorrect: false }
+      { text: "É usado para guardar conhecimento", isCorrect: false },
+      { text: "Pode ser feito de papel reciclado", isCorrect: false }
     ]
   },
   {
@@ -101,8 +101,8 @@ export const riddles: Riddle[] = [
     hint: "Vem de lâmpadas ou do sol",
     contextualOptions: [
       { text: "Acendemos em todas as divisões da casa quando fica escuro", isCorrect: true },
-      { text: "Guardamos no frigorífico para mais tarde", isCorrect: false },
-      { text: "Usamos nos pés quando saímos à rua", isCorrect: false }
+      { text: "É essencial para a visão humana", isCorrect: false },
+      { text: "Pode ser natural ou artificial", isCorrect: false }
     ]
   },
   {
@@ -114,8 +114,8 @@ export const riddles: Riddle[] = [
     hint: "É um inseto muito pequeno",
     contextualOptions: [
       { text: "Podemos encontrar no cabelo e causa comichão", isCorrect: true },
-      { text: "Guardamos na mochila para ir à escola", isCorrect: false },
-      { text: "Usamos na cozinha para fazer bolos", isCorrect: false }
+      { text: "É um parasita que vive em humanos", isCorrect: false },
+      { text: "Pode ser eliminado com produtos específicos", isCorrect: false }
     ]
   },
   {
@@ -127,8 +127,8 @@ export const riddles: Riddle[] = [
     hint: "Usamos para guardar líquidos",
     contextualOptions: [
       { text: "Encontramos na cozinha para guardar água ou sumo", isCorrect: true },
-      { text: "Usamos no quarto para dormir", isCorrect: false },
-      { text: "Levamos para a escola para escrever", isCorrect: false }
+      { text: "Pode ser feita de vidro ou plástico", isCorrect: false },
+      { text: "É usada para armazenar bebidas", isCorrect: false }
     ]
   },
   {
@@ -140,8 +140,8 @@ export const riddles: Riddle[] = [
     hint: "Sou uma fruta grande e refrescante",
     contextualOptions: [
       { text: "Encontras-me no supermercado durante o verão", isCorrect: true },
-      { text: "Sou um objeto que usas para escrever", isCorrect: false },
-      { text: "Estou na casa de banho para te lavares", isCorrect: false }
+      { text: "Não sou um objeto que usas para escrever", isCorrect: false },
+      { text: "Não estou na casa de banho nem serve para te lavares", isCorrect: false }
     ]
   },
   {
@@ -153,8 +153,8 @@ export const riddles: Riddle[] = [
     hint: "Acontece quando não há luz",
     contextualOptions: [
       { text: "Aparece sempre à noite quando as luzes se apagam", isCorrect: true },
-      { text: "É algo que encontramos na cozinha", isCorrect: false },
-      { text: "Usamos para nos vestir", isCorrect: false }
+      { text: "É um fenómeno natural relacionado com o tempo", isCorrect: false },
+      { text: "Pode ser medido com instrumentos especiais", isCorrect: false }
     ]
   },
   {
@@ -166,8 +166,8 @@ export const riddles: Riddle[] = [
     hint: "Sai quentinho do forno",
     contextualOptions: [
       { text: "Encontramos na padaria acabado de fazer", isCorrect: true },
-      { text: "É um eletrodoméstico que temos em casa", isCorrect: false },
-      { text: "Usamos no inverno para nos aquecer", isCorrect: false }
+      { text: "É um alimento básico em muitas culturas", isCorrect: false },
+      { text: "Pode ser feito com diferentes tipos de farinha", isCorrect: false }
     ]
   },
   {
@@ -179,8 +179,8 @@ export const riddles: Riddle[] = [
     hint: "É uma letra do alfabeto",
     contextualOptions: [
       { text: "É algo que aprendemos quando começamos a ler e escrever", isCorrect: true },
-      { text: "É um animal marinho", isCorrect: false },
-      { text: "É um tipo de embarcação", isCorrect: false }
+      { text: "É uma parte essencial da linguagem escrita", isCorrect: false },
+      { text: "Pode ser encontrada em muitas palavras", isCorrect: false }
     ]
   },
   {
@@ -192,8 +192,8 @@ export const riddles: Riddle[] = [
     hint: "Enche-se com ar e flutua",
     contextualOptions: [
       { text: "Utilizamos em festas de aniversário para decorar", isCorrect: true },
-      { text: "É um recipiente para guardar alimentos", isCorrect: false },
-      { text: "Usamos para transportar água", isCorrect: false }
+      { text: "Pode ser feito de borracha ou plástico", isCorrect: false },
+      { text: "É usado para criar ambientes festivos", isCorrect: false }
     ]
   },
   {
@@ -205,8 +205,8 @@ export const riddles: Riddle[] = [
     hint: "Protege as mãos do frio",
     contextualOptions: [
       { text: "Usamos no inverno para aquecer as mãos", isCorrect: true },
-      { text: "É um utensílio que usamos para comer", isCorrect: false },
-      { text: "Encontramos no quintal para cuidar das plantas", isCorrect: false }
+      { text: "Pode ser feita de lã ou couro", isCorrect: false },
+      { text: "É usada para proteger as mãos em diversas atividades", isCorrect: false }
     ]
   },
   {
@@ -218,8 +218,8 @@ export const riddles: Riddle[] = [
     hint: "Uma abertura que cresce quando removemos mais",
     contextualOptions: [
       { text: "Forma-se quando escavamos na terra ou na parede", isCorrect: true },
-      { text: "É um objeto que usamos na escola", isCorrect: false },
-      { text: "Encontramos dentro do frigorífico", isCorrect: false }
+      { text: "Pode ser encontrado em diferentes superfícies", isCorrect: false },
+      { text: "É usado para criar passagens ou esconder objetos", isCorrect: false }
     ]
   },
   {
@@ -231,8 +231,8 @@ export const riddles: Riddle[] = [
     hint: "Usamos para comer a comida",
     contextualOptions: [
       { text: "Encontras ao lado do prato na mesa de refeições", isCorrect: true },
-      { text: "É um móvel onde guardamos as roupas", isCorrect: false },
-      { text: "Usamos para nos sentarmos", isCorrect: false }
+      { text: "Não é um móvel onde guardamos as roupas", isCorrect: false },
+      { text: "Não usamos para nos sentarmos", isCorrect: false }
     ]
   },
   {
@@ -244,8 +244,8 @@ export const riddles: Riddle[] = [
     hint: "Vem do céu quando o tempo está nublado",
     contextualOptions: [
       { text: "Molha-nos quando saímos sem guarda-chuva", isCorrect: true },
-      { text: "É um animal doméstico", isCorrect: false },
-      { text: "Usamos para iluminar um quarto", isCorrect: false }
+      { text: "É essencial para a vida na Terra", isCorrect: false },
+      { text: "Pode ser acompanhada por trovões e relâmpagos", isCorrect: false }
     ]
   },
   {
@@ -257,8 +257,8 @@ export const riddles: Riddle[] = [
     hint: "Marca as horas",
     contextualOptions: [
       { text: "Está na parede ou no pulso para ver as horas", isCorrect: true },
-      { text: "É um brinquedo que roda", isCorrect: false },
-      { text: "Usamos na cozinha para preparar alimentos", isCorrect: false }
+      { text: "Não é um brinquedo que roda", isCorrect: false },
+      { text: "Não usamos na cozinha para preparar alimentos", isCorrect: false }
     ]
   },
   {
@@ -270,8 +270,8 @@ export const riddles: Riddle[] = [
     hint: "Usado para prender tecidos",
     contextualOptions: [
       { text: "Encontramos na caixa de costura para prender roupa", isCorrect: true },
-      { text: "É um alimento que comemos no pequeno-almoço", isCorrect: false },
-      { text: "Usamos para escrever", isCorrect: false }
+      { text: "É usado em trabalhos de artesanato", isCorrect: false },
+      { text: "Pode ser feito de metal ou plástico", isCorrect: false }
     ]
   },
   {
@@ -283,8 +283,8 @@ export const riddles: Riddle[] = [
     hint: "É uma letra que faz o som 'rrr'",
     contextualOptions: [
       { text: "Aprendemos quando começamos a ler na escola", isCorrect: true },
-      { text: "É um objeto que usamos para brincar", isCorrect: false },
-      { text: "Encontramos na cozinha", isCorrect: false }
+      { text: "É uma parte essencial da linguagem escrita", isCorrect: false },
+      { text: "Pode ser encontrada em muitas palavras", isCorrect: false }
     ]
   },
   {
@@ -296,8 +296,8 @@ export const riddles: Riddle[] = [
     hint: "Adoça os alimentos",
     contextualOptions: [
       { text: "Encontramos na cozinha para adoçar bolos e bebidas", isCorrect: true },
-      { text: "É um brinquedo para as crianças", isCorrect: false },
-      { text: "Usamos para limpar a casa", isCorrect: false }
+      { text: "Não é um brinquedo para as crianças", isCorrect: false },
+      { text: "Não usamos para limpar a casa", isCorrect: false }
     ]
   },
   {
@@ -309,8 +309,8 @@ export const riddles: Riddle[] = [
     hint: "Usamos depois do banho",
     contextualOptions: [
       { text: "Encontramos na casa de banho para nos secarmos", isCorrect: true },
-      { text: "É um utensílio para cozinhar", isCorrect: false },
-      { text: "Usamos para dormir à noite", isCorrect: false }
+      { text: "É feita de tecido absorvente", isCorrect: false },
+      { text: "Pode ser usada em diferentes tamanhos e cores", isCorrect: false }
     ]
   },
   {
@@ -322,8 +322,8 @@ export const riddles: Riddle[] = [
     hint: "Cresce na floresta",
     contextualOptions: [
       { text: "Algumas espécies podem ser comidas em saladas ou sopas", isCorrect: true },
-      { text: "É um tipo de roupa que usamos", isCorrect: false },
-      { text: "Encontramos na praia durante o verão", isCorrect: false }
+      { text: "É um fungo que cresce em ambientes úmidos", isCorrect: false },
+      { text: "Pode ser encontrado em diferentes formas e tamanhos", isCorrect: false }
     ]
   },
   {
@@ -335,8 +335,8 @@ export const riddles: Riddle[] = [
     hint: "Acontece quando ninguém está falando",
     contextualOptions: [
       { text: "É necessário em bibliotecas e salas de aula concentradas", isCorrect: true },
-      { text: "É um objeto de vidro frágil", isCorrect: false },
-      { text: "Usamos para limpar o chão", isCorrect: false }
+      { text: "É uma condição que promove a concentração", isCorrect: false },
+      { text: "Pode ser interrompido por ruídos inesperados", isCorrect: false }
     ]
   },
   {
@@ -348,8 +348,8 @@ export const riddles: Riddle[] = [
     hint: "Temos na boca",
     contextualOptions: [
       { text: "Precisamos para mastigar os alimentos", isCorrect: true },
-      { text: "É uma ferramenta de jardinagem", isCorrect: false },
-      { text: "Usamos para medir a temperatura", isCorrect: false }
+      { text: "É uma parte essencial do sistema digestivo", isCorrect: false },
+      { text: "Pode ser cuidado por dentistas", isCorrect: false }
     ]
   },
   {
@@ -361,8 +361,8 @@ export const riddles: Riddle[] = [
     hint: "Está dentro da cabeça",
     contextualOptions: [
       { text: "Usamos para pensar e resolver problemas", isCorrect: true },
-      { text: "É um tipo de roupa", isCorrect: false },
-      { text: "Encontramos no jardim", isCorrect: false }
+      { text: "É responsável por controlar o corpo", isCorrect: false },
+      { text: "Pode ser estudado em neurociência", isCorrect: false }
     ]
   },
   {
@@ -374,8 +374,8 @@ export const riddles: Riddle[] = [
     hint: "Segue-te para todo lado quando há luz",
     contextualOptions: [
       { text: "Aparece no chão quando o sol brilha", isCorrect: true },
-      { text: "É um tipo de guarda-chuva", isCorrect: false },
-      { text: "Usamos para nos proteger da chuva", isCorrect: false }
+      { text: "É uma projeção causada pela luz", isCorrect: false },
+      { text: "Pode mudar de forma dependendo da posição da luz", isCorrect: false }
     ]
   },
   {
@@ -387,8 +387,8 @@ export const riddles: Riddle[] = [
     hint: "É algo que podemos comer",
     contextualOptions: [
       { text: "Encontramos na frutaria, tem casca e é doce", isCorrect: true },
-      { text: "É um tipo de casaco", isCorrect: false },
-      { text: "Usamos na escola para estudar", isCorrect: false }
+      { text: "É uma fruta tropical muito apreciada", isCorrect: false },
+      { text: "Pode ser usada em sobremesas e sucos", isCorrect: false }
     ]
   },
   {
@@ -400,8 +400,8 @@ export const riddles: Riddle[] = [
     hint: "Usado para acender fogo",
     contextualOptions: [
       { text: "Encontramos em caixas na cozinha para acender o fogão", isCorrect: true },
-      { text: "É um tipo de roupa", isCorrect: false },
-      { text: "Usamos para escrever", isCorrect: false }
+      { text: "É feito de madeira ou papel", isCorrect: false },
+      { text: "Pode ser usado em acampamentos e emergências", isCorrect: false }
     ]
   },
   {
@@ -413,8 +413,8 @@ export const riddles: Riddle[] = [
     hint: "Marca o tempo",
     contextualOptions: [
       { text: "Está na parede ou no pulso e tem ponteiros que giram", isCorrect: true },
-      { text: "É um tipo de veículo", isCorrect: false },
-      { text: "Usamos para nos sentarmos", isCorrect: false }
+      { text: "Não é um tipo de veículo", isCorrect: false },
+      { text: "Não usamos para nos sentarmos", isCorrect: false }
     ]
   },
   {
@@ -426,8 +426,8 @@ export const riddles: Riddle[] = [
     hint: "Está no céu e traz chuva",
     contextualOptions: [
       { text: "Pode ser branca num dia de sol ou cinzenta antes de chover", isCorrect: true },
-      { text: "É um animal que vive na água", isCorrect: false },
-      { text: "Usamos para acender uma lareira", isCorrect: false }
+      { text: "É formada por partículas de água suspensas", isCorrect: false },
+      { text: "Pode ser vista em diferentes formas e tamanhos", isCorrect: false }
     ]
   },
   {
@@ -439,8 +439,8 @@ export const riddles: Riddle[] = [
     hint: "Não podemos ver, mas podemos sentir",
     contextualOptions: [
       { text: "Sentimos na cara quando está forte e pode abanar as árvores", isCorrect: true },
-      { text: "É um objeto transparente", isCorrect: false },
-      { text: "Usamos para nos proteger do sol", isCorrect: false }
+      { text: "É causado por diferenças de pressão atmosférica", isCorrect: false },
+      { text: "Pode ser usado para gerar energia renovável", isCorrect: false }
     ]
   },
   {
@@ -452,8 +452,8 @@ export const riddles: Riddle[] = [
     hint: "As galinhas põem",
     contextualOptions: [
       { text: "Usamos para fazer bolos e encontramos no supermercado", isCorrect: true },
-      { text: "É um tipo de brinquedo", isCorrect: false },
-      { text: "Serve para guardar objetos", isCorrect: false }
+      { text: "É uma fonte de proteína na alimentação", isCorrect: false },
+      { text: "Pode ser cozido ou frito", isCorrect: false }
     ]
   },
   {
@@ -465,8 +465,8 @@ export const riddles: Riddle[] = [
     hint: "Acontece quando ficamos doentes",
     contextualOptions: [
       { text: "Faz-nos espirrar e ter tosse quando estamos doentes", isCorrect: true },
-      { text: "É um tipo de bola", isCorrect: false },
-      { text: "Usamos para nos vestir", isCorrect: false }
+      { text: "É causada por vírus ou mudanças de temperatura", isCorrect: false },
+      { text: "Pode ser tratada com repouso e medicamentos", isCorrect: false }
     ]
   },
   {
@@ -478,8 +478,8 @@ export const riddles: Riddle[] = [
     hint: "É um instrumento musical",
     contextualOptions: [
       { text: "Encontramos em salas de música e tem teclas pretas e brancas", isCorrect: true },
-      { text: "É um tipo de fechadura", isCorrect: false },
-      { text: "Usamos para abrir a nossa casa", isCorrect: false }
+      { text: "É usado para criar melodias e harmonias", isCorrect: false },
+      { text: "Pode ser acústico ou digital", isCorrect: false }
     ]
   },
   {
@@ -491,8 +491,8 @@ export const riddles: Riddle[] = [
     hint: "Usamos para mastigar",
     contextualOptions: [
       { text: "Está dentro da boca e podemos perder quando somos pequenos", isCorrect: true },
-      { text: "É um objeto que se coloca na cabeça", isCorrect: false },
-      { text: "Cresce no jardim", isCorrect: false }
+      { text: "É uma parte essencial do sistema digestivo", isCorrect: false },
+      { text: "Pode ser cuidado por dentistas", isCorrect: false }
     ]
   },
   {
@@ -504,8 +504,8 @@ export const riddles: Riddle[] = [
     hint: "Uma bebida especial para momentos especiais",
     contextualOptions: [
       { text: "Abrimos em festas e celebrações importantes", isCorrect: true },
-      { text: "É um brinquedo", isCorrect: false },
-      { text: "Usamos para cozinhar", isCorrect: false }
+      { text: "É uma bebida gaseificada e alcoólica", isCorrect: false },
+      { text: "Pode ser encontrada em diferentes marcas e sabores", isCorrect: false }
     ]
   },
   {
@@ -517,8 +517,8 @@ export const riddles: Riddle[] = [
     hint: "É um vegetal que cresce debaixo da terra",
     contextualOptions: [
       { text: "Usamos para fazer puré ou batatas fritas", isCorrect: true },
-      { text: "É um dispositivo eletrónico", isCorrect: false },
-      { text: "Encontramos na sala para decoração", isCorrect: false }
+      { text: "Não é um dispositivo eletrónico", isCorrect: false },
+      { text: "Não encontramos na sala para decoração", isCorrect: false }
     ]
   },
   {
@@ -530,8 +530,8 @@ export const riddles: Riddle[] = [
     hint: "Uma abertura no chão ou parede",
     contextualOptions: [
       { text: "Quanto mais escavamos, maior se torna", isCorrect: true },
-      { text: "É um tipo de bolo", isCorrect: false },
-      { text: "Usamos para medir o tempo", isCorrect: false }
+      { text: "Pode ser encontrado em diferentes superfícies", isCorrect: false },
+      { text: "É usado para criar passagens ou esconder objetos", isCorrect: false }
     ]
   },
   {
@@ -543,8 +543,8 @@ export const riddles: Riddle[] = [
     hint: "Fica escura no chão quando o sol brilha",
     contextualOptions: [
       { text: "Aparece no chão quando estamos ao sol", isCorrect: true },
-      { text: "É um animal doméstico", isCorrect: false },
-      { text: "Usamos para nos vestir", isCorrect: false }
+      { text: "Não é um animal doméstico", isCorrect: false },
+      { text: "Não usamos para nos vestir", isCorrect: false }
     ]
   },
   {
@@ -556,8 +556,8 @@ export const riddles: Riddle[] = [
     hint: "Tem páginas cheias de histórias",
     contextualOptions: [
       { text: "Encontramos nas bibliotecas cheios de palavras e histórias", isCorrect: true },
-      { text: "É um tipo de roupa", isCorrect: false },
-      { text: "Usamos para nos proteger da chuva", isCorrect: false }
+      { text: "Não é um tipo de roupa", isCorrect: false },
+      { text: "Não usamos para nos proteger da chuva", isCorrect: false }
     ]
   },
   {
@@ -569,8 +569,8 @@ export const riddles: Riddle[] = [
     hint: "É como as pessoas te chamam",
     contextualOptions: [
       { text: "É o que dizem quando querem chamar a tua atenção", isCorrect: true },
-      { text: "É um objeto que emprestas", isCorrect: false },
-      { text: "Usamos para guardar as nossas coisas", isCorrect: false }
+      { text: "É uma parte essencial da identidade pessoal", isCorrect: false },
+      { text: "Pode ser usado em documentos oficiais", isCorrect: false }
     ]
   },
   {
@@ -582,8 +582,8 @@ export const riddles: Riddle[] = [
     hint: "Tic-tac, tic-tac",
     contextualOptions: [
       { text: "Está na parede ou no pulso e marca as horas", isCorrect: true },
-      { text: "É um tipo de veículo", isCorrect: false },
-      { text: "Usamos para transportar objetos", isCorrect: false }
+      { text: "Não é um tipo de veículo", isCorrect: false },
+      { text: "Não usamos para transportar objetos", isCorrect: false }
     ]
   },
   {
@@ -595,8 +595,8 @@ export const riddles: Riddle[] = [
     hint: "É escura e segue-te quando há luz",
     contextualOptions: [
       { text: "Segue-te quando caminhas ao sol, mesmo sobre a água", isCorrect: true },
-      { text: "É um tipo de tecido impermeável", isCorrect: false },
-      { text: "Usamos para nadar na praia", isCorrect: false }
+      { text: "É uma projeção causada pela luz", isCorrect: false },
+      { text: "Pode mudar de forma dependendo da posição da luz", isCorrect: false }
     ]
   },
   {
@@ -608,8 +608,8 @@ export const riddles: Riddle[] = [
     hint: "É um líquido que bebemos",
     contextualOptions: [
       { text: "Encontramos nas praias, rios, lagos e sai das torneiras", isCorrect: true },
-      { text: "É um tipo de campo de jogos", isCorrect: false },
-      { text: "Usamos para praticar desporto", isCorrect: false }
+      { text: "É essencial para a vida na Terra", isCorrect: false },
+      { text: "Pode ser usada para diferentes atividades", isCorrect: false }
     ]
   },
   {
@@ -621,8 +621,8 @@ export const riddles: Riddle[] = [
     hint: "Pense em quem mais poderia ser um dos pais do menino",
     contextualOptions: [
       { text: "É uma pessoa que pode ter filhos e também uma profissão", isCorrect: true },
-      { text: "É um caso de adoção", isCorrect: false },
-      { text: "Tem a ver com magia ou fantasia", isCorrect: false }
+      { text: "É uma questão de lógica e não de magia", isCorrect: false },
+      { text: "Pode ser entendido ao considerar diferentes relações familiares", isCorrect: false }
     ]
   },
   {
@@ -634,8 +634,8 @@ export const riddles: Riddle[] = [
     hint: "Está dentro da nossa cabeça",
     contextualOptions: [
       { text: "Acontece na nossa mente quando temos ideias", isCorrect: true },
-      { text: "É um tipo de pena de ave", isCorrect: false },
-      { text: "É um gás que flutua no ar", isCorrect: false }
+      { text: "É uma atividade cerebral que gera criatividade", isCorrect: false },
+      { text: "Pode ser influenciado por emoções e experiências", isCorrect: false }
     ]
   },
   {
@@ -647,8 +647,8 @@ export const riddles: Riddle[] = [
     hint: "Sou um tempero muito usado na cozinha",
     contextualOptions: [
       { text: "Encontra-se na cozinha para dar sabor às refeições", isCorrect: true },
-      { text: "É uma ferramenta de jardim", isCorrect: false },
-      { text: "Usamos para escrever", isCorrect: false }
+      { text: "É usado em diversas receitas culinárias", isCorrect: false },
+      { text: "Pode ser encontrado em diferentes formas e tamanhos", isCorrect: false }
     ]
   }
 ];
