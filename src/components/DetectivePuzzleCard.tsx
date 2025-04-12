@@ -5,12 +5,14 @@ import '../styles/DetectivePuzzleCard.css';
 interface DetectivePuzzleCardProps {
   puzzle: DetectivePuzzle;
   onCorrectAnswer: () => void;
+  onNextPuzzle: () => void; // Add this new prop
   isRetry?: boolean;
 }
 
 export default function DetectivePuzzleCard({ 
   puzzle, 
   onCorrectAnswer, 
+  onNextPuzzle, // Include in destructuring
   isRetry = false 
 }: DetectivePuzzleCardProps) {
   const [selectedSuspect, setSelectedSuspect] = useState<number | null>(null);
@@ -47,8 +49,7 @@ export default function DetectivePuzzleCard({
       setIsCorrectAnswer(true);
       setShowResult(true);
       
-      // Call onCorrectAnswer immediately when the answer is correct
-      // This marks the puzzle as completed without waiting for "Next" button
+      // Call onCorrectAnswer immediately to update localStorage
       onCorrectAnswer();
       
       if (isRetry) {
@@ -56,12 +57,6 @@ export default function DetectivePuzzleCard({
       }
     } else {
       setShowResult(true);
-      
-      // After showing the error, allow trying again
-      setTimeout(() => {
-        setShowResult(false);
-        setSelectedSuspect(null);
-      }, 3000);
     }
   };
 
@@ -71,7 +66,8 @@ export default function DetectivePuzzleCard({
   };
 
   const handleNextPuzzle = () => {
-    onCorrectAnswer();
+    // Use the onNextPuzzle prop instead of direct navigation
+    onNextPuzzle();
   };
 
   const toggleClue = (clueId: number) => {

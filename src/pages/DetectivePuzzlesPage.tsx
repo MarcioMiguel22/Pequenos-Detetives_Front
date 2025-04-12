@@ -40,11 +40,15 @@ export default function DetectivePuzzlesPage() {
   const handleCorrectAnswer = () => {
     // Add the current puzzle to completed array if not already there
     if (!completedPuzzles.includes(currentPuzzleId)) {
-      setCompletedPuzzles(prev => [...prev, currentPuzzleId]);
+      const updatedCompletedPuzzles = [...completedPuzzles, currentPuzzleId];
+      setCompletedPuzzles(updatedCompletedPuzzles);
+      
+      // Save immediately to localStorage
+      localStorage.setItem('detectivePuzzleProgress', JSON.stringify({
+        completed: updatedCompletedPuzzles,
+        current: currentPuzzleId
+      }));
     }
-    
-    // Don't navigate automatically - we'll let the user click "Next" for that
-    // Check if all puzzles are completed only when the user clicks "Next"
   };
 
   const handleNextPuzzle = () => {
