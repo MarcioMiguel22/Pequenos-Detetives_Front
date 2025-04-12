@@ -14,6 +14,7 @@ export interface Puzzle {
   difficulty: DifficultyLevel;
   answers: Answer[];
   hint?: string;
+  audio?: string; // URL for the audio file
 }
 
 export interface UserProgress {

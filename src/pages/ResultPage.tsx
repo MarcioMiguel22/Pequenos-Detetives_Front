@@ -27,11 +27,11 @@ export default function ResultPage() {
         <div className="result-content">
           <div className="trophy">🏆</div>
           
-          <h2>Você concluiu {completedCount} de {puzzles.length} enigmas!</h2>
+          <h2>Completaste {completedCount} de {puzzles.length} enigmas!</h2>
           
           <p className="result-message">
-            Você mostrou ser um verdadeiro detetive! Sua inteligência e dedicação 
-            te levaram até aqui. Continue explorando e aprendendo!
+            Mostraste ser um verdadeiro detetive! A tua inteligência e dedicação 
+            levaram-te até aqui. Continua a explorar e a aprender!
           </p>
           
           <div className="result-stats">
@@ -43,7 +43,7 @@ export default function ResultPage() {
               <span className="stat-label">Nível de Detetive:</span>
               <span className="stat-value">
                 {completedCount === puzzles.length 
-                  ? 'Detetive Master' 
+                  ? 'Detetive Mestre' 
                   : completedCount >= puzzles.length / 2 
                     ? 'Detetive Júnior' 
                     : 'Detetive Iniciante'}

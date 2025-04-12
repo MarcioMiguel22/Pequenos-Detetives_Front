@@ -30,10 +30,55 @@
   font-size: 0.8rem;
 }
 
+.question-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .puzzle-question {
+  flex: 1;
   font-size: 1.1rem;
   line-height: 1.5;
   font-weight: 600;
+}
+
+.audio-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.audio-button:hover {
+  background-color: #3a5fd9;
+  transform: scale(1.05);
+}
+
+.audio-button.playing {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .puzzle-image {
@@ -61,6 +106,34 @@
   cursor: pointer;
   transition: background-color 0.2s, transform 0.2s;
   border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.answer-text {
+  flex: 1;
+}
+
+.answer-audio-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  opacity: 0.7;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.answer-audio-button:hover {
+  opacity: 1;
+  background-color: white;
 }
 
 .answer-option:hover {
@@ -107,12 +180,36 @@
   background-color: var(--light-gray);
 }
 
+.hint-text-container {
+  display: flex;
+  align-items: center;
+}
+
 .hint-text {
+  flex: 1;
   background-color: #fff9e0;
   padding: 1rem;
   border-radius: 8px;
   border-left: 4px solid #ffd54f;
   font-style: italic;
+}
+
+.hint-audio-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ffd54f;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+}
+
+.hint-audio-button:hover {
+  background-color: #ffca28;
 }
 
 .submit-button {
