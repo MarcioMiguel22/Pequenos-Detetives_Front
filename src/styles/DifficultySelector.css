@@ -1,0 +1,33 @@
+.difficulty-selector {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.difficulty-selector label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.difficulty-select {
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 2px solid var(--primary-color);
+  background-color: white;
+  font-size: 1rem;
+  font-family: 'Nunito', sans-serif;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2em;
+}
+
+.difficulty-select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+}
