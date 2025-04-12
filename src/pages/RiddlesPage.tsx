@@ -62,14 +62,14 @@ export default function RiddlesPage() {
   };
   
   if (!currentRiddle) {
-    return <div className="loading">Carregando adivinha...</div>;
+    return <div className="loading">A carregar adivinha...</div>;
   }
   
   return (
     <div className="puzzles-page">
       <div className="puzzles-container">
         <div className="puzzle-selection">
-          <h2>Escolha uma Adivinha</h2>
+          <h2>Escolhe uma Adivinha</h2>
           <DifficultySelector 
             selectedDifficulty={filterDifficulty}
             onSelectDifficulty={setFilterDifficulty}
@@ -95,7 +95,7 @@ export default function RiddlesPage() {
         <div className="current-puzzle">
           {completedRiddles.includes(currentRiddleId) && (
             <div className="retry-banner">
-              Já resolveste esta advinha! Queres tentar novamente?
+              Já resolveste esta adivinha! Queres tentar novamente?
             </div>
           )}
           <RiddleCard 
@@ -107,7 +107,7 @@ export default function RiddlesPage() {
       </div>
       
       <div className="progress-section">
-        <h3>Seu Progresso</h3>
+        <h3>O Teu Progresso</h3>
         <div className="progress-bar">
           <div 
             className="progress-fill" 

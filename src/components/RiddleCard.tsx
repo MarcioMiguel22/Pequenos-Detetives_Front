@@ -15,6 +15,7 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
   const [contextualOptions, setContextualOptions] = useState<Array<{text: string, isCorrect: boolean}>>([]);
+  const [showFirstLetter, setShowFirstLetter] = useState(false);
   
   // Fisher-Yates shuffle algorithm
   const shuffleArray = useCallback(<T,>(array: T[]): T[] => {
@@ -66,6 +67,7 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
     setShowResult(false);
     setIsCorrectAnswer(false);
     setShowHint(false);
+    setShowFirstLetter(false);
   }, [riddle.id]);
   
   const handleAnswerSelect = (answer: string) => {
@@ -134,6 +136,12 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
       window.speechSynthesis.speak(speech);
     }
   };
+
+  // Get the first letter of the answer
+  const getFirstLetter = () => {
+    if (!riddle.answer) return '';
+    return riddle.answer.charAt(0).toUpperCase();
+  };
   
   return (
     <div className="puzzle-card">
@@ -156,6 +164,21 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
         >
           {isPlaying ? '🔊' : '🔈'}
         </button>
+      </div>
+      
+      <div className="first-letter-hint">
+        <button 
+          className="first-letter-button"
+          onClick={() => setShowFirstLetter(!showFirstLetter)}
+        >
+          {showFirstLetter ? 'Esconder letra inicial' : 'Ver letra inicial'}
+        </button>
+        
+        {showFirstLetter && (
+          <p className="first-letter-text">
+            A resposta começa com a letra: <strong>{getFirstLetter()}</strong>
+          </p>
+        )}
       </div>
       
       {riddle.image && (
