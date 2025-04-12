@@ -2,6 +2,11 @@ import { useState } from 'react';
 import { Puzzle } from '../types/puzzle';
 import '../styles/PuzzleCard.css';
 
+// Definir a interface para o window com webkitAudioContext
+interface WindowWithWebkitAudio extends Window {
+  webkitAudioContext: typeof AudioContext;
+}
+
 interface PuzzleCardProps {
   puzzle: Puzzle;
   onCorrectAnswer: () => void;
@@ -12,21 +17,39 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
   const [showResult, setShowResult] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
   
   const handleAnswerSelect = (answerId: number) => {
-    setSelectedAnswer(answerId);
+    // Só permite selecionar se não estiver mostrando o resultado correto
+    if (!isCorrectAnswer) {
+      setSelectedAnswer(answerId);
+    }
   };
   
   const handleSubmit = () => {
     if (selectedAnswer === null) return;
-    setShowResult(true);
     
     const isCorrect = puzzle.answers.find(a => a.id === selectedAnswer)?.isCorrect;
+    
     if (isCorrect) {
+      setIsCorrectAnswer(true);
+      setShowResult(true);
+      // Não avançamos automaticamente - esperamos pelo botão "Próximo"
+    } else {
+      setShowResult(true);
+      // Tocar um som suave de resposta errada
+      playGentleWrongSound();
+      
+      // Após 2 segundos, permitir tentar novamente
       setTimeout(() => {
-        onCorrectAnswer();
-      }, 1500);
+        setShowResult(false);
+        setSelectedAnswer(null);
+      }, 2000);
     }
+  };
+  
+  const handleNextPuzzle = () => {
+    onCorrectAnswer();
   };
   
   const getDifficultyColor = (difficulty: string) => {
@@ -38,6 +61,40 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
     }
   };
   
+  // Função para tocar um som delicado para respostas erradas
+  const playGentleWrongSound = () => {
+    try {
+      // Criar um oscilador (sintetizador de som) usando a Web Audio API
+      const audioContext = new (window.AudioContext || 
+        ((window as unknown) as WindowWithWebkitAudio).webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      // Configurar o tipo de onda e frequência (som suave)
+      oscillator.type = 'sine'; // Onda sinusoidal (mais suave)
+      oscillator.frequency.setValueAtTime(320, audioContext.currentTime); // Frequência baixa
+      
+      // Diminuir o volume para ser delicado
+      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime); // Volume baixo
+      
+      // Configurar a queda suave do som
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.5);
+      
+      // Ligar o oscilador ao controlo de volume e depois aos altifalantes
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      // Iniciar e parar o som após um curto período
+      oscillator.start();
+      setTimeout(() => {
+        oscillator.stop();
+        audioContext.close();
+      }, 1500);
+    } catch (error) {
+      console.log('Erro ao reproduzir o som de resposta errada:', error);
+    }
+  };
+
   // Function to read text using the Web Speech API
   const readText = () => {
     if ('speechSynthesis' in window) {
@@ -92,9 +149,10 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
         {puzzle.answers.map(answer => (
           <div 
             key={answer.id}
-            className={`answer-option ${selectedAnswer === answer.id ? 'selected' : ''} ${
-              showResult && answer.isCorrect ? 'correct' : ''
-            } ${showResult && selectedAnswer === answer.id && !answer.isCorrect ? 'incorrect' : ''}`}
+            className={`answer-option 
+              ${selectedAnswer === answer.id ? 'selected' : ''} 
+              ${showResult && selectedAnswer === answer.id && answer.isCorrect ? 'correct' : ''} 
+              ${showResult && selectedAnswer === answer.id && !answer.isCorrect ? 'incorrect' : ''}`}
             onClick={() => !showResult && handleAnswerSelect(answer.id)}
           >
             <span className="answer-text">{answer.text}</span>
@@ -147,19 +205,30 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
         </div>
       )}
       
-      <button 
-        className="submit-button" 
-        disabled={selectedAnswer === null || showResult}
-        onClick={handleSubmit}
-      >
-        Verificar Resposta
-      </button>
+      <div className="action-buttons">
+        {!isCorrectAnswer && (
+          <button 
+            className="submit-button" 
+            disabled={selectedAnswer === null || showResult}
+            onClick={handleSubmit}
+          >
+            Verificar Resposta
+          </button>
+        )}
+        
+        {isCorrectAnswer && (
+          <button 
+            className="next-button"
+            onClick={handleNextPuzzle}
+          >
+            Próximo Enigma →
+          </button>
+        )}
+      </div>
       
       {showResult && (
-        <div className={`result-message ${
-          puzzle.answers.find(a => a.id === selectedAnswer)?.isCorrect ? 'success' : 'error'
-        }`}>
-          {puzzle.answers.find(a => a.id === selectedAnswer)?.isCorrect 
+        <div className={`result-message ${isCorrectAnswer ? 'success' : 'error'}`}>
+          {isCorrectAnswer 
             ? '🎉 Parabéns! Acertaste!' 
             : '😢 Tenta novamente!'}
         </div>
