@@ -1,0 +1,132 @@
+.result-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.result-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.result-container h1 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.result-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trophy {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.result-content h2 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.result-message {
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.result-stats {
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.stat-item:last-child {
+  margin-bottom: 0;
+}
+
+.stat-label {
+  font-weight: bold;
+}
+
+.stat-value {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.action-button {
+  padding: 0.8rem 1rem;
+  border-radius: 50px;
+  background-color: var(--light-gray);
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  transition: transform 0.2s, background-color 0.2s;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+}
+
+.action-button.primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.action-button.secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+@media (min-width: 600px) {
+  .result-container {
+    padding: 3rem;
+  }
+  
+  .result-container h1 {
+    font-size: 2rem;
+  }
+  
+  .result-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .action-button {
+    min-width: 150px;
+  }
+}
