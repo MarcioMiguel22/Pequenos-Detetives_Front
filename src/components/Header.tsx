@@ -35,7 +35,13 @@ export default function Header() {
             <Link to="/" onClick={() => setMenuOpen(false)}>Início</Link>
           </li>
           <li>
-            <Link to="/puzzles" onClick={() => setMenuOpen(false)}>Enigmas</Link>
+            <Link to="/puzzles" onClick={() => setMenuOpen(false)}>Advinhas Simples</Link>
+          </li>
+          <li>
+            <Link to="/riddles" onClick={() => setMenuOpen(false)}>Advinhas Complicadas</Link>
+          </li>
+          <li>
+            <Link to="/detective" onClick={() => setMenuOpen(false)}>Enigmas de Detetive</Link>
           </li>
           <li>
             <button 

@@ -40,14 +40,15 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
       // Tocar um som suave de resposta errada
       playGentleWrongSound();
       
-      // Após 2 segundos, permitir tentar novamente
-      setTimeout(() => {
-        setShowResult(false);
-        setSelectedAnswer(null);
-      }, 2000);
+      // Removendo o timeout automático - agora o usuário precisará clicar em "Tentar Novamente"
     }
   };
   
+  const handleTryAgain = () => {
+    setShowResult(false);
+    setSelectedAnswer(null);
+  };
+
   const handleNextPuzzle = () => {
     onCorrectAnswer();
   };
@@ -206,13 +207,22 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
       )}
       
       <div className="action-buttons">
-        {!isCorrectAnswer && (
+        {!isCorrectAnswer && !showResult && (
           <button 
             className="submit-button" 
-            disabled={selectedAnswer === null || showResult}
+            disabled={selectedAnswer === null}
             onClick={handleSubmit}
           >
             Verificar Resposta
+          </button>
+        )}
+        
+        {showResult && !isCorrectAnswer && (
+          <button 
+            className="try-again-button"
+            onClick={handleTryAgain}
+          >
+            Tentar Novamente
           </button>
         )}
         

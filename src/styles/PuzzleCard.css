@@ -251,6 +251,22 @@
   transform: translateY(-2px);
 }
 
+.try-again-button {
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.try-again-button:hover {
+  background-color: #e55c5c;
+  transform: translateY(-2px);
+}
+
 .action-buttons {
   display: flex;
   gap: 1rem;
