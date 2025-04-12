@@ -146,7 +146,7 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
   return (
     <div className="puzzle-card">
       <div className="puzzle-header">
-        <h2>Adivinha #{riddle.id}</h2>
+        <h2>{riddle.title}</h2>
         <span 
           className="difficulty-badge" 
           style={{ backgroundColor: getDifficultyColor(riddle.difficulty) }}

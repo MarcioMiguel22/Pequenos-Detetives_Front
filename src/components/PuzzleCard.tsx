@@ -207,7 +207,7 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer, isRetry = false }:
                 onClick={() => {
                   if ('speechSynthesis' in window && puzzle.hint) {
                     const speech = new SpeechSynthesisUtterance(puzzle.hint);
-                    speech.lang = 'pt-BR';
+                    speech.lang = 'pt-PT'; // Changed from pt-BR to pt-PT
                     speech.rate = 0.9;
                     window.speechSynthesis.speak(speech);
                   }

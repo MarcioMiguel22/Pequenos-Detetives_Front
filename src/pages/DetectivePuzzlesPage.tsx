@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { detectivePuzzles } from '../data/detective-puzzles';
 import { DifficultyLevel } from '../types/puzzle';
-import PuzzleCard from '../components/PuzzleCard';
 import DifficultySelector from '../components/DifficultySelector';
 import '../styles/PuzzlesPage.css';
+import DetectivePuzzleCard from '../components/DetectivePuzzleCard';
+
 
 export default function DetectivePuzzlesPage() {
   const { id } = useParams();
@@ -68,7 +69,7 @@ export default function DetectivePuzzlesPage() {
     <div className="puzzles-page">
       <div className="puzzles-container">
         <div className="puzzle-selection">
-          <h2>Enigmas de Detetive</h2>
+          <h2>Escolhe um Enigma de Detetive</h2>
           <DifficultySelector 
             selectedDifficulty={filterDifficulty}
             onSelectDifficulty={setFilterDifficulty}
@@ -92,12 +93,23 @@ export default function DetectivePuzzlesPage() {
         </div>
         
         <div className="current-puzzle">
-          <PuzzleCard puzzle={currentPuzzle} onCorrectAnswer={handleCorrectAnswer} />
+          {completedPuzzles.includes(currentPuzzleId) && (
+            <div className="retry-banner">
+              Já resolveste este enigma! Queres tentar novamente?
+            </div>
+          )}
+          {currentPuzzle && (
+            <DetectivePuzzleCard 
+              puzzle={currentPuzzle} 
+              onCorrectAnswer={handleCorrectAnswer} 
+              isRetry={completedPuzzles.includes(currentPuzzleId)}
+            />
+          )}
         </div>
       </div>
       
       <div className="progress-section">
-        <h3>Seu Progresso</h3>
+        <h3>O Teu Progresso</h3>
         <div className="progress-bar">
           <div 
             className="progress-fill" 

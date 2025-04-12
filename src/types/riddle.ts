@@ -7,10 +7,11 @@ export interface ContextualOption {
 
 export interface Riddle {
   id: number;
+  title: string; // Added title property
   question: string;
   answer: string;
   difficulty: DifficultyLevel;
   hint?: string;
   image?: string;
-  contextualOptions?: ContextualOption[]; // Nova propriedade para opções contextuais
+  contextualOptions?: ContextualOption[];
 }

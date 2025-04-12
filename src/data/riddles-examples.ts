@@ -4,6 +4,7 @@ import { Riddle } from '../types/riddle';
 export const riddleExamples: Riddle[] = [
   {
     id: 1,
+    title: 'O Mistério do Pente',
     question: "O que tem dentes mas não morde?",
     answer: "Pente",
     difficulty: "fácil",
@@ -16,6 +17,7 @@ export const riddleExamples: Riddle[] = [
   },
   {
     id: 2,
+    title: 'O Enigma da Vela',
     question: "O que nasce grande e morre pequeno?",
     answer: "Vela",
     difficulty: "fácil",
@@ -28,6 +30,7 @@ export const riddleExamples: Riddle[] = [
   },
   {
     id: 3,
+    title: 'O Mistério da Porta',
     question: "O que vai e volta mas nunca se move?",
     answer: "Porta",
     difficulty: "fácil",
@@ -40,6 +43,7 @@ export const riddleExamples: Riddle[] = [
   },
   {
     id: 4,
+    title: 'O Enigma da Coroa',
     question: "Tem coroa mas não é rei, tem espinhos mas não é rosa. O que é?",
     answer: "Abacaxi",
     difficulty: "médio",
@@ -52,6 +56,7 @@ export const riddleExamples: Riddle[] = [
   },
   {
     id: 5,
+    title: 'O Mistério do Caminho',
     question: "Feito para andar, mas não anda?",
     answer: "Rua",
     difficulty: "médio",

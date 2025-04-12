@@ -85,7 +85,7 @@ export default function RiddlesPage() {
                 onClick={() => selectRiddle(riddle.id)}
               >
                 <span className="puzzle-number">{riddle.id}</span>
-                <span className="puzzle-title">Adivinha #{riddle.id}</span>
+                <span className="puzzle-title">{riddle.title}</span>
                 {completedRiddles.includes(riddle.id) && <span className="completed-badge">✓</span>}
               </div>
             ))}
