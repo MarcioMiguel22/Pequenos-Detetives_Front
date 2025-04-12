@@ -42,16 +42,24 @@ export default function PuzzlesPage() {
     }
     
     // If all puzzles are completed, go to result page
-    if (completedPuzzles.length === puzzles.length - 1) {
+    if (completedPuzzles.length === puzzles.length - 1 && !completedPuzzles.includes(currentPuzzleId)) {
       navigate('/result');
       return;
     }
     
-    // Find next puzzle
-    const nextPuzzleId = puzzles.find(p => !completedPuzzles.includes(p.id) && p.id !== currentPuzzleId)?.id;
-    if (nextPuzzleId) {
+    // Find next puzzle - prioritize unsolved puzzles
+    const unsolvedPuzzles = puzzles.filter(p => !completedPuzzles.includes(p.id) && p.id !== currentPuzzleId);
+    
+    if (unsolvedPuzzles.length > 0) {
+      // If there are unsolved puzzles, go to the first one
+      const nextPuzzleId = unsolvedPuzzles[0].id;
       navigate(`/puzzles/${nextPuzzleId}`);
       setCurrentPuzzleId(nextPuzzleId);
+    } else {
+      // If all puzzles are solved, stay on the current one or go to result page
+      if (completedPuzzles.length >= puzzles.length - 1) {
+        navigate('/result');
+      }
     }
   };
   
@@ -61,14 +69,14 @@ export default function PuzzlesPage() {
   };
   
   if (!currentPuzzle) {
-    return <div className="loading">Carregando enigma...</div>;
+    return <div className="loading">Carregando advinha...</div>;
   }
   
   return (
     <div className="puzzles-page">
       <div className="puzzles-container">
         <div className="puzzle-selection">
-          <h2>Escolha um Enigma</h2>
+          <h2>Escolhe uma Advinha Simples</h2>
           <DifficultySelector 
             selectedDifficulty={filterDifficulty}
             onSelectDifficulty={setFilterDifficulty}
@@ -82,29 +90,39 @@ export default function PuzzlesPage() {
                   completedPuzzles.includes(puzzle.id) ? 'completed' : ''
                 }`}
                 onClick={() => selectPuzzle(puzzle.id)}
+                title={completedPuzzles.includes(puzzle.id) ? "Podes tentar novamente!" : "Ainda não respondeste"}
               >
                 <span className="puzzle-number">{puzzle.id}</span>
                 <span className="puzzle-title">{puzzle.title}</span>
-                {completedPuzzles.includes(puzzle.id) && <span className="completed-badge">✓</span>}
+                {completedPuzzles.includes(puzzle.id) && <span className="completed-badge" title="Já respondeste corretamente">✓</span>}
               </div>
             ))}
           </div>
         </div>
         
         <div className="current-puzzle">
-          <PuzzleCard puzzle={currentPuzzle} onCorrectAnswer={handleCorrectAnswer} />
+          {completedPuzzles.includes(currentPuzzleId) && (
+            <div className="retry-banner">
+              Já resolveste esta advinha! Queres tentar novamente?
+            </div>
+          )}
+          <PuzzleCard 
+            puzzle={currentPuzzle} 
+            onCorrectAnswer={handleCorrectAnswer} 
+            isRetry={completedPuzzles.includes(currentPuzzleId)}
+          />
         </div>
       </div>
       
       <div className="progress-section">
-        <h3>Seu Progresso</h3>
+        <h3>O Teu Progresso</h3>
         <div className="progress-bar">
           <div 
             className="progress-fill" 
             style={{ width: `${(completedPuzzles.length / puzzles.length) * 100}%` }}
           ></div>
         </div>
-        <p>{completedPuzzles.length} de {puzzles.length} enigmas resolvidos</p>
+        <p>{completedPuzzles.length} de {puzzles.length} advinhas resolvidas</p>
       </div>
     </div>
   );

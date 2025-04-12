@@ -93,7 +93,16 @@ export default function RiddlesPage() {
         </div>
         
         <div className="current-puzzle">
-          <RiddleCard riddle={currentRiddle} onCorrectAnswer={handleCorrectAnswer} />
+          {completedRiddles.includes(currentRiddleId) && (
+            <div className="retry-banner">
+              Já resolveste esta advinha! Queres tentar novamente?
+            </div>
+          )}
+          <RiddleCard 
+            riddle={currentRiddle} 
+            onCorrectAnswer={handleCorrectAnswer} 
+            isRetry={completedRiddles.includes(currentRiddleId)}
+          />
         </div>
       </div>
       

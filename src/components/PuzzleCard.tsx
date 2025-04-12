@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Puzzle } from '../types/puzzle';
 import '../styles/PuzzleCard.css';
 
@@ -10,40 +10,55 @@ interface WindowWithWebkitAudio extends Window {
 interface PuzzleCardProps {
   puzzle: Puzzle;
   onCorrectAnswer: () => void;
+  isRetry?: boolean;
 }
 
-export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps) {
+export default function PuzzleCard({ puzzle, onCorrectAnswer, isRetry = false }: PuzzleCardProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
-  
+
+  // Reset component state when the puzzle changes
+  useEffect(() => {
+    setSelectedAnswer(null);
+    setShowResult(false);
+    setIsCorrectAnswer(false);
+    setShowHint(false);
+  }, [puzzle.id]);
+
   const handleAnswerSelect = (answerId: number) => {
-    // Só permite selecionar se não estiver mostrando o resultado correto
-    if (!isCorrectAnswer) {
-      setSelectedAnswer(answerId);
+    // Just in case we're in a retry or already answered state, reset any result states
+    if (showResult || isCorrectAnswer) {
+      setShowResult(false);
+      setIsCorrectAnswer(false);
     }
+    setSelectedAnswer(answerId);
   };
-  
+
   const handleSubmit = () => {
     if (selectedAnswer === null) return;
-    
+
     const isCorrect = puzzle.answers.find(a => a.id === selectedAnswer)?.isCorrect;
-    
+
     if (isCorrect) {
       setIsCorrectAnswer(true);
       setShowResult(true);
-      // Não avançamos automaticamente - esperamos pelo botão "Próximo"
+      // If this is a retry, we can provide a different success message or behavior
+      if (isRetry) {
+        // We can play a different sound or show a different animation for retried puzzles
+        console.log("This is a retry success!");
+      }
     } else {
       setShowResult(true);
       // Tocar um som suave de resposta errada
       playGentleWrongSound();
-      
+
       // Removendo o timeout automático - agora o usuário precisará clicar em "Tentar Novamente"
     }
   };
-  
+
   const handleTryAgain = () => {
     setShowResult(false);
     setSelectedAnswer(null);
@@ -52,7 +67,7 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
   const handleNextPuzzle = () => {
     onCorrectAnswer();
   };
-  
+
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'fácil': return 'green';
@@ -61,7 +76,7 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
       default: return 'gray';
     }
   };
-  
+
   // Função para tocar um som delicado para respostas erradas
   const playGentleWrongSound = () => {
     try {
@@ -70,21 +85,21 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
         ((window as unknown) as WindowWithWebkitAudio).webkitAudioContext)();
       const oscillator = audioContext.createOscillator();
       const gainNode = audioContext.createGain();
-      
+
       // Configurar o tipo de onda e frequência (som suave)
       oscillator.type = 'sine'; // Onda sinusoidal (mais suave)
       oscillator.frequency.setValueAtTime(320, audioContext.currentTime); // Frequência baixa
-      
+
       // Diminuir o volume para ser delicado
       gainNode.gain.setValueAtTime(0.1, audioContext.currentTime); // Volume baixo
-      
+
       // Configurar a queda suave do som
       gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.5);
-      
+
       // Ligar o oscilador ao controlo de volume e depois aos altifalantes
       oscillator.connect(gainNode);
       gainNode.connect(audioContext.destination);
-      
+
       // Iniciar e parar o som após um curto período
       oscillator.start();
       setTimeout(() => {
@@ -104,19 +119,19 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
       speech.lang = 'pt-PT'; // Português de Portugal
       speech.rate = 0.9; // ligeiramente mais lento para crianças
       speech.pitch = 1.1; // tom ligeiramente mais alto
-      
+
       speech.onstart = () => setIsPlaying(true);
       speech.onend = () => setIsPlaying(false);
-      
+
       // Ler as respostas também
       const allText = `${puzzle.question}. As opções são: ${puzzle.answers.map(a => a.text).join(', ')}`;
       speech.text = allText;
-      
+
       window.speechSynthesis.cancel(); // Cancelar qualquer discurso em andamento
       window.speechSynthesis.speak(speech);
     }
   };
-  
+
   return (
     <div className="puzzle-card">
       <div className="puzzle-header">
@@ -128,7 +143,7 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
           {puzzle.difficulty}
         </span>
       </div>
-      
+
       <div className="question-container">
         <p className="puzzle-question">{puzzle.question}</p>
         <button 
@@ -139,13 +154,13 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
           {isPlaying ? '🔊' : '🔈'}
         </button>
       </div>
-      
+
       {puzzle.image && (
         <div className="puzzle-image">
           <img src={puzzle.image} alt={puzzle.title} />
         </div>
       )}
-      
+
       <div className="puzzle-answers">
         {puzzle.answers.map(answer => (
           <div 
@@ -154,7 +169,7 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
               ${selectedAnswer === answer.id ? 'selected' : ''} 
               ${showResult && selectedAnswer === answer.id && answer.isCorrect ? 'correct' : ''} 
               ${showResult && selectedAnswer === answer.id && !answer.isCorrect ? 'incorrect' : ''}`}
-            onClick={() => !showResult && handleAnswerSelect(answer.id)}
+            onClick={() => handleAnswerSelect(answer.id)}
           >
             <span className="answer-text">{answer.text}</span>
             <button 
@@ -175,7 +190,7 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
           </div>
         ))}
       </div>
-      
+
       {puzzle.hint && (
         <div className="hint-section">
           <button 
@@ -205,7 +220,7 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
           )}
         </div>
       )}
-      
+
       <div className="action-buttons">
         {!isCorrectAnswer && !showResult && (
           <button 
@@ -216,16 +231,16 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
             Verificar Resposta
           </button>
         )}
-        
+
         {showResult && !isCorrectAnswer && (
           <button 
             className="try-again-button"
             onClick={handleTryAgain}
           >
-            Tentar Novamente
+            Tentar Outra Vez
           </button>
         )}
-        
+
         {isCorrectAnswer && (
           <button 
             className="next-button"
@@ -235,12 +250,14 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer }: PuzzleCardProps)
           </button>
         )}
       </div>
-      
+
       {showResult && (
         <div className={`result-message ${isCorrectAnswer ? 'success' : 'error'}`}>
           {isCorrectAnswer 
-            ? '🎉 Parabéns! Acertaste!' 
-            : '😢 Tenta novamente!'}
+            ? isRetry 
+              ? '🎉 Muito bem! Conseguiste resolver novamente!' 
+              : '🎉 Parabéns! Acertaste!' 
+            : '😢 Tenta outra vez!'}
         </div>
       )}
     </div>

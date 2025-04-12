@@ -5,9 +5,10 @@ import '../styles/PuzzleCard.css';
 interface RiddleCardProps {
   riddle: Riddle;
   onCorrectAnswer: () => void;
+  isRetry?: boolean;
 }
 
-export default function RiddleCard({ riddle, onCorrectAnswer }: RiddleCardProps) {
+export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }: RiddleCardProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [showHint, setShowHint] = useState(false);
@@ -162,10 +163,21 @@ export default function RiddleCard({ riddle, onCorrectAnswer }: RiddleCardProps)
     setAnswerOptions(options);
   }, [riddle, generateOptions]);
   
+  // Reset component state when the riddle changes
+  useEffect(() => {
+    setSelectedAnswer(null);
+    setShowResult(false);
+    setIsCorrectAnswer(false);
+    setShowHint(false);
+  }, [riddle.id]);
+  
   const handleAnswerSelect = (answer: string) => {
-    if (!isCorrectAnswer) {
-      setSelectedAnswer(answer);
+    // Reset any previous answer states when selecting a new answer
+    if (showResult || isCorrectAnswer) {
+      setShowResult(false);
+      setIsCorrectAnswer(false);
     }
+    setSelectedAnswer(answer);
   };
   
   const handleSubmit = () => {
@@ -177,6 +189,10 @@ export default function RiddleCard({ riddle, onCorrectAnswer }: RiddleCardProps)
     if (isCorrect) {
       setIsCorrectAnswer(true);
       setShowResult(true);
+      if (isRetry) {
+        // Different behavior for retry success
+        console.log("Riddle retry successfully solved!");
+      }
     } else {
       setShowResult(true);
       
@@ -298,7 +314,7 @@ export default function RiddleCard({ riddle, onCorrectAnswer }: RiddleCardProps)
                 onClick={() => {
                   if ('speechSynthesis' in window && riddle.hint) {
                     const speech = new SpeechSynthesisUtterance(riddle.hint);
-                    speech.lang = 'pt-PT';
+                    speech.lang = 'pt-PT'; // Mudar de pt-BR para pt-PT
                     speech.rate = 0.9;
                     window.speechSynthesis.speak(speech);
                   }
@@ -328,7 +344,7 @@ export default function RiddleCard({ riddle, onCorrectAnswer }: RiddleCardProps)
             className="try-again-button"
             onClick={handleTryAgain}
           >
-            Tentar Novamente
+            Tentar Outra Vez
           </button>
         )}
         
@@ -345,8 +361,10 @@ export default function RiddleCard({ riddle, onCorrectAnswer }: RiddleCardProps)
       {showResult && (
         <div className={`result-message ${isCorrectAnswer ? 'success' : 'error'}`}>
           {isCorrectAnswer 
-            ? `🎉 Parabéns! Acertaste! A resposta correta é: ${riddle.answer}` 
-            : '😢 Tenta novamente!'}
+            ? isRetry 
+              ? `🎉 Boa memória! Resolveste novamente! A resposta é: ${riddle.answer}`
+              : `🎉 Parabéns! Acertaste! A resposta correta é: ${riddle.answer}` 
+            : '😢 Tenta outra vez!'}
         </div>
       )}
     </div>
