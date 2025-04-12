@@ -14,7 +14,7 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
   const [showHint, setShowHint] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
-  const [answerOptions, setAnswerOptions] = useState<Array<{text: string, original: string, isCorrect: boolean}>>([]);
+  const [contextualOptions, setContextualOptions] = useState<Array<{text: string, isCorrect: boolean}>>([]);
   
   // Fisher-Yates shuffle algorithm
   const shuffleArray = useCallback(<T,>(array: T[]): T[] => {
@@ -26,143 +26,40 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
     return newArray;
   }, []);
   
-  // Function to scramble letters in a word
-  const scrambleWord = useCallback((word: string) => {
-    // For short words, just scramble the letters
-    if (word.length <= 5) {
-      const letters = word.split('');
-      return shuffleArray(letters).join('');
-    }
-    
-    // For longer words or phrases, use a mix of techniques
-    const words = word.split(' ');
-    
-    return words.map(w => {
-      // 50% chance to use each technique
-      if (Math.random() > 0.5) {
-        // Scramble middle letters, keep first and last in place
-        if (w.length > 3) {
-          const first = w.charAt(0);
-          const last = w.charAt(w.length - 1);
-          const middle = w.substring(1, w.length - 1);
-          const scrambledMiddle = shuffleArray(middle.split('')).join('');
-          return first + scrambledMiddle + last;
-        } else {
-          return shuffleArray(w.split('')).join('');
-        }
-      } else {
-        // Replace some letters with underscores
-        const letters = w.split('');
-        return letters.map(letter => 
-          Math.random() > 0.3 ? letter : '_'
-        ).join('');
-      }
-    }).join(' ');
-  }, [shuffleArray]);
-  
-  // Function to generate fake answers
-  const generateFakeAnswers = useCallback((correctAnswer: string) => {
-    // List of common words for fake answers
-    const commonAnswers = [
-      "sol", "lua", "céu", "água", "terra", "fogo", "vento", 
-      "livro", "caneta", "papel", "mesa", "cadeira", "porta", 
-      "janela", "carro", "bicicleta", "chapéu", "óculos", "relógio",
-      "telefone", "computador", "árvore", "planta", "flor", "animal",
-      "pássaro", "peixe", "gato", "cachorro", "leão", "tigre", "urso"
-    ];
-    
-    // Make sure fake answers are different from correct answer and each other
-    const result: string[] = [];
-    
-    // Try to use words with similar length to the correct answer
-    const correctLength = correctAnswer.length;
-    
-    for (let i = 0; i < 2; i++) {
-      let fake = "";
-      
-      if (i === 0 && correctAnswer.length > 3) {
-        // First fake: try to use a word with similar letters
-        const letters = correctAnswer.split('');
-        const shuffled = shuffleArray([...letters]);
-        fake = shuffled.join('');
-        
-        // Make sure it's different enough
-        if (fake === correctAnswer) {
-          // Swap two characters
-          if (fake.length > 3) {
-            const arr = fake.split('');
-            const temp = arr[1];
-            arr[1] = arr[2];
-            arr[2] = temp;
-            fake = arr.join('');
-          } else {
-            fake = commonAnswers[Math.floor(Math.random() * commonAnswers.length)];
-          }
-        }
-      } else {
-        // Use a common word with similar length
-        const similarLengthWords = commonAnswers.filter(word => 
-          Math.abs(word.length - correctLength) <= 2
-        );
-        
-        if (similarLengthWords.length > 0) {
-          fake = similarLengthWords[Math.floor(Math.random() * similarLengthWords.length)];
-        } else {
-          fake = commonAnswers[Math.floor(Math.random() * commonAnswers.length)];
-        }
-      }
-      
-      // Ensure it's different from correct answer and already chosen fakes
-      if (fake !== correctAnswer && !result.includes(fake)) {
-        result.push(fake);
-      } else {
-        // If we can't find a unique one, just add a random common word
-        while (true) {
-          const randomWord = commonAnswers[Math.floor(Math.random() * commonAnswers.length)];
-          if (randomWord !== correctAnswer && !result.includes(randomWord)) {
-            result.push(randomWord);
-            break;
-          }
-        }
-      }
-    }
-    
-    return result;
-  }, [shuffleArray]);
-  
-  // Memoize generateOptions with all dependencies included
-  const generateOptions = useCallback((correctAnswer: string) => {
-    // Create array with the correct answer
-    const options = [
-      { 
-        text: scrambleWord(correctAnswer), 
-        original: correctAnswer, 
-        isCorrect: true 
-      }
-    ];
-    
-    // Generate 2 fake answers
-    const fakeAnswers = generateFakeAnswers(correctAnswer);
-    
-    // Add fake answers to options
-    fakeAnswers.forEach(answer => {
-      options.push({
-        text: scrambleWord(answer),
-        original: answer,
-        isCorrect: false
-      });
-    });
-    
-    // Shuffle the options
-    return shuffleArray(options);
-  }, [scrambleWord, generateFakeAnswers, shuffleArray]);
-  
-  // Generate answer options when riddle changes
+  // Generate contextual options based on the riddle
   useEffect(() => {
-    const options = generateOptions(riddle.answer);
-    setAnswerOptions(options);
-  }, [riddle, generateOptions]);
-  
+    // Base contextual options for the riddle
+    let options = [];
+    
+    // Default options if not specifically defined
+    if (!riddle.contextualOptions) {
+      // Create default contextual options
+      options = [
+        { 
+          text: `Usamos ${riddle.answer.toLowerCase().endsWith('a') ? 'a' : 'o'} ${riddle.answer.toLowerCase()} todos os dias!`, 
+          isCorrect: true 
+        },
+        { 
+          text: `Podemos encontrar n${riddle.answer.toLowerCase().endsWith('a') ? 'a' : 'o'} casa de banho.`, 
+          isCorrect: false 
+        },
+        { 
+          text: `É algo que temos n${riddle.answer.toLowerCase().endsWith('a') ? 'a' : 'o'} cozinha.`, 
+          isCorrect: false 
+        }
+      ];
+    } else {
+      // Use predefined contextual options
+      options = riddle.contextualOptions.map(opt => ({
+        text: opt.text,
+        isCorrect: opt.isCorrect
+      }));
+    }
+    
+    // Shuffle options
+    setContextualOptions(shuffleArray(options));
+  }, [riddle, shuffleArray]);
+
   // Reset component state when the riddle changes
   useEffect(() => {
     setSelectedAnswer(null);
@@ -172,7 +69,7 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
   }, [riddle.id]);
   
   const handleAnswerSelect = (answer: string) => {
-    // Reset any previous answer states when selecting a new answer
+    // Reset any previous results when selecting a new answer
     if (showResult || isCorrectAnswer) {
       setShowResult(false);
       setIsCorrectAnswer(false);
@@ -183,14 +80,13 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
   const handleSubmit = () => {
     if (!selectedAnswer) return;
     
-    const selectedOption = answerOptions.find(option => option.text === selectedAnswer);
+    const selectedOption = contextualOptions.find(option => option.text === selectedAnswer);
     const isCorrect = selectedOption?.isCorrect || false;
     
     if (isCorrect) {
       setIsCorrectAnswer(true);
       setShowResult(true);
       if (isRetry) {
-        // Different behavior for retry success
         console.log("Riddle retry successfully solved!");
       }
     } else {
@@ -227,14 +123,14 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
     if ('speechSynthesis' in window) {
       const speech = new SpeechSynthesisUtterance();
       speech.text = riddle.question;
-      speech.lang = 'pt-PT'; // Português de Portugal
-      speech.rate = 0.9; // ligeiramente mais lento para crianças
-      speech.pitch = 1.1; // tom ligeiramente mais alto
+      speech.lang = 'pt-PT'; 
+      speech.rate = 0.9; 
+      speech.pitch = 1.1;
       
       speech.onstart = () => setIsPlaying(true);
       speech.onend = () => setIsPlaying(false);
       
-      window.speechSynthesis.cancel(); // Cancelar qualquer discurso em andamento
+      window.speechSynthesis.cancel(); 
       window.speechSynthesis.speak(speech);
     }
   };
@@ -269,7 +165,7 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
       )}
       
       <div className="puzzle-answers">
-        {answerOptions.map((option) => (
+        {contextualOptions.map((option) => (
           <div 
             key={option.text}
             className={`answer-option 
@@ -284,7 +180,7 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
               onClick={(e) => {
                 e.stopPropagation();
                 if ('speechSynthesis' in window) {
-                  const speech = new SpeechSynthesisUtterance(option.original);
+                  const speech = new SpeechSynthesisUtterance(option.text);
                   speech.lang = 'pt-PT';
                   speech.rate = 0.9;
                   window.speechSynthesis.speak(speech);
@@ -297,6 +193,12 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
           </div>
         ))}
       </div>
+      
+      {showResult && isCorrectAnswer && (
+        <div className="correct-answer-reveal">
+          <p>A resposta correta é: <strong>{riddle.answer}</strong></p>
+        </div>
+      )}
       
       {riddle.hint && (
         <div className="hint-section">
@@ -314,7 +216,7 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
                 onClick={() => {
                   if ('speechSynthesis' in window && riddle.hint) {
                     const speech = new SpeechSynthesisUtterance(riddle.hint);
-                    speech.lang = 'pt-PT'; // Mudar de pt-BR para pt-PT
+                    speech.lang = 'pt-PT';
                     speech.rate = 0.9;
                     window.speechSynthesis.speak(speech);
                   }
@@ -362,8 +264,8 @@ export default function RiddleCard({ riddle, onCorrectAnswer, isRetry = false }:
         <div className={`result-message ${isCorrectAnswer ? 'success' : 'error'}`}>
           {isCorrectAnswer 
             ? isRetry 
-              ? `🎉 Boa memória! Resolveste novamente! A resposta é: ${riddle.answer}`
-              : `🎉 Parabéns! Acertaste! A resposta correta é: ${riddle.answer}` 
+              ? `🎉 Boa memória! Resolveste novamente!` 
+              : `🎉 Parabéns! Acertaste!` 
             : '😢 Tenta outra vez!'}
         </div>
       )}
