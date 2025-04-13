@@ -14,8 +14,8 @@ export default function Header() {
     const path = window.location.pathname;
     if (path === '/') setActiveLink('home');
     else if (path.includes('/puzzles')) setActiveLink('puzzles');
-    else if (path.includes('/riddles')) setActiveLink('riddles');
     else if (path.includes('/detective')) setActiveLink('detective');
+    else if (path.includes('/challenge-riddles')) setActiveLink('challenge-riddles');
   }, []);
   
   const toggleMenu = () => {
@@ -76,16 +76,6 @@ export default function Header() {
               <span className="nav-text">Advinhas Simples</span>
             </Link>
           </li>
-          <li className={`nav-item ${activeLink === 'riddles' ? 'active' : ''}`}>
-            <Link 
-              to="/riddles" 
-              className="nav-link riddles-link"
-              onClick={() => handleNavClick('riddles')}
-            >
-              <span className="nav-icon">❓</span>
-              <span className="nav-text">Advinhas Complicadas</span>
-            </Link>
-          </li>
           <li className={`nav-item ${activeLink === 'detective' ? 'active' : ''}`}>
             <Link 
               to="/detective" 
@@ -94,6 +84,16 @@ export default function Header() {
             >
               <span className="nav-icon">🔍</span>
               <span className="nav-text">Enigmas de Detetive</span>
+            </Link>
+          </li>
+          <li className={`nav-item ${activeLink === 'challenge-riddles' ? 'active' : ''}`}>
+            <Link 
+              to="/challenge-riddles" 
+              className="nav-link challenge-riddles-link"
+              onClick={() => handleNavClick('challenge-riddles')}
+            >
+              <span className="nav-icon">🎯</span>
+              <span className="nav-text">Advinhas Desafiantes</span>
             </Link>
           </li>
           <li className="nav-item theme-toggle-item">

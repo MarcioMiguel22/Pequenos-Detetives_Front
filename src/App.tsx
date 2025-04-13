@@ -4,11 +4,10 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import PuzzlesPage from './pages/PuzzlesPage';
-
 import ResultPage from './pages/ResultPage';
-import './styles/App.css';
 import DetectivePuzzlesPage from './pages/DetectivePuzzlesPage';
-import RiddlesPage from './pages/RiddlesPage';
+import ChallengeRiddlesPage from './pages/ChallengeRiddlesPage';
+import './styles/App.css';
 
 function App() {
   return (
@@ -21,10 +20,10 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/puzzles" element={<Navigate to="/puzzles/1" replace />} />
               <Route path="/puzzles/:id" element={<PuzzlesPage />} />
-              <Route path="/riddles" element={<Navigate to="/riddles/1" replace />} />
-              <Route path="/riddles/:id" element={<RiddlesPage />} />
               <Route path="/detective" element={<Navigate to="/detective/1" replace />} />
               <Route path="/detective/:id" element={<DetectivePuzzlesPage />} />
+              <Route path="/challenge-riddles" element={<Navigate to="/challenge-riddles/1" replace />} />
+              <Route path="/challenge-riddles/:id" element={<ChallengeRiddlesPage />} />
               <Route path="/result" element={<ResultPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
