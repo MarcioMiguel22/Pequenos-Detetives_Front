@@ -3,1290 +3,751 @@ import { DetectivePuzzle } from '../types/detective-puzzle';
 export const detectivePuzzles: DetectivePuzzle[] = [
   {
     id: 1,
-    title: 'O Mistério do Livro Desaparecido',
-    story: 'Na biblioteca da escola, a professora Ana descobriu que o seu livro favorito de histórias desapareceu durante o intervalo. Três alunos estavam na biblioteca nesse momento. Ajuda a professora a descobrir quem levou o livro.',
-    difficulty: 'fácil',
-    clues: [
-      {
-        id: 1,
-        text: 'O livro é sobre dinossauros e tem uma capa verde brilhante.'
-      },
-      {
-        id: 2,
-        text: 'A Mariana disse que esteve a ler um livro sobre planetas durante todo o intervalo.'
-      },
-      {
-        id: 3,
-        text: 'O João tem um livro verde na mochila, mas diz que é o seu livro de ciências.'
-      },
-      {
-        id: 4,
-        text: 'A Rita tem um irmão mais novo que adora dinossauros e ela queria fazer-lhe uma surpresa.'
-      }
-    ],
+    title: 'O Mistério do Bolo Desaparecido',
+    scenario: `A professora Cláudia preparou um bolo delicioso para a festa de aniversário da Escola de Azenhas do Mar. Ela deixou o bolo na sala dos professores enquanto ia buscar as velas. Quando voltou, o bolo tinha desaparecido!
+
+    Havia quatro crianças perto da sala naquele momento:
+    
+    Martim disse: "Eu estava a jogar à bola no pátio com o Francisco".
+    Alice disse: "Eu estava na biblioteca a ler um livro".
+    Francisco disse: "Sim, eu estava a jogar com o Martim".
+    Mariana disse: "Eu estava a ajudar a professora Inês a carregar materiais de arte".
+    
+    A professora Inês confirma que Mariana esteve com ela o tempo todo. O professor Hélio diz que viu duas crianças a jogar à bola no pátio, mas não se lembra quem eram.
+    
+    Quem apanhou o bolo?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Mariana',
-        description: 'Gosta muito de astronomia e sempre traz livros sobre o espaço.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'João',
-        description: 'É muito aplicado e está sempre a estudar para as aulas de ciências.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Rita',
-        description: 'Tem um irmão mais novo que adora dinossauros e gosta de lhe contar histórias.',
-        isGuilty: true
-      }
+      { id: 1, name: 'Martim', isGuilty: false },
+      { id: 2, name: 'Alice', isGuilty: true },
+      { id: 3, name: 'Francisco', isGuilty: false },
+      { id: 4, name: 'Mariana', isGuilty: false }
     ],
-    hint: 'Pensa em quem poderia querer um livro sobre dinossauros e porquê.',
-    solution: 'A Rita levou o livro porque queria fazer uma surpresa ao irmão mais novo que adora dinossauros. Ela não tinha más intenções, mas devia ter pedido autorização primeiro!'
+    clues: [
+      "A professora Inês confirma o álibi de Mariana.",
+      "O professor Hélio viu duas crianças a jogar à bola, o que confirma o álibi do Martim e do Francisco.",
+      "Alice disse que estava na biblioteca, mas não há testemunhas."
+    ],
+    explanation: "Alice mentiu sobre estar na biblioteca. A bibliotecária Janine confirmou mais tarde que ninguém entrou na biblioteca naquele período. Alice não tinha álibi, enquanto todos os outros tinham.",
+    difficulty: "fácil"
   },
   {
     id: 2,
-    title: 'O Caso do Lanche Misterioso',
-    story: 'O Tiago trouxe um delicioso bolo de chocolate para o lanche, guardou-o no seu cacifo e quando voltou para lanchar, metade do bolo tinha desaparecido! Quem terá sido o guloso que não resistiu ao bolo?',
-    difficulty: 'fácil',
-    clues: [
-      {
-        id: 1,
-        text: 'O cacifo do Tiago fica ao lado do cacifo do Pedro e da Joana.'
-      },
-      {
-        id: 2,
-        text: 'Quando o Tiago voltou, encontrou migalhas de chocolate perto do cacifo.'
-      },
-      {
-        id: 3,
-        text: 'O Pedro esteve a jogar futebol durante todo o intervalo, como confirmam vários colegas.'
-      },
-      {
-        id: 4,
-        text: 'A Joana tem no seu casaco pequenas manchas de chocolate.'
-      },
-      {
-        id: 5,
-        text: 'A Clara passou pelo corredor dos cacifos a caminho da biblioteca.'
-      }
-    ],
+    title: 'O Caso dos Materiais Desaparecidos',
+    scenario: `Na Escola de Azenhas do Mar, o professor André descobriu que vários materiais de arte estavam a desaparecer do armário da sala. Faltavam lápis de cor novos, marcadores, e um kit de pintura.
+
+    Quatro alunos tinham acesso ao armário:
+    
+    Carlota disse: "Eu só uso os materiais durante as aulas de arte".
+    Santiago disse: "Os meus pais compraram-me um kit completo no início do ano, não preciso de mais".
+    Gonçalo disse: "Eu nem gosto muito de arte, prefiro matemática".
+    Lorena disse: "Talvez os materiais tenham sido guardados noutro armário por engano".
+    
+    A funcionária Bia notou que um dos alunos esteve a mexer no armário depois das aulas, quando achava que ninguém estava a ver.
+    
+    Quem apanhou os materiais?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Pedro',
-        description: 'Gosta muito de doces, mas esteve a jogar futebol durante todo o intervalo.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Joana',
-        description: 'Tem o cacifo ao lado do Tiago e tem manchas de chocolate no casaco.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Clara',
-        description: 'Passou pelo corredor dos cacifos a caminho da biblioteca.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Carlota', isGuilty: false },
+      { id: 2, name: 'Santiago', isGuilty: false },
+      { id: 3, name: 'Gonçalo', isGuilty: false },
+      { id: 4, name: 'Lorena', isGuilty: true }
     ],
-    hint: 'Procura por evidências físicas que possam ligar alguém ao crime.',
-    solution: 'A Joana não resistiu ao delicioso bolo de chocolate. As manchas no seu casaco e o facto de o seu cacifo estar ao lado do Tiago são provas suficientes!'
+    clues: [
+      "A funcionária Bia viu alguém no armário depois das aulas.",
+      "Lorena tentou sugerir que os materiais poderiam estar noutro lugar.",
+      "Santiago tem os seus próprios materiais.",
+      "Gonçalo não mostra interesse em arte."
+    ],
+    explanation: "Lorena foi quem apanhou os materiais. Ela tentou desviar as suspeitas sugerindo que os materiais podiam ter sido guardados noutro lugar, enquanto a funcionária Bia confirma ter visto uma menina no armário depois das aulas.",
+    difficulty: "médio"
   },
   {
     id: 3,
     title: 'O Enigma do Recreio',
-    story: 'Alguém desenhou com giz no chão do recreio e a Diretora da escola quer saber quem foi, pois o desenho ocupa quase todo o espaço onde os alunos costumam jogar. Quem terá sido o artista?',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'O desenho tem vários planetas e naves espaciais, muito colorido e bem feito.'
-      },
-      {
-        id: 2,
-        text: 'Foram encontradas caixas de giz colorido no caixote do lixo perto do recreio.'
-      },
-      {
-        id: 3,
-        text: 'O Miguel tem as mãos limpas, mas o seu casaco tem várias manchas coloridas.'
-      },
-      {
-        id: 4,
-        text: 'A Ana é conhecida pelo seu talento para desenhar, especialmente planetas e naves espaciais.'
-      },
-      {
-        id: 5,
-        text: 'O Diogo foi visto a comprar giz colorido na papelaria da escola no dia anterior.'
-      }
-    ],
+    scenario: `Durante o intervalo, alguém desenhou com giz no muro recém-pintado da Escola de Azenhas do Mar. O diretor Ricardo está a investigar quem foi o responsável.
+
+    Quatro crianças estavam no recreio naquele momento:
+    
+    Francisco disse: "Eu estava a jogar às cartas com a Mariana na mesa de piquenique".
+    Martim disse: "Eu estive na biblioteca a devolver um livro e depois fui comprar um lanche".
+    Alice disse: "Eu não saí da cantina durante todo o intervalo".
+    Mariana disse: "Sim, eu e o Francisco estivemos a jogar às cartas o tempo todo".
+    
+    A professora Marivania viu Martim a sair da biblioteca, mas não tem a certeza se ele foi para o recreio ou para a cantina. A funcionária Khauani confirma que vendeu um lanche a um menino, mas não se lembra quem era.
+    
+    Quem desenhou no muro?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Miguel',
-        description: 'Tem manchas coloridas no casaco, mas as mãos estão limpas.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Ana',
-        description: 'É muito talentosa a desenhar, especialmente temas de espaço.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Diogo',
-        description: 'Comprou giz colorido na papelaria da escola no dia anterior.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Francisco', isGuilty: false },
+      { id: 2, name: 'Martim', isGuilty: true },
+      { id: 3, name: 'Alice', isGuilty: false },
+      { id: 4, name: 'Mariana', isGuilty: false }
     ],
-    hint: 'Pensa no tipo de desenho e quem teria talento para fazê-lo.',
-    solution: 'A Ana foi a artista do recreio. O estilo do desenho (planetas e naves) combina com o que ela gosta de desenhar, e ela tem o talento necessário para fazer um desenho grande e bem feito.'
+    clues: [
+      "Francisco e Mariana confirmam o álibi um do outro.",
+      "A professora Marivania viu Martim a sair da biblioteca.",
+      "Alice diz que esteve na cantina o tempo todo.",
+      "A funcionária Khauani vendeu um lanche a um menino."
+    ],
+    explanation: "Martim é o culpado. Ele mencionou ter ido à biblioteca e depois comprado um lanche, mas não explicou quando desenhou no muro. As outras crianças têm álibis mais consistentes. É provável que ele tenha desenhado no muro entre a saída da biblioteca e a ida à cantina.",
+    difficulty: "médio"
   },
   {
     id: 4,
-    title: 'O Mistério das Pegadas na Neve',
-    story: 'Durante a noite, nevou muito na escola. De manhã, a professora Leonor descobriu que alguém entrou na sala de aula e deixou uma prenda misteriosa na sua secretária. Havia pegadas na neve que começavam no portão e iam até à sala. Quem terá sido o visitante secreto?',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'As pegadas eram pequenas, como as de uma criança.'
-      },
-      {
-        id: 2,
-        text: 'A prenda estava embrulhada em papel colorido e tinha um cartão que dizia "Para a melhor professora do mundo".'
-      },
-      {
-        id: 3,
-        text: 'Dentro da caixa estava um desenho feito à mão e uma maçã vermelha.'
-      },
-      {
-        id: 4,
-        text: 'O Tomás disse que chegou à escola muito cedo porque o pai o trouxe antes de ir trabalhar.'
-      },
-      {
-        id: 5,
-        text: 'A Sofia tem sempre maçãs vermelhas no lanche e adora desenhar.'
-      }
-    ],
+    title: 'O Mistério da Carteira Perdida',
+    scenario: `No restaurante Buzio em Azenhas do Mar, o senhor Gonçalo perdeu a sua carteira durante o almoço. Ele só notou depois de sair do restaurante. Quando voltou, a carteira não estava no local onde ele tinha almoçado.
+
+    Quatro funcionários estavam a trabalhar naquela zona do restaurante:
+    
+    Inês disse: "Eu estava a atender as mesas da varanda".
+    Márcio disse: "Estava ocupado na cozinha a ajudar o chef".
+    André disse: "Eu limpei aquela mesa após o senhor Gonçalo sair, mas não vi nenhuma carteira".
+    Bia disse: "Eu estava na receção a atender telefonemas".
+    
+    O gerente verificou as câmaras e viu que alguém tinha guardado algo no bolso enquanto limpava a mesa do senhor Gonçalo.
+    
+    Quem apanhou a carteira?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Tomás',
-        description: 'Um aluno que chega sempre muito cedo à escola porque o pai o deixa antes de ir trabalhar.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Sofia',
-        description: 'Uma aluna que adora a professora Leonor e que sempre traz maçãs vermelhas para o lanche.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Funcionário António',
-        description: 'O funcionário que abre a escola todas as manhãs.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Inês', isGuilty: false },
+      { id: 2, name: 'Márcio', isGuilty: false },
+      { id: 3, name: 'André', isGuilty: true },
+      { id: 4, name: 'Bia', isGuilty: false }
     ],
-    hint: 'Pensa no que estava dentro da prenda e quem poderia ter esses objetos.',
-    solution: 'A Sofia é a visitante misteriosa. Ela deixou a prenda porque adora a professora Leonor, e as pistas mostram que ela sempre traz maçãs vermelhas e gosta de desenhar. As pegadas pequenas também indicam que foi uma criança.'
+    clues: [
+      "O gerente viu nas câmaras alguém a guardar algo no bolso.",
+      "André admitiu ter limpo a mesa depois do senhor Gonçalo sair.",
+      "Márcio estava na cozinha durante o incidente.",
+      "Inês estava a trabalhar na varanda, não na área principal do restaurante."
+    ],
+    explanation: "André foi quem apanhou a carteira. Ele foi o único que admitiu ter limpo a mesa do senhor Gonçalo, e o gerente viu nas câmaras que a pessoa que limpou a mesa guardou algo no bolso. André mentiu ao dizer que não viu a carteira.",
+    difficulty: "fácil"
   },
   {
     id: 5,
-    title: 'O Caso do Bolo Desaparecido',
-    story: 'A avó Matilde fez um delicioso bolo de chocolate para o lanche da família. Ela deixou-o a arrefecer na janela da cozinha enquanto foi ao quintal apanhar limões. Quando voltou, metade do bolo tinha desaparecido! Os únicos que estavam em casa eram o avô Alfredo, a prima Inês e o gato Bigodes.',
-    difficulty: 'fácil',
-    clues: [
-      {
-        id: 1,
-        text: 'O avô Alfredo estava a dormir na sua poltrona e ressonava alto.'
-      },
-      {
-        id: 2,
-        text: 'A prima Inês diz que esteve no quarto a ler o seu livro novo.'
-      },
-      {
-        id: 3,
-        text: 'Há migalhas de chocolate no chão da cozinha até ao quarto da Inês.'
-      },
-      {
-        id: 4,
-        text: 'O gato Bigodes estava deitado ao sol no tapete da entrada.'
-      },
-      {
-        id: 5,
-        text: 'A Inês tem manchas de chocolate nos dedos e no seu livro novo.'
-      }
-    ],
+    title: 'O Segredo da Praia das Azenhas do Mar',
+    scenario: `Um barco de pesca foi danificado durante a noite enquanto estava atracado na Praia das Azenhas do Mar. O proprietário, Denis, encontrou o barco com um furo no casco e está a tentar perceber quem seria o responsável.
+
+    Quatro pessoas foram vistas perto da praia na noite anterior:
+    
+    Ricardo disse: "Estive a pescar ao pôr-do-sol, mas fui para casa cedo porque começou a ficar frio".
+    Marivania disse: "Fui dar um passeio pela praia depois do jantar no restaurante Nortada".
+    Tiago disse: "Regressei a casa tarde porque estive no Bar Loureiro até à hora de fechar".
+    Cláudia disse: "Estava a tirar fotografias ao luar, mas apenas na parte superior da falésia, nunca desci à praia".
+    
+    O dono do Bar Loureiro confirma que Tiago esteve lá até às 2h da manhã. Um banhista descobriu uma faca de pesca com as iniciais 'R.S.' perto do barco danificado.
+    
+    Quem danificou o barco?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Avô Alfredo',
-        description: 'Estava a dormir na poltrona e ressonava alto.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Prima Inês',
-        description: 'Diz que esteve no quarto a ler, mas tem manchas de chocolate nos dedos.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Gato Bigodes',
-        description: 'Estava deitado ao sol no tapete da entrada.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Ricardo', isGuilty: true },
+      { id: 2, name: 'Marivania', isGuilty: false },
+      { id: 3, name: 'Tiago', isGuilty: false },
+      { id: 4, name: 'Cláudia', isGuilty: false }
     ],
-    hint: 'Repara nas migalhas no chão e nas manchas nos dedos da Inês.',
-    solution: 'A prima Inês é a culpada. As migalhas de chocolate no chão formavam um caminho até ao seu quarto, e ela tinha manchas de chocolate nos dedos e no livro. Ela comeu o bolo enquanto lia o seu livro novo!'
+    clues: [
+      "Uma faca de pesca com as iniciais 'R.S.' foi encontrada perto do barco.",
+      "O dono do Bar Loureiro confirma o álibi de Tiago.",
+      "Cláudia nunca desceu à praia, ficou apenas na falésia.",
+      "Ricardo disse que foi para casa cedo devido ao frio."
+    ],
+    explanation: "Ricardo é o culpado. A faca encontrada com as iniciais 'R.S.' indica que ele esteve na praia, apesar de dizer que foi para casa cedo. Os outros suspeitos têm álibis melhores ou não teriam motivo para danificar o barco.",
+    difficulty: "médio"
   },
   {
     id: 6,
-    title: 'O Enigma da Janela Partida',
-    story: 'A janela da sala de música da escola foi partida durante o intervalo, e o diretor quer descobrir quem foi o responsável. Ninguém admite ter partido a janela, mas três alunos estavam perto do local na hora do incidente.',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'A janela foi partida por uma bola.'
-      },
-      {
-        id: 2,
-        text: 'O Daniel estava a jogar futebol com os amigos, mas diz que a sua bola nunca saiu do campo.'
-      },
-      {
-        id: 3,
-        text: 'A Maria diz que estava a saltar à corda perto da sala de música.'
-      },
-      {
-        id: 4,
-        text: 'O Lucas tinha acabado de sair da aula de basquetebol e levava a bola debaixo do braço.'
-      },
-      {
-        id: 5,
-        text: 'Foram encontrados restos de giz branco na bola que partiu a janela.'
-      }
-    ],
+    title: 'O Roubo no Café das Patrícias',
+    scenario: `No Café das Patrícias em Azenhas do Mar, alguém entrou durante a manhã e roubou dinheiro da caixa registadora. A proprietária, Khauani, chegou às 8h e encontrou a caixa aberta, mas a porta não estava forçada.
+
+    Quatro pessoas têm chaves do café:
+    
+    Hélio, o funcionário da manhã, disse: "Cheguei atrasado hoje, por volta das 8h15, e a Khauani já estava lá".
+    Janine, a empregada de limpeza, disse: "Vim ontem à noite limpar, como sempre faço, e tranquei tudo antes de sair às 22h".
+    Marivania, a pasteleira, disse: "Cheguei às 7h para fazer as primeiras fornadas, mas tive que sair rapidamente às 7h30 para buscar um ingrediente que faltava".
+    Ricardo, o contabilista, disse: "Não vou ao café há três dias, estou a trabalhar a partir de casa".
+    
+    A câmara da rua mostra que alguém saiu do café às 7h45 com pressa e entrou num carro. Não se consegue identificar a pessoa, apenas que vestia um casaco escuro.
+    
+    Quem roubou o dinheiro?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Daniel',
-        description: 'Estava a jogar futebol no campo, longe da sala de música.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Maria',
-        description: 'Estava a saltar à corda perto da sala de música.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Lucas',
-        description: 'Tinha acabado de sair da aula de basquetebol.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Hélio', isGuilty: false },
+      { id: 2, name: 'Janine', isGuilty: false },
+      { id: 3, name: 'Marivania', isGuilty: true },
+      { id: 4, name: 'Ricardo', isGuilty: false }
     ],
-    hint: 'Pensa no giz branco e onde ele pode ser encontrado no recreio da escola.',
-    solution: 'A Maria é a responsável. Ela estava a saltar à corda perto da sala de música, e as cordas de saltar muitas vezes têm as pontas cobertas de giz para não escorregarem das mãos. Ela provavelmente atirou a corda para cima e acidentalmente bateu na janela, partindo-a.'
+    clues: [
+      "Uma pessoa saiu do café às 7h45 com pressa.",
+      "Hélio só chegou depois da proprietária, às 8h15.",
+      "Janine esteve no café na noite anterior, não de manhã.",
+      "Marivania disse que saiu às 7h30 para buscar ingredientes."
+    ],
+    explanation: "Marivania é a culpada. Ela disse que saiu às 7h30, mas a câmara mostra alguém a sair às 7h45, o que contradiz a sua história. Ela teve acesso ao café cedo, quando ninguém estava lá, e inventou a desculpa de sair para buscar ingredientes.",
+    difficulty: "médio"
   },
   {
     id: 7,
-    title: 'A Caixa Misteriosa do Sótão',
-    story: 'Durante a limpeza do sótão da escola, os alunos encontraram uma caixa antiga e trancada. Na tampa havia uma mensagem: "Só pode ser aberta por quem resolver o enigma." Dentro, diz a lenda, há um tesouro deixado por um antigo professor.',
-    difficulty: 'difícil',
-    clues: [
-      {
-        id: 1,
-        text: 'O enigma escrito na caixa diz: "Sou um lugar onde histórias vivem, mas não tenho páginas nem palavras."'
-      },
-      {
-        id: 2,
-        text: 'A caixa tem o símbolo de um livro aberto e uma estrela.'
-      },
-      {
-        id: 3,
-        text: 'Nos arquivos da escola, descobriu-se que havia um professor muito querido que adorava contar histórias às crianças.'
-      },
-      {
-        id: 4,
-        text: 'Esse professor costumava levar os alunos a um lugar especial da escola para as sessões de contos.'
-      },
-      {
-        id: 5,
-        text: 'No teto desse lugar especial, há estrelas pintadas que brilham no escuro.'
-      }
-    ],
+    title: 'O Mistério da Exposição de Arte',
+    scenario: `Na exposição de arte da Escola de Azenhas do Mar, um dos quadros de valor sentimental para a professora Inês desapareceu. Era uma pintura feita por uma antiga aluna que agora é artista famosa.
+
+    Quatro pessoas ajudaram a organizar a exposição:
+    
+    Carlota disse: "Estive a ajudar a colocar as etiquetas nas obras, mas nunca fiquei sozinha na sala".
+    Lorena disse: "Eu só ajudei a trazer os cavaletes de manhã, depois fui para a aula de música".
+    Gonçalo disse: "Estive a preparar o lanche para o evento, na cantina".
+    Santiago disse: "Ajudei a montar a exposição e fui o último a sair da sala, mas tenho certeza que o quadro ainda estava lá".
+    
+    A funcionária de limpeza, Cláudia, confirma ter visto Santiago a sair da sala de exposições com algo escondido debaixo do casaco.
+    
+    Quem apanhou o quadro?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Biblioteca',
-        description: 'Um lugar cheio de livros onde as histórias são guardadas.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Teatro da Escola',
-        description: 'Um palco onde peças e espetáculos são apresentados.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Sala dos Professores',
-        description: 'Onde os professores se reúnem e guardam seus materiais.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Carlota', isGuilty: false },
+      { id: 2, name: 'Lorena', isGuilty: false },
+      { id: 3, name: 'Gonçalo', isGuilty: false },
+      { id: 4, name: 'Santiago', isGuilty: true }
     ],
-    hint: 'Pensa num lugar onde as histórias ganham vida sem necessidade de páginas ou palavras escritas.',
-    solution: 'O lugar correto é o Teatro da Escola. É um lugar onde as histórias ganham vida através das atuações (sem páginas nem palavras escritas). O símbolo da estrela representa as luzes do palco ou as estrelas pintadas no teto do teatro. O antigo professor era provavelmente um amante de teatro e histórias dramatizadas.'
+    clues: [
+      "Cláudia viu Santiago a sair com algo escondido debaixo do casaco.",
+      "Santiago admitiu ser o último a sair da sala.",
+      "Carlota nunca esteve sozinha na sala de exposições.",
+      "Lorena e Gonçalo não estavam na sala quando o quadro desapareceu."
+    ],
+    explanation: "Santiago é o culpado. Ele foi o último a sair da sala e a funcionária de limpeza viu-o a esconder algo debaixo do casaco. A sua afirmação de que o quadro ainda estava lá quando saiu contradiz a evidência de Cláudia.",
+    difficulty: "fácil"
   },
   {
     id: 8,
-    title: 'O Desaparecimento da Mascote da Turma',
-    story: 'Pinguim, o hamster mascote da turma 3ºA, desapareceu da sua gaiola durante o fim de semana. A gaiola estava fechada, mas vazia, e não havia sinais de como ele poderia ter saído. Três alunos tinham as chaves da sala.',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'O Pinguim estava na sua gaiola na sexta-feira quando o último aluno saiu da sala.'
-      },
-      {
-        id: 2,
-        text: 'O Rodrigo, o André e a Clara têm cópias da chave porque são os responsáveis por alimentar o hamster nos fins de semana.'
-      },
-      {
-        id: 3,
-        text: 'O Rodrigo disse que entrou na sala no sábado de manhã para dar comida ao Pinguim, e ele ainda estava lá.'
-      },
-      {
-        id: 4,
-        text: 'O André estava doente e não foi à escola no fim de semana.'
-      },
-      {
-        id: 5,
-        text: 'A Clara disse que não pôde ir à escola no fim de semana porque estava a visitar os avós noutra cidade.'
-      },
-      {
-        id: 6,
-        text: 'Foram encontrados pelos de hamster e um pouco de serradura no bolso do casaco do Rodrigo.'
-      }
-    ],
+    title: 'O Desaparecimento na Praia Grande',
+    scenario: `Durante um passeio escolar na Praia Grande, uma mochila com equipamentos desportivos desapareceu. A mochila pertencia à escola e continha bolas, raquetes e outros equipamentos para jogos na praia.
+
+    Quatro professores estavam responsáveis pelos alunos:
+    
+    André disse: "Estive sempre com o grupo de natação, dentro de água".
+    Márcio disse: "Fiquei na zona das toalhas a supervisionar os lanches".
+    Tiago disse: "Fui buscar água para todos ao bar da praia e demorei apenas 10 minutos".
+    Hélio disse: "Estive a acompanhar as crianças nos jogos de raquetes, longe das mochilas".
+    
+    Uma turista tirou uma fotografia da praia e, ao rever as imagens mais tarde, notou alguém com uma mochila igual à desaparecida a sair da zona do grupo escolar. A pessoa vestia uma t-shirt azul como a dos professores.
+    
+    Quem apanhou a mochila?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Rodrigo',
-        description: 'Diz que viu o hamster no sábado, mas tem pelos de hamster no casaco.',
-        isGuilty: true
-      },
-      {
-        id: 2,
-        name: 'André',
-        description: 'Estava doente em casa durante todo o fim de semana.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Clara',
-        description: 'Estava a visitar os avós noutra cidade durante o fim de semana.',
-        isGuilty: false
-      }
+      { id: 1, name: 'André', isGuilty: false },
+      { id: 2, name: 'Márcio', isGuilty: true },
+      { id: 3, name: 'Tiago', isGuilty: false },
+      { id: 4, name: 'Hélio', isGuilty: false }
     ],
-    hint: 'Procura pistas físicas que possam ligar alguém ao hamster.',
-    solution: 'O Rodrigo levou o Pinguim para casa. Ele tinha pelos de hamster e serradura da gaiola no bolso do casaco, o que prova que ele manuseou o hamster. Ele provavelmente queria cuidar do Pinguim em casa durante o fim de semana e não contou a ninguém.'
+    clues: [
+      "Uma fotografia mostra alguém de t-shirt azul a sair com a mochila.",
+      "André esteve na água com o grupo de natação.",
+      "Tiago esteve ausente por 10 minutos para buscar água.",
+      "Márcio disse que ficou na zona das toalhas, onde estavam as mochilas."
+    ],
+    explanation: "Márcio é o culpado. Ele estava na zona das toalhas, onde ficavam as mochilas. A fotografia mostra alguém de t-shirt azul (como a dos professores) a sair com a mochila, e Márcio era o único que tinha acesso direto às mochilas o tempo todo.",
+    difficulty: "médio"
   },
   {
     id: 9,
-    title: 'O Mistério do Recreio Pintado',
-    story: 'Os alunos chegaram à escola numa segunda-feira e descobriram que o muro do recreio estava todo pintado com desenhos coloridos. A diretora está a tentar descobrir quem são os artistas misteriosos antes de decidir se os vai aplaudir pela criatividade ou repreender pela falta de autorização.',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'Os desenhos no muro são muito bonitos e coloridos, mostrando cenas da natureza e animais.'
-      },
-      {
-        id: 2,
-        text: 'Foram encontradas várias latas de tinta spray vazias no caixote do lixo perto do muro.'
-      },
-      {
-        id: 3,
-        text: 'A Matilde tem as mãos manchadas com tinta azul e verde, mas diz que é da aula de pintura de sexta-feira.'
-      },
-      {
-        id: 4,
-        text: 'O Francisco e o Duarte são conhecidos por gostar muito de arte urbana e têm cadernos cheios de desenhos semelhantes aos do muro.'
-      },
-      {
-        id: 5,
-        text: 'O guarda noturno disse que viu três crianças no recreio no domingo à tarde, mas como estavam longe, não conseguiu identificá-las.'
-      },
-      {
-        id: 6,
-        text: 'Uma vizinha da escola tirou uma fotografia da sua janela que mostra três crianças perto do muro: duas com cabelo escuro e uma com cabelo loiro.'
-      }
-    ],
+    title: 'O Caso da Bicicleta Danificada',
+    scenario: `Na Escola de Azenhas do Mar, a bicicleta nova do Francisco foi encontrada com os pneus furados no parque de bicicletas. Francisco tinha mostrado a bicicleta aos amigos de manhã, e todos tinham admirado o presente de aniversário.
+
+    Quatro colegas tinham pedido para experimentar a bicicleta, mas Francisco não deixou:
+    
+    Martim disse: "Passei o intervalo todo a jogar futebol no campo com os outros rapazes".
+    Santiago disse: "Estive na biblioteca a terminar o trabalho de ciências".
+    Alice disse: "Fiquei na sala de música a ensaiar para o concerto da próxima semana".
+    Mariana disse: "Estava na cantina a almoçar com as minhas amigas".
+    
+    O funcionário Denis viu um dos rapazes perto do parque de bicicletas durante o intervalo, quando todos deveriam estar noutros locais. A professora Bia confirma que Alice esteve na sala de música durante todo o intervalo.
+    
+    Quem danificou a bicicleta?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Matilde',
-        description: 'Tem manchas de tinta nas mãos e cabelo loiro.',
-        isGuilty: true
-      },
-      {
-        id: 2,
-        name: 'Francisco',
-        description: 'Gosta de arte urbana e tem cabelo escuro.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Duarte',
-        description: 'Amigo do Francisco, também tem cabelo escuro e adora desenhar.',
-        isGuilty: true
-      },
-      {
-        id: 4,
-        name: 'Joana',
-        description: 'Está sempre a organizar atividades artísticas na escola.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Martim', isGuilty: false },
+      { id: 2, name: 'Santiago', isGuilty: true },
+      { id: 3, name: 'Alice', isGuilty: false },
+      { id: 4, name: 'Mariana', isGuilty: false }
     ],
-    hint: 'O guarda viu três crianças, e a foto mostra duas com cabelo escuro e uma com cabelo loiro.',
-    solution: 'Os responsáveis são a Matilde, o Francisco e o Duarte. As manchas de tinta nas mãos da Matilde não poderiam ser da sexta-feira (já teriam saído), e ela tem cabelo loiro. O Francisco e o Duarte têm cabelo escuro e conhecimentos de arte urbana, correspondendo à descrição das crianças vistas na foto da vizinha.'
+    clues: [
+      "O funcionário Denis viu um rapaz perto do parque de bicicletas durante o intervalo.",
+      "A professora Bia confirma o álibi de Alice.",
+      "Martim estava a jogar futebol com outros rapazes, o que pode ser facilmente confirmado.",
+      "Santiago disse que estava na biblioteca."
+    ],
+    explanation: "Santiago é o culpado. Ele mentiu sobre estar na biblioteca, e o funcionário Denis viu um rapaz perto do parque de bicicletas durante o intervalo. Os outros suspeitos têm álibis mais sólidos ou testemunhas que os apoiam.",
+    difficulty: "fácil"
   },
   {
     id: 10,
-    title: 'O Segredo do Diário Perdido',
-    story: 'Um diário foi encontrado na biblioteca da escola com histórias fantásticas sobre um tesouro escondido no parque da cidade. Ninguém sabe a quem pertence, mas as iniciais "M.S." estão escritas na capa. Quem será o autor destas fantásticas aventuras?',
-    difficulty: 'fácil',
-    clues: [
-      {
-        id: 1,
-        text: 'As histórias no diário mencionam um cão chamado Rex e uma bicicleta vermelha.'
-      },
-      {
-        id: 2,
-        text: 'Há desenhos de mapas do parque da cidade com um X marcando um local específico perto do lago.'
-      },
-      {
-        id: 3,
-        text: 'A Mariana Silva tem um cão chamado Rex e costuma andar de bicicleta vermelha.'
-      },
-      {
-        id: 4,
-        text: 'O Martim Santos é conhecido por contar histórias de tesouros, mas não tem animais de estimação.'
-      },
-      {
-        id: 5,
-        text: 'A Marta Sequeira adora escrever, mas raramente vai ao parque porque tem alergia a pólenes.'
-      }
-    ],
+    title: 'O Mistério do Restaurante Nortada',
+    scenario: `No restaurante Nortada em Azenhas do Mar, um cliente reclamou que o seu relógio de luxo desapareceu durante o jantar. Ele lembra-se de o ter quando chegou, pois verificou as horas, mas quando foi pagar a conta, o relógio já não estava no seu pulso.
+
+    Quatro funcionários atenderam a sua mesa:
+    
+    Cláudia, a empregada de mesa, disse: "Servi apenas as entradas e depois fui atender outras mesas".
+    Ricardo, o segundo empregado, disse: "Levei o prato principal e mais tarde ajudei-o a escolher a sobremesa".
+    Khauani, a gerente, disse: "Fui à mesa apenas uma vez para perguntar se estava tudo bem com a refeição".
+    Janine, a responsável pela cobrança, disse: "Só me aproximei da mesa no final para trazer a conta".
+    
+    O cliente menciona ter tirado o relógio para mostrar a Ricardo quando este elogiou a peça durante o prato principal. Depois disso, o cliente não se lembra de o ter colocado de volta no pulso.
+    
+    Quem apanhou o relógio?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Mariana Silva',
-        description: 'Tem um cão chamado Rex e uma bicicleta vermelha.',
-        isGuilty: true
-      },
-      {
-        id: 2,
-        name: 'Martim Santos',
-        description: 'Gosta de inventar histórias de tesouros.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Marta Sequeira',
-        description: 'Adora escrever, mas tem alergia a pólenes.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Cláudia', isGuilty: false },
+      { id: 2, name: 'Ricardo', isGuilty: true },
+      { id: 3, name: 'Khauani', isGuilty: false },
+      { id: 4, name: 'Janine', isGuilty: false }
     ],
-    hint: 'Procura por pistas que correspondam às iniciais "M.S." e aos detalhes específicos mencionados no diário.',
-    solution: 'O diário pertence à Mariana Silva. As iniciais "M.S." correspondem ao seu nome, ela tem um cão chamado Rex e uma bicicleta vermelha, exatamente como descrito nas histórias do diário. Além disso, ela frequenta o parque, onde o tesouro imaginário estaria escondido.'
+    clues: [
+      "O cliente tirou o relógio para mostrar a Ricardo quando este o elogiou.",
+      "Cláudia só serviu as entradas, antes do relógio ser mostrado.",
+      "Khauani e Janine aproximaram-se da mesa depois do momento em que o relógio foi visto pela última vez.",
+      "Ricardo foi quem demonstrou interesse pelo relógio."
+    ],
+    explanation: "Ricardo é o culpado. Ele elogiou propositadamente o relógio para fazer o cliente tirá-lo, e depois aproveitou um momento de distração para o apanhar. Os outros funcionários ou não estiveram presentes no momento crítico ou não tiveram a mesma oportunidade.",
+    difficulty: "médio"
   },
   {
     id: 11,
-    title: 'O Misterioso Caso do Almoço Desaparecido',
-    story: 'No refeitório da escola, o Miguel descobriu que o seu almoço desapareceu da sua lancheira. Tinha uma sandes especial que a sua mãe preparou com muito carinho. O Miguel suspeita de três colegas que estavam à sua volta antes do intervalo.',
-    difficulty: 'fácil',
-    clues: [
-      {
-        id: 1,
-        text: 'A lancheira do Miguel estava no cabide ao lado da sala de aula antes do intervalo.'
-      },
-      {
-        id: 2,
-        text: 'O Pedro foi visto a passar pelos cabides a caminho da casa de banho.'
-      },
-      {
-        id: 3,
-        text: 'A Ana tem o seu próprio almoço, que inclui as suas comidas favoritas.'
-      },
-      {
-        id: 4,
-        text: 'O Gonçalo disse que não tinha almoço hoje porque se esqueceu em casa.'
-      },
-      {
-        id: 5,
-        text: 'A auxiliar viu alguém com altura parecida com a do Gonçalo perto dos cabides.'
-      }
-    ],
+    title: 'O Enigma do Livro Raro',
+    scenario: `Na nova biblioteca da Escola de Azenhas do Mar, um livro raro sobre a história local desapareceu no dia da inauguração. O livro estava numa vitrine especial, mas quando o diretor Ricardo foi apresentá-lo aos convidados, já não estava lá.
+
+    Quatro pessoas tiveram acesso à sala antes da cerimónia:
+    
+    Hélio, o bibliotecário, disse: "Verifiquei todos os livros pela manhã e coloquei-os nas respetivas vitrines".
+    Tiago, o zelador, disse: "Entrei apenas para limpar as janelas, não me aproximei das vitrines".
+    André, o professor de história, disse: "Passei pela sala para ver se tudo estava pronto, mas não mexi em nada".
+    Marivania, a decoradora, disse: "Estive a colocar flores nas mesas, mas sempre acompanhada pelo Hélio".
+    
+    Uma aluna que estava a ajudar na organização viu alguém com um livro debaixo do braço a sair rapidamente da biblioteca, mas não conseguiu identificar quem era. Depois, descobriu-se que Hélio tinha sido visto a discutir com o diretor no dia anterior sobre o valor dos livros históricos.
+    
+    Quem apanhou o livro?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Pedro',
-        description: 'Passou pelos cabides a caminho da casa de banho.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Ana',
-        description: 'Trouxe o seu próprio almoço com as suas comidas favoritas.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Gonçalo',
-        description: 'Disse que se esqueceu do almoço em casa.',
-        isGuilty: true
-      }
+      { id: 1, name: 'Hélio', isGuilty: true },
+      { id: 2, name: 'Tiago', isGuilty: false },
+      { id: 3, name: 'André', isGuilty: false },
+      { id: 4, name: 'Marivania', isGuilty: false }
     ],
-    hint: 'Pensa em quem teria motivos para tirar o almoço de outra pessoa.',
-    solution: 'O Gonçalo foi o responsável. Ele mentiu sobre ter-se esquecido do almoço, foi visto por uma auxiliar perto dos cabides, e era o único que não tinha almoço próprio.'
+    clues: [
+      "Uma aluna viu alguém a sair rapidamente com um livro debaixo do braço.",
+      "Hélio foi visto a discutir com o diretor sobre o valor dos livros históricos.",
+      "Marivania estava sempre acompanhada por Hélio, então não poderia ter agido sozinha.",
+      "Tiago e André não demonstraram interesse especial pelos livros."
+    ],
+    explanation: "Hélio é o culpado. Ele teve acesso direto aos livros, conhecia o seu valor e tinha tido uma discussão com o diretor sobre o assunto. A aluna viu alguém a sair com um livro, e Hélio, como bibliotecário, não levantaria suspeitas por transportar livros pela escola.",
+    difficulty: "médio"
   },
   {
     id: 12,
-    title: 'O Mistério da Sala Desarrumada',
-    story: 'A professora Margarida entrou na sala e encontrou a sua secretária toda desarrumada. Alguém tinha mexido nos seus livros e materiais. Isto aconteceu durante o intervalo grande, quando a sala estava vazia. Três alunos tinham permissão para entrar na sala durante o intervalo.',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'Foram encontradas migalhas de bolacha na secretária.'
-      },
-      {
-        id: 2,
-        text: 'O Bernardo ficou na sala a terminar um trabalho de matemática.'
-      },
-      {
-        id: 3,
-        text: 'A Mafalda entrou para buscar o seu estojo que tinha esquecido.'
-      },
-      {
-        id: 4,
-        text: 'O David entrou na sala para deixar um recado da diretora.'
-      },
-      {
-        id: 5,
-        text: 'Apenas as fichas de matemática foram reviradas na secretária.'
-      }
-    ],
+    title: 'O Desaparecimento na Praia das Maçãs',
+    scenario: `Durante uma excursão à Praia das Maçãs, a máquina fotográfica da escola desapareceu. A professora Inês tinha-a utilizado para fotografar os alunos durante as atividades e deixou-a no saco da praia quando foi mergulhar.
+
+    Quatro alunos ficaram responsáveis pelos pertences:
+    
+    Mariana disse: "Estive a ler um livro debaixo do guarda-sol, não vi nada estranho".
+    Lorena disse: "Fui buscar gelados para todos e demorei cerca de 15 minutos".
+    Gonçalo disse: "Estive a construir um castelo de areia perto do saco".
+    Francisco disse: "Fiquei a ajudar a professora Cláudia com os equipamentos de natação, longe dos sacos".
+    
+    Um surfista que estava por perto tirou uma fotografia panorâmica da praia e, quando ampliada, vê-se uma das crianças a mexer no saco da professora.
+    
+    Quem apanhou a máquina fotográfica?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Bernardo',
-        description: 'Ficou na sala a terminar um trabalho de matemática.',
-        isGuilty: true
-      },
-      {
-        id: 2,
-        name: 'Mafalda',
-        description: 'Entrou para buscar o seu estojo que tinha esquecido.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'David',
-        description: 'Entrou na sala para deixar um recado da diretora.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Mariana', isGuilty: false },
+      { id: 2, name: 'Lorena', isGuilty: false },
+      { id: 3, name: 'Gonçalo', isGuilty: true },
+      { id: 4, name: 'Francisco', isGuilty: false }
     ],
-    hint: 'Presta atenção ao que foi mexido na secretária e quem teria interesse nisso.',
-    solution: 'O Bernardo é o culpado. Ele estava a terminar um trabalho de matemática e aproveitou para procurar as respostas nas fichas da professora. As migalhas de bolacha também indicam que ele esteve a comer enquanto mexia nos papéis.'
+    clues: [
+      "A fotografia do surfista mostra alguém a mexer no saco da professora.",
+      "Mariana disse que estava a ler, o que a colocaria em posição de ver o que acontecia.",
+      "Lorena esteve ausente durante 15 minutos.",
+      "Gonçalo disse que estava perto do saco, a construir um castelo de areia."
+    ],
+    explanation: "Gonçalo é o culpado. Ele estava perto dos sacos, supostamente a construir um castelo de areia, e a fotografia panorâmica mostra uma criança a mexer no saco da professora. Francisco estava longe dos sacos, Lorena estava ausente, e Mariana provavelmente teria visto algo se estivesse atenta.",
+    difficulty: "fácil"
   },
   {
     id: 13,
-    title: 'O Caso do Boneco de Peluche Perdido',
-    story: 'A Carolina perdeu o seu ursinho de peluche favorito durante uma visita de estudo ao Jardim Zoológico. Ela tem a certeza que o tinha quando chegaram, mas quando estavam a voltar para o autocarro, percebeu que já não estava com ela. Três locais foram visitados antes de voltarem.',
-    difficulty: 'fácil',
-    clues: [
-      {
-        id: 1,
-        text: 'Quando visitaram a área dos macacos, a Carolina tirou uma fotografia com o ursinho.'
-      },
-      {
-        id: 2,
-        text: 'No recinto das girafas, as crianças comeram o lanche e muitas tiraram as mochilas.'
-      },
-      {
-        id: 3,
-        text: 'Depois de verem os leões, a Carolina disse que estava a chover e guardou algumas coisas na mochila.'
-      },
-      {
-        id: 4,
-        text: 'Um funcionário do zoo disse que não encontrou nenhum peluche perto dos macacos nem dos leões.'
-      },
-      {
-        id: 5,
-        text: 'Um colega lembra-se de ver a Carolina com o ursinho quando estavam a ver as girafas.'
-      }
-    ],
+    title: 'O Mistério do Restaurante Toca do Júlio',
+    scenario: `No restaurante Toca do Júlio em Azenhas do Mar, o dono descobriu que alguém estava a alterar as reservas no sistema, fazendo com que clientes chegassem em horários errados e mesas ficassem vazias em horários de pico.
+
+    Quatro funcionários têm acesso ao sistema de reservas:
+    
+    Márcio, o gerente, disse: "Tenho notado os problemas e estou a tentar encontrar o responsável".
+    Bia, a anfitriã, disse: "Trabalho com as reservas todos os dias, mas nunca alterei nada sem autorização".
+    Denis, o chefe de sala, disse: "O sistema deve ter algum erro, não creio que seja sabotagem".
+    Janine, a nova empregada, disse: "Ainda estou a aprender a usar o sistema e às vezes peço ajuda à Bia".
+    
+    Depois de uma verificação no log do sistema, descobriu-se que as alterações eram feitas sempre depois do horário de fecho, quando quase ninguém estava no restaurante. Nas câmaras de segurança, vê-se alguém usando o computador da receção tarde da noite, mas não se consegue identificar a pessoa.
+    
+    Quem estava a alterar as reservas?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Zona dos Macacos',
-        description: 'O primeiro local visitado na visita de estudo.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Recinto das Girafas',
-        description: 'Onde as crianças pararam para lanchar.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Jaula dos Leões',
-        description: 'O último local visitado antes de voltarem para o autocarro.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Márcio', isGuilty: true },
+      { id: 2, name: 'Bia', isGuilty: false },
+      { id: 3, name: 'Denis', isGuilty: false },
+      { id: 4, name: 'Janine', isGuilty: false }
     ],
-    hint: 'Pensa em que momento a Carolina pode ter deixado cair o ursinho sem perceber.',
-    solution: 'O ursinho foi perdido no recinto das girafas. Foi o único local onde confirmaram que a Carolina tinha o ursinho e onde as crianças tiraram as mochilas para comer. Provavelmente, quando guardou as coisas depois de lanchar, esqueceu-se do ursinho.'
+    clues: [
+      "As alterações eram feitas depois do horário de fecho.",
+      "Câmaras mostram alguém a usar o computador tarde da noite.",
+      "Márcio, como gerente, ficava frequentemente até mais tarde para fechar o restaurante.",
+      "Janine ainda está a aprender o sistema e não ficaria sozinha após o horário de fecho."
+    ],
+    explanation: "Márcio é o culpado. Como gerente, ele tem acesso total ao sistema e frequentemente ficava até tarde, sendo um dos poucos que estariam no restaurante depois do horário de fecho. Ele estava a sabotar o próprio restaurante, provavelmente para prejudicar o dono, com quem poderia ter algum conflito ou para mostrar que era indispensável ao resolver os 'problemas' que ele mesmo criava.",
+    difficulty: "difícil"
   },
   {
     id: 14,
-    title: 'O Enigma do Giz Colorido',
-    story: 'A professora Beatriz deixou uma caixa nova de giz colorido na sala de aula na sexta-feira. Na segunda-feira, quando chegou, descobriu que alguém tinha usado todos os gizes vermelhos durante o fim de semana. Apenas três pessoas tinham chaves da sala nesse período.',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'O senhor António, o funcionário da limpeza, esteve na escola no sábado de manhã.'
-      },
-      {
-        id: 2,
-        text: 'A professora Sofia, de música, usou a sala no domingo para preparar uma apresentação.'
-      },
-      {
-        id: 3,
-        text: 'O diretor Paulo passou pela sala no domingo à tarde para verificar se estava tudo em ordem.'
-      },
-      {
-        id: 4,
-        text: 'No quadro, ainda havia restos de notas musicais desenhadas com giz.'
-      },
-      {
-        id: 5,
-        text: 'O funcionário da limpeza diz que limpou o quadro no sábado e estava completamente limpo.'
-      }
-    ],
+    title: 'O Caso das Mensagens Anónimas',
+    scenario: `Na Escola de Azenhas do Mar, alguns professores começaram a receber mensagens anónimas desagradáveis por email. As mensagens continham informações que só alguém dentro da escola poderia saber.
+
+    Quatro pessoas tinham acesso ao servidor de email da escola:
+    
+    Tiago, o técnico de informática, disse: "Fiz uma verificação e não encontrei nada suspeito no sistema".
+    Cláudia, a secretária, disse: "Recebo emails de todos, mas nunca teria acesso às palavras-passe".
+    Ricardo, o diretor adjunto, disse: "Também recebi algumas dessas mensagens, sou mais uma vítima".
+    Marivania, a coordenadora, disse: "Estou a trabalhar com o Tiago para resolver este problema".
+    
+    Depois de uma investigação mais aprofundada, descobriu-se que as mensagens eram enviadas sempre à mesma hora, durante a reunião semanal de coordenação, quando a maioria dos funcionários estava ocupada. Ricardo mostrou as mensagens que recebeu, mas após análise, percebeu-se que o formato delas era diferente das recebidas pelos outros professores.
+    
+    Quem estava a enviar as mensagens?`,
     suspects: [
-      {
-        id: 1,
-        name: 'António',
-        description: 'Funcionário da limpeza que esteve na escola no sábado.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Sofia',
-        description: 'Professora de música que usou a sala no domingo.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Paulo',
-        description: 'Diretor que passou pela sala no domingo à tarde.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Tiago', isGuilty: false },
+      { id: 2, name: 'Cláudia', isGuilty: false },
+      { id: 3, name: 'Ricardo', isGuilty: true },
+      { id: 4, name: 'Marivania', isGuilty: false }
     ],
-    hint: 'Pensa no que estava desenhado no quadro e quem poderia ter feito esses desenhos.',
-    solution: 'A professora Sofia é a responsável. Ela usou a sala no domingo para preparar uma apresentação de música, e foram encontradas notas musicais ainda desenhadas no quadro. O quadro estava limpo no sábado, o que significa que os desenhos foram feitos depois disso.'
+    clues: [
+      "As mensagens eram enviadas durante a reunião semanal de coordenação.",
+      "Ricardo afirmou ter recebido mensagens, mas o formato era diferente.",
+      "Tiago estava a trabalhar ativamente para resolver o problema.",
+      "Cláudia não teria acesso às palavras-passe."
+    ],
+    explanation: "Ricardo é o culpado. Ele falsificou as mensagens que supostamente recebeu (o formato diferente denuncia isso) para afastar suspeitas. Como diretor adjunto, ele teria acesso privilegiado ao sistema e poderia estar ausente da reunião de coordenação sem levantar suspeitas, aproveitando esse momento para enviar as mensagens anónimas.",
+    difficulty: "difícil"
   },
   {
     id: 15,
-    title: 'A Janela Partida do Ginásio',
-    story: 'Durante a aula de educação física, uma das janelas do ginásio apareceu partida. O professor Rui não sabe quem foi o responsável, mas suspeita de três alunos que estavam a jogar perto da janela.',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'A janela foi partida por uma bola durante a aula de educação física.'
-      },
-      {
-        id: 2,
-        text: 'Três alunos estavam a jogar com bolas perto da janela: o Gustavo com uma bola de basquetebol, o Daniel com uma bola de futebol, e a Leonor com uma bola de voleibol.'
-      },
-      {
-        id: 3,
-        text: 'Foram encontrados pedaços de borracha preta no chão perto da janela partida.'
-      },
-      {
-        id: 4,
-        text: 'O Daniel foi visto a chutar a bola com muita força várias vezes durante a aula.'
-      },
-      {
-        id: 5,
-        text: 'A Leonor disse que viu uma bola a bater na janela, mas não conseguiu ver qual era.'
-      },
-      {
-        id: 6,
-        text: 'No vidro partido há uma marca redonda do tamanho de uma bola de basquetebol.'
-      }
-    ],
+    title: 'O Enigma da Pensão Sisudo',
+    scenario: `Na Pensão Sisudo em Azenhas do Mar, um hóspede relatou que o seu quarto foi arrombado e alguns objetos de valor foram furtados. Não havia sinais de arrombamento na porta, o que sugere que foi usado uma chave.
+
+    Quatro funcionários tinham acesso às chaves reserva:
+    
+    Khauani, a rececionista da manhã, disse: "Estive na receção o dia todo e ninguém pediu a chave reserva".
+    Hélio, o rececionista da noite, disse: "Saí um pouco durante o meu turno para comprar um café, mas a chave esteve sempre no quadro".
+    Inês, a governanta, disse: "Limpei o quarto pela manhã, enquanto o hóspede estava a tomar o pequeno-almoço".
+    André, o gerente, disse: "Estive reunido no escritório a maior parte do dia".
+    
+    As câmaras de segurança do corredor mostram alguém com uniforme de funcionário entrando no quarto usando uma chave, mas não é possível identificar o rosto. No entanto, nota-se que a pessoa usa um relógio dourado no pulso direito.
+    
+    Quem entrou no quarto?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Gustavo',
-        description: 'Estava a jogar com uma bola de basquetebol perto da janela.',
-        isGuilty: true
-      },
-      {
-        id: 2,
-        name: 'Daniel',
-        description: 'Estava a jogar com uma bola de futebol e a chutar com muita força.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Leonor',
-        description: 'Estava a jogar com uma bola de voleibol e viu uma bola a bater na janela.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Khauani', isGuilty: false },
+      { id: 2, name: 'Hélio', isGuilty: false },
+      { id: 3, name: 'Inês', isGuilty: false },
+      { id: 4, name: 'André', isGuilty: true }
     ],
-    hint: 'Pensa no tamanho da marca no vidro e nas marcas encontradas no chão.',
-    solution: 'O Gustavo partiu a janela com a bola de basquetebol. A marca no vidro tinha o tamanho de uma bola de basquetebol, e os pedaços de borracha preta no chão são consistentes com as marcas de uma bola de basquetebol, que geralmente é preta.'
+    clues: [
+      "A câmara mostra alguém com uniforme entrando no quarto com uma chave.",
+      "A pessoa usava um relógio dourado no pulso direito.",
+      "André é conhecido por usar um relógio dourado.",
+      "André disse ter estado no escritório, mas não há confirmação disso."
+    ],
+    explanation: "André é o culpado. As câmaras mostram uma pessoa com uniforme e um relógio dourado no pulso direito, e André é conhecido por usar esse tipo de relógio. Ele teria acesso às chaves reserva como gerente e usou a desculpa de estar reunido no escritório, onde provavelmente não havia testemunhas para confirmar.",
+    difficulty: "difícil"
   },
   {
     id: 16,
-    title: 'O Mistério do Desenho Assinado',
-    story: 'A professora de arte encontrou um desenho muito bonito na sala, mas sem nome. Ela quer descobrir quem foi o artista talentoso para elogiar o trabalho. Três alunos disseram que não foi nenhum deles, mas a professora tem certeza que foi um deles.',
-    difficulty: 'fácil',
-    clues: [
-      {
-        id: 1,
-        text: 'O desenho mostra um castelo com muitos detalhes e cores vivas.'
-      },
-      {
-        id: 2,
-        text: 'O Ricardo diz que esteve a desenhar animais marinhos durante toda a aula.'
-      },
-      {
-        id: 3,
-        text: 'A cadeira onde o desenho foi encontrado estava onde a Rita se sentou na aula anterior.'
-      },
-      {
-        id: 4,
-        text: 'O Tiago teve de sair mais cedo da aula porque tinha consulta no médico.'
-      },
-      {
-        id: 5,
-        text: 'Na mochila da Rita, há lápis de cor iguais aos que foram usados no desenho.'
-      }
-    ],
+    title: 'O Mistério da Mercearia Local',
+    scenario: `Na pequena mercearia perto da Escola de Azenhas do Mar, o dono Márcio notou que estava a faltar dinheiro da caixa regularmente. Não era muito de cada vez, mas somava uma quantia considerável ao fim do mês.
+
+    Quatro pessoas trabalham na mercearia:
+    
+    Alice, a caixa de meio período, disse: "Só trabalho três horas por dia, depois das aulas".
+    Denis, o repositor, disse: "Raramente mexo na caixa, só quando o Márcio me pede ajuda".
+    Janine, a ajudante de fim de semana, disse: "Estou aqui apenas aos sábados e domingos".
+    Tiago, o assistente, disse: "Trabalho o dia todo, mas sempre com o Márcio por perto".
+    
+    Márcio instalou uma câmara discreta e descobriu que o dinheiro desaparecia durante a semana, em pequenas quantias. A filmagem mostra uma mão a tirar notas da caixa quando não havia clientes, mas só se vê parte de uma manga de camisa xadrez.
+    
+    Quem estava a roubar o dinheiro?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Ricardo',
-        description: 'Afirma que esteve a desenhar animais marinhos na aula.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Rita',
-        description: 'Sentou-se na cadeira onde o desenho foi encontrado na aula anterior.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Tiago',
-        description: 'Saiu mais cedo da aula para ir a uma consulta médica.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Alice', isGuilty: false },
+      { id: 2, name: 'Denis', isGuilty: true },
+      { id: 3, name: 'Janine', isGuilty: false },
+      { id: 4, name: 'Tiago', isGuilty: false }
     ],
-    hint: 'Pensa em onde o desenho foi encontrado e que materiais foram usados.',
-    solution: 'A Rita é a artista do desenho. O desenho foi encontrado na cadeira onde ela se sentou na aula anterior, e ela tem os mesmos lápis de cor que foram usados no desenho. Provavelmente esqueceu-se de assinar ou deixou o desenho para trás sem perceber.'
+    clues: [
+      "O dinheiro desaparecia durante a semana, não aos fins de semana.",
+      "A câmara mostrou uma mão com uma manga de camisa xadrez.",
+      "Denis frequentemente usa camisas xadrez.",
+      "Alice só trabalha três horas por dia e Tiago está sempre com Márcio."
+    ],
+    explanation: "Denis é o culpado. O dinheiro desaparecia durante a semana (eliminando Janine), e a câmara captou uma manga de camisa xadrez, que Denis costuma usar. Além disso, como repositor, ele normalmente não mexeria na caixa, o que poderia permitir que tirasse pequenas quantias sem levantar suspeitas imediatas, ao contrário de Alice e Tiago que lidam com a caixa regularmente.",
+    difficulty: "médio"
   },
   {
     id: 17,
-    title: 'O Caso do Prémio Perdido',
-    story: 'A escola organizou um concurso de talentos e o prémio (um vale-presente) foi colocado na secretária do diretor. No dia seguinte, o vale tinha desaparecido. O diretor reviu as câmaras de segurança e viu que três pessoas entraram no seu gabinete quando ele não estava.',
-    difficulty: 'difícil',
-    clues: [
-      {
-        id: 1,
-        text: 'A secretária Maria entrou para deixar uns documentos importantes.'
-      },
-      {
-        id: 2,
-        text: 'O professor Joaquim entrou para verificar o calendário escolar.'
-      },
-      {
-        id: 3,
-        text: 'A funcionária Teresa entrou para limpar a sala.'
-      },
-      {
-        id: 4,
-        text: 'As câmaras mostram que a secretária Maria não se aproximou da mesa do diretor.'
-      },
-      {
-        id: 5,
-        text: 'O professor Joaquim esteve muito perto da mesa, mas as suas mãos estavam sempre visíveis.'
-      },
-      {
-        id: 6,
-        text: 'A Teresa levava um carrinho de limpeza e esteve a limpar a mesa do diretor.'
-      }
-    ],
+    title: 'O Caso do Restaurante O Crôa',
+    scenario: `No restaurante O Crôa em Azenhas do Mar, o gerente Hélio descobriu que alguém alterou a receita do famoso prato de bacalhau, reduzindo a quantidade de ingredientes mas mantendo o preço. Os clientes começaram a reclamar que as porções estavam menores.
+
+    Quatro pessoas têm acesso às receitas e aos ingredientes:
+    
+    André, o chef principal, disse: "Eu criei esta receita e nunca a alteraria sem avisar".
+    Bia, a subchef, disse: "Sigo sempre as instruções do chef André".
+    Ricardo, o responsável pelas compras, disse: "Adquiro exatamente o que me pedem, na quantidade solicitada".
+    Marivania, a proprietária, disse: "Estive ausente nas últimas semanas a tratar de assuntos pessoais".
+    
+    Após uma verificação no sistema de pedidos, notou-se que a quantidade de bacalhau e azeite comprada diminuiu, mas o número de pratos vendidos continuou o mesmo. Um empregado mencionou ter visto alguém alterar o menu digital depois do horário de fecho.
+    
+    Quem alterou a receita?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Maria',
-        description: 'Secretária que entrou para deixar documentos.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Joaquim',
-        description: 'Professor que verificou o calendário escolar.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Teresa',
-        description: 'Funcionária que limpou a sala.',
-        isGuilty: true
-      }
+      { id: 1, name: 'André', isGuilty: false },
+      { id: 2, name: 'Bia', isGuilty: false },
+      { id: 3, name: 'Ricardo', isGuilty: true },
+      { id: 4, name: 'Marivania', isGuilty: false }
     ],
-    hint: 'Pensa em quem teve acesso direto à mesa do diretor e poderia esconder algo facilmente.',
-    solution: 'A funcionária Teresa é a responsável. Ela teve acesso direto à mesa do diretor enquanto a limpava e tinha um carrinho de limpeza onde poderia esconder facilmente o vale-presente. As outras pessoas ou não se aproximaram da mesa ou tinham as mãos sempre visíveis.'
+    clues: [
+      "A quantidade de ingredientes comprados diminuiu.",
+      "Um empregado viu alguém a alterar o menu digital depois do fecho.",
+      "André é o criador da receita e teria orgulho nela.",
+      "Marivania esteve ausente nas últimas semanas."
+    ],
+    explanation: "Ricardo é o culpado. Como responsável pelas compras, ele podia facilmente reduzir a quantidade de ingredientes adquiridos e alterar a receita no sistema para corresponder às quantidades menores. Ele provavelmente estava a desviar o dinheiro economizado ou a aumentar artificialmente os lucros para impressionar a proprietária ausente.",
+    difficulty: "difícil"
   },
   {
     id: 18,
-    title: 'O Enigma da Mochila Trocada',
-    story: 'No fim das aulas, o André não encontrou a sua mochila azul no cabide onde a tinha deixado. Em vez disso, estava lá uma mochila verde muito parecida, mas com material escolar de outra pessoa. Ele precisa descobrir quem pegou a sua mochila por engano.',
-    difficulty: 'fácil',
-    clues: [
-      {
-        id: 1,
-        text: 'A mochila verde tem o nome "Bruno" escrito no interior.'
-      },
-      {
-        id: 2,
-        text: 'O Bruno da turma 4ºB tem uma mochila azul hoje, mas normalmente usa uma verde.'
-      },
-      {
-        id: 3,
-        text: 'A Carla da turma 4ºA também tem uma mochila azul e o seu cabide é perto do André.'
-      },
-      {
-        id: 4,
-        text: 'O Diogo da turma 3ºC diz que viu alguém com uma mochila azul a sair apressadamente da escola.'
-      },
-      {
-        id: 5,
-        text: 'A auxiliar diz que o Bruno parecia confuso quando estava a buscar a sua mochila.'
-      }
-    ],
+    title: 'O Mistério da Praia das Azenhas do Mar',
+    scenario: `Durante um evento comunitário de limpeza da Praia das Azenhas do Mar, o kit especial de análise da água, usado para monitorizar a qualidade ambiental, desapareceu. Era um equipamento valioso doado recentemente à associação local.
+
+    Quatro voluntários estavam responsáveis pelos equipamentos:
+    
+    Martim disse: "Estive a recolher lixo na zona norte da praia toda a manhã".
+    Carlota disse: "Fiquei no posto de informações a orientar os novos voluntários".
+    Gonçalo disse: "Ajudei a distribuir luvas e sacos a todos os grupos".
+    Santiago disse: "Estive a coordenar as equipas de crianças das escolas".
+    
+    Um fotógrafo que cobria o evento tem várias fotos que mostram todos os suspeitos em diferentes momentos. Numa das fotos, vê-se uma mochila aberta com algo que parece ser parte do kit de análise.
+    
+    Quem apanhou o kit de análise?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Bruno',
-        description: 'Da turma 4ºB, hoje tem uma mochila azul mas normalmente usa uma verde.',
-        isGuilty: true
-      },
-      {
-        id: 2,
-        name: 'Carla',
-        description: 'Da turma 4ºA, tem uma mochila azul e o seu cabide é perto do André.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Diogo',
-        description: 'Da turma 3ºC, viu alguém a sair com uma mochila azul.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Martim', isGuilty: false },
+      { id: 2, name: 'Carlota', isGuilty: false },
+      { id: 3, name: 'Gonçalo', isGuilty: true },
+      { id: 4, name: 'Santiago', isGuilty: false }
     ],
-    hint: 'Pensa em quem tem uma mochila verde e pode ter confundido com uma azul.',
-    solution: 'O Bruno trocou as mochilas por engano. A mochila verde tem o nome dele escrito no interior, ele normalmente usa uma mochila verde mas hoje tem uma azul, e a auxiliar viu-o confuso ao buscar a sua mochila. Ele deve ter confundido a mochila do André com a sua.'
+    clues: [
+      "Uma foto mostra uma mochila aberta com parte do kit de análise.",
+      "Carlota esteve sempre no posto de informações, que é um local público.",
+      "Santiago estava com as crianças, sempre acompanhado por outros adultos.",
+      "A mochila na foto pertence a Gonçalo."
+    ],
+    explanation: "Gonçalo é o culpado. A foto mostra uma mochila com parte do kit, e essa mochila pertence a Gonçalo. Como responsável pela distribuição de materiais, ele tinha acesso fácil ao kit de análise e poderia escondê-lo na sua mochila sem levantar suspeitas, enquanto os outros estavam em locais mais expostos ou acompanhados.",
+    difficulty: "médio"
   },
   {
     id: 19,
-    title: 'O Mistério do Trabalho de Casa Molhado',
-    story: 'A Professora Luísa recebeu o trabalho de casa do Filipe todo molhado e com as respostas borradas. O Filipe explicou que alguém deve ter derramado água na sua mesa quando ele saiu para o intervalo. Três colegas estavam sentados perto da sua mesa.',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'A mesa do Filipe fica ao lado da janela, que estava aberta durante o intervalo.'
-      },
-      {
-        id: 2,
-        text: 'A Beatriz esteve a beber água de uma garrafa perto da mesa do Filipe.'
-      },
-      {
-        id: 3,
-        text: 'O Eduardo passou a correr pelo corredor entre as mesas e tropeçou perto da mesa do Filipe.'
-      },
-      {
-        id: 4,
-        text: 'A Gabriela diz que viu água a pingar da janela devido à chuva que começou durante o intervalo.'
-      },
-      {
-        id: 5,
-        text: 'O chão perto da mesa do Filipe estava seco, sem sinais de água derramada.'
-      }
-    ],
+    title: 'O Enigma do Bar Loureiro',
+    scenario: `No Bar Loureiro em Azenhas do Mar, ocorreu um incidente durante uma noite movimentada. A coleção de rótulos antigos que decorava a parede principal foi danificada, com alguns itens raros desaparecidos. O dono, Denis, suspeita que foi um ato deliberado.
+
+    Quatro pessoas estiveram no bar naquela noite:
+    
+    Tiago, um cliente regular, disse: "Estive sempre sentado ao balcão, qualquer pessoa pode confirmar".
+    Cláudia, uma turista, disse: "Era a minha primeira vez no bar, vim apenas apreciar a decoração".
+    Inês, uma ex-funcionária, disse: "Passei para cumprimentar os antigos colegas, fiquei por pouco tempo".
+    Ricardo, um colecionador conhecido, disse: "Vim beber um copo, não reparei em nenhuma coleção de rótulos".
+    
+    As câmaras de segurança mostram todos os suspeitos, mas há um período de 3 minutos em que a câmara que filma a parede dos rótulos ficou offline devido a uma queda de energia. Encontrou-se um cartão de visita de um negócio de antiguidades junto ao local do roubo.
+    
+    Quem danificou e roubou os rótulos?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Beatriz',
-        description: 'Esteve a beber água de uma garrafa perto da mesa do Filipe.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Eduardo',
-        description: 'Passou a correr pelo corredor e tropeçou perto da mesa do Filipe.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'A Chuva',
-        description: 'Começou durante o intervalo e água estava a pingar da janela aberta.',
-        isGuilty: true
-      }
+      { id: 1, name: 'Tiago', isGuilty: false },
+      { id: 2, name: 'Cláudia', isGuilty: false },
+      { id: 3, name: 'Inês', isGuilty: false },
+      { id: 4, name: 'Ricardo', isGuilty: true }
     ],
-    hint: 'Considera onde estava a mesa do Filipe e o que aconteceu durante o intervalo.',
-    solution: 'A chuva foi a responsável pelo trabalho molhado. A mesa do Filipe ficava ao lado da janela aberta, começou a chover durante o intervalo, e a Gabriela viu água a pingar da janela. Não foi culpa de nenhum colega, mas sim do tempo.'
+    clues: [
+      "Um cartão de visita de um negócio de antiguidades foi encontrado no local.",
+      "Ricardo é um colecionador conhecido.",
+      "Ricardo mentiu ao dizer que não reparou na coleção de rótulos.",
+      "A câmara ficou offline por 3 minutos, criando uma oportunidade."
+    ],
+    explanation: "Ricardo é o culpado. Como colecionador, ele teria interesse nos rótulos raros e conhecimento do seu valor. Mentiu ao dizer que não reparou na coleção, quando, sendo colecionador, seria o primeiro a notar. O cartão de visita de um negócio de antiguidades sugere uma conexão com o mercado de colecionáveis, e ele aproveitou a queda de energia que deixou a câmara offline para agir.",
+    difficulty: "difícil"
   },
   {
     id: 20,
-    title: 'O Caso das Bolachas Desaparecidas',
-    story: 'A Marta trouxe um pacote de bolachas especiais para partilhar com os amigos após o almoço. Deixou o pacote na sua mochila dentro da sala enquanto todos foram almoçar. Quando voltaram, o pacote estava vazio. Apenas três pessoas voltaram à sala durante o almoço.',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'O Samuel voltou para buscar o seu livro de leitura e ficou apenas alguns minutos.'
-      },
-      {
-        id: 2,
-        text: 'A Joana voltou para tomar o remédio que guarda na sua mochila.'
-      },
-      {
-        id: 3,
-        text: 'O professor Nuno entrou para deixar alguns livros novos.'
-      },
-      {
-        id: 4,
-        text: 'Foram encontradas migalhas de bolachas na mesa do Samuel.'
-      },
-      {
-        id: 5,
-        text: 'O Samuel tem doença celíaca e não pode comer bolachas normais.'
-      },
-      {
-        id: 6,
-        text: 'A Joana foi vista a escovar os dentes no banheiro logo após voltar da sala de aula.'
-      }
-    ],
+    title: 'O Mistério das Notas Trocadas',
+    scenario: `Na Escola de Azenhas do Mar, alguém alterou as notas do exame final de matemática no sistema informático. Algumas notas foram aumentadas, outras diminuídas, causando confusão entre alunos e professores.
+
+    Quatro pessoas tinham acesso ao sistema de notas:
+    
+    Márcio, o professor de informática, disse: "Ajudei a configurar o sistema, mas não tenho razão para alterar as notas".
+    Khauani, a funcionária administrativa, disse: "Apenas insiro as notas que os professores me entregam".
+    Hélio, o professor de matemática, disse: "Encontrei as discrepâncias ao conferir as notas impressas com as do sistema".
+    Janine, a assistente de direção, disse: "Tenho acesso ao sistema, mas raramente o utilizo".
+    
+    Um registo do sistema mostra que as alterações foram feitas num domingo à tarde, quando a escola estava fechada. No entanto, houve uma reunião extraordinária nesse dia para discutir o orçamento do próximo ano letivo.
+    
+    Quem alterou as notas?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Samuel',
-        description: 'Voltou para buscar um livro e tem doença celíaca.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Joana',
-        description: 'Voltou para tomar remédio e escovou os dentes depois.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Professor Nuno',
-        description: 'Entrou para deixar livros novos.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Márcio', isGuilty: true },
+      { id: 2, name: 'Khauani', isGuilty: false },
+      { id: 3, name: 'Hélio', isGuilty: false },
+      { id: 4, name: 'Janine', isGuilty: false }
     ],
-    hint: 'Pensa no que cada pessoa fez depois de sair da sala.',
-    solution: 'A Joana comeu as bolachas. Ela voltou à sala supostamente para tomar remédio, mas depois foi vista a escovar os dentes, provavelmente para esconder as evidências de ter comido as bolachas. O Samuel não poderia comê-las devido à sua doença celíaca, apesar das migalhas na sua mesa (que a Joana pode ter deixado ao sentar-se lá).'
+    clues: [
+      "As alterações foram feitas num domingo durante uma reunião extraordinária.",
+      "Márcio, como professor de informática, tinha conhecimento avançado do sistema.",
+      "Hélio foi quem descobriu as discrepâncias, o que seria contraditório se fosse ele o culpado.",
+      "Janine raramente utiliza o sistema, o que tornaria mais difícil manipulá-lo."
+    ],
+    explanation: "Márcio é o culpado. Como professor de informática que ajudou a configurar o sistema, ele teria o conhecimento técnico para alterar as notas sem deixar rastros óbvios. Aproveitou a reunião de domingo para ter um motivo legítimo para estar na escola quando normalmente estaria fechada, e poderia facilmente afastar-se por um momento para fazer as alterações.",
+    difficulty: "difícil"
   },
   {
     id: 21,
-    title: 'O Enigma do Quadro Apagado',
-    story: 'A turma do 5º ano estava a preparar uma apresentação importante com informações escritas no quadro. Quando voltaram do intervalo, descobriram que alguém tinha apagado tudo. O professor quer descobrir quem foi o responsável entre os três alunos que ficaram perto da sala.',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'O Guilherme ficou na biblioteca, que fica no corredor oposto à sala de aula.'
-      },
-      {
-        id: 2,
-        text: 'A Inês ficou no recreio a jogar à bola com os amigos durante todo o intervalo.'
-      },
-      {
-        id: 3,
-        text: 'O Lucas diz que esteve na casa de banho durante o intervalo todo porque não se estava a sentir bem.'
-      },
-      {
-        id: 4,
-        text: 'A funcionária Dona Rosa viu o Lucas no corredor da sala de aula durante o intervalo.'
-      },
-      {
-        id: 5,
-        text: 'Foram encontradas marcas de pó de giz nas mãos do Lucas.'
-      },
-      {
-        id: 6,
-        text: 'A biblioteca tem registos de quem entra e sai, e o Guilherme esteve lá durante todo o intervalo.'
-      }
-    ],
+    title: 'O Caso do Restaurante Adraga',
+    scenario: `No restaurante Adraga em Azenhas do Mar, o dono descobriu que várias garrafas de vinho raro da sua adega privada foram substituídas por garrafas mais baratas com rótulos falsificados. O alarme da adega não foi acionado, o que indica que alguém tinha o código de acesso.
+
+    Quatro pessoas conheciam o código:
+    
+    André, o sommelier, disse: "Entro na adega diariamente para selecionar os vinhos, mas sempre com autorização".
+    Marivania, a gerente, disse: "Só entro na adega para inventário mensal, acompanhada pelo dono".
+    Ricardo, o chef, disse: "Ocasionalmente preciso de vinho para cozinhar, mas sempre peço ao André".
+    Cláudia, a contabilista, disse: "Nunca entrei na adega, só precisei do código para registar o sistema de alarme".
+    
+    Uma análise do registo de acessos da adega mostra entradas frequentes fora do horário normal de funcionamento. Um cliente menciona ter recebido, há algumas semanas, um vinho que não correspondia ao pedido, e o sommelier prontamente o substituiu, parecendo nervoso.
+    
+    Quem trocou as garrafas?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Guilherme',
-        description: 'Diz que esteve na biblioteca o tempo todo.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Inês',
-        description: 'Esteve a jogar à bola no recreio com os amigos.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Lucas',
-        description: 'Diz que esteve na casa de banho, mas foi visto no corredor.',
-        isGuilty: true
-      }
+      { id: 1, name: 'André', isGuilty: true },
+      { id: 2, name: 'Marivania', isGuilty: false },
+      { id: 3, name: 'Ricardo', isGuilty: false },
+      { id: 4, name: 'Cláudia', isGuilty: false }
     ],
-    hint: 'Pensa em quem foi visto perto da sala de aula e tem evidências físicas.',
-    solution: 'O Lucas apagou o quadro. Ele mentiu sobre estar na casa de banho o tempo todo, foi visto pela funcionária no corredor da sala de aula, e tinha pó de giz nas mãos - prova de que mexeu no apagador do quadro.'
+    clues: [
+      "O registo mostra acessos fora do horário normal.",
+      "Um cliente recebeu um vinho errado e André ficou nervoso ao substituí-lo.",
+      "André é o único que entra na adega diariamente e conhece bem os vinhos.",
+      "Marivania sempre está acompanhada pelo dono durante os inventários."
+    ],
+    explanation: "André é o culpado. Como sommelier, ele tinha conhecimento para identificar os vinhos raros e substituí-los convincentemente. Os registos mostram acessos fora do horário normal, e ele era o único com motivo legítimo para entrar na adega regularmente sem supervisão. O incidente com o cliente revela que ele já estava a servir vinhos trocados e ficou nervoso quando foi quase descoberto.",
+    difficulty: "difícil"
   },
   {
     id: 22,
-    title: 'O Misterioso Caso das Flores Cortadas',
-    story: 'As flores do jardim da escola, que estavam a ser cultivadas para um projeto de ciências, foram encontradas cortadas. A professora Isabel quer descobrir quem foi o responsável por este ato.',
-    difficulty: 'difícil',
-    clues: [
-      {
-        id: 1,
-        text: 'As flores foram cortadas com uma tesoura, deixando cortes limpos e precisos.'
-      },
-      {
-        id: 2,
-        text: 'Três alunos foram vistos perto do jardim durante o intervalo.'
-      },
-      {
-        id: 3,
-        text: 'A Helena tinha uma tesoura na sua mochila para o projeto de artes.'
-      },
-      {
-        id: 4,
-        text: 'O Francisco entrou na sala com terra nos sapatos após o intervalo.'
-      },
-      {
-        id: 5,
-        text: 'A Raquel foi vista a apanhar algo do chão perto do jardim.'
-      },
-      {
-        id: 6,
-        text: 'Foi encontrado um pequeno ramo de flores escondido na mochila do Francisco.'
-      }
-    ],
+    title: 'O Mistério do Material Escolar',
+    scenario: `Na papelaria perto da Escola de Azenhas do Mar, a dona Bia notou que estava a faltar uma quantidade significativa de material escolar premium, como canetas especiais e cadernos importados. As câmaras não mostravam clientes a levar itens sem pagar.
+
+    Quatro pessoas trabalham na papelaria:
+    
+    Alice, a funcionária de meio período, disse: "Trabalho apenas de manhã, quando a loja está mais movimentada".
+    Santiago, o funcionário da tarde, disse: "Geralmente atendo poucos clientes, principalmente depois das aulas".
+    Mariana, a responsável pelo inventário, disse: "Faço a verificação do stock todas as sextas-feiras".
+    Carlota, a nova estagiária, disse: "Ainda estou a aprender sobre todos os produtos".
+    
+    Um cliente regular mencionou ter visto um funcionário a colocar material escolar numa mochila pessoal ao final do dia. Os itens desaparecidos não aparecem como vendidos no sistema, mas também não constam como perdas no inventário.
+    
+    Quem estava a levar o material?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Helena',
-        description: 'Tinha uma tesoura na mochila para o projeto de artes.',
-        isGuilty: false
-      },
-      {
-        id: 2,
-        name: 'Francisco',
-        description: 'Entrou com terra nos sapatos e tinha flores na mochila.',
-        isGuilty: true
-      },
-      {
-        id: 3,
-        name: 'Raquel',
-        description: 'Foi vista a apanhar algo do chão perto do jardim.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Alice', isGuilty: false },
+      { id: 2, name: 'Santiago', isGuilty: false },
+      { id: 3, name: 'Mariana', isGuilty: true },
+      { id: 4, name: 'Carlota', isGuilty: false }
     ],
-    hint: 'Procura por evidências diretas que liguem alguém às flores cortadas.',
-    solution: 'O Francisco cortou as flores. Ele tinha terra nos sapatos depois de pisar o jardim e, mais importante, tinha um ramo das flores desaparecidas escondido na sua mochila. A Helena tinha uma tesoura, mas não há provas de que a usou no jardim, e a Raquel apenas apanhou algo do chão.'
+    clues: [
+      "Um cliente viu um funcionário a guardar material numa mochila pessoal.",
+      "Os itens não constam como perdas no inventário.",
+      "Mariana é responsável pelo inventário todas as sextas-feiras.",
+      "Alice trabalha durante o período mais movimentado, com mais testemunhas."
+    ],
+    explanation: "Mariana é a culpada. Como responsável pelo inventário, ela poderia facilmente omitir os itens roubados dos registos, explicando por que não apareciam como perdas. Ela aproveitava a sua posição de confiança para levar os itens premium e depois ocultava os furtos através da manipulação do inventário que ela mesma controlava.",
+    difficulty: "médio"
   },
   {
     id: 23,
-    title: 'O Mistério do Caderno Rasgado',
-    story: 'A Clara encontrou o seu caderno de matemática com várias páginas rasgadas. Ela tem certeza que o caderno estava intacto quando o deixou na sala durante o almoço. Quem teria rasgado as páginas do seu caderno?',
-    difficulty: 'fácil',
-    clues: [
-      {
-        id: 1,
-        text: 'As páginas rasgadas continham respostas para exercícios difíceis que a professora tinha mandado para casa.'
-      },
-      {
-        id: 2,
-        text: 'O Paulo senta-se ao lado da Clara e está a ter dificuldades em matemática.'
-      },
-      {
-        id: 3,
-        text: 'A Lara viu o Paulo mexer na mochila da Clara durante o almoço.'
-      },
-      {
-        id: 4,
-        text: 'O Manuel é o melhor amigo do Paulo e diz que esteve com ele durante todo o almoço.'
-      },
-      {
-        id: 5,
-        text: 'Foram encontrados pedaços de papel de caderno no caixote do lixo perto da mesa do Paulo.'
-      }
-    ],
+    title: 'O Enigma do Café das Patrícias',
+    scenario: `O Café das Patrícias em Azenhas do Mar começou a receber críticas online negativas e falsas que afetaram gravemente o movimento de clientes. As críticas mencionavam problemas de higiene e mau atendimento que eram completamente fabricados.
+
+    Quatro pessoas poderiam ter motivos para prejudicar o negócio:
+    
+    Tiago, o ex-funcionário, disse: "Saí do café há dois meses para estudar no estrangeiro".
+    Inês, a dona do café concorrente, disse: "Não preciso prejudicar ninguém, o meu negócio vai bem".
+    Hélio, o fornecedor de café cujo contrato não foi renovado, disse: "Tenho muitos outros clientes, um café a menos não me afeta".
+    Denis, o vizinho que se queixava do barulho, disse: "Já resolvemos as nossas diferenças, agora fecham mais cedo à noite".
+    
+    Uma análise técnica descobriu que todas as críticas falsas foram publicadas a partir do mesmo IP, localizado em Azenhas do Mar. Nas redes sociais, uma das pessoas foi vista a comentar sobre a queda no movimento do Café das Patrícias, antes mesmo de isso se tornar público.
+    
+    Quem publicou as críticas falsas?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Paulo',
-        description: 'Senta-se ao lado da Clara e tem dificuldades em matemática.',
-        isGuilty: true
-      },
-      {
-        id: 2,
-        name: 'Lara',
-        description: 'Viu o Paulo mexer na mochila da Clara.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Manuel',
-        description: 'Melhor amigo do Paulo, diz que esteve sempre com ele.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Tiago', isGuilty: false },
+      { id: 2, name: 'Inês', isGuilty: true },
+      { id: 3, name: 'Hélio', isGuilty: false },
+      { id: 4, name: 'Denis', isGuilty: false }
     ],
-    hint: 'Pensa em quem teria motivos para tirar as respostas dos exercícios de matemática.',
-    solution: 'O Paulo rasgou as páginas do caderno. Ele tem dificuldades em matemática, foi visto a mexer na mochila da Clara durante o almoço, e foram encontrados pedaços de papel de caderno no caixote perto da sua mesa. Provavelmente queria copiar as respostas dos exercícios difíceis.'
+    clues: [
+      "As críticas vieram do mesmo IP localizado em Azenhas do Mar.",
+      "Tiago está no estrangeiro, logo não poderia usar um IP local.",
+      "Alguém comentou sobre a queda no movimento antes de se tornar público.",
+      "Inês, como dona do café concorrente, beneficiaria diretamente com a situação."
+    ],
+    explanation: "Inês é a culpada. Embora tenha negado, como dona do café concorrente, ela beneficiaria diretamente com a queda no movimento do Café das Patrícias. O facto de as críticas virem de um IP em Azenhas do Mar elimina Tiago, que está no estrangeiro. Além disso, ela comentou sobre a queda no movimento antes de isso se tornar público, o que sugere que sabia exatamente o que estava a acontecer.",
+    difficulty: "difícil"
   },
   {
     id: 24,
-    title: 'O Caso do Relógio Desaparecido',
-    story: 'Depois da aula de educação física, o Afonso descobriu que o seu relógio novo tinha desaparecido do seu pulso. Ele lembra-se de tê-lo tirado e colocado no banco antes de começar a jogar basquetebol. Quem poderá ter pegado o relógio?',
-    difficulty: 'médio',
-    clues: [
-      {
-        id: 1,
-        text: 'O João saiu mais cedo da aula porque se sentiu mal.'
-      },
-      {
-        id: 2,
-        text: 'A Sofia esteve sentada no banco durante toda a aula porque estava lesionada.'
-      },
-      {
-        id: 3,
-        text: 'O Marco foi o último a sair do ginásio depois da aula.'
-      },
-      {
-        id: 4,
-        text: 'A Sofia tem um relógio muito parecido com o do Afonso.'
-      },
-      {
-        id: 5,
-        text: 'O professor viu alguém mexer nas coisas no banco, mas não conseguiu identificar quem foi.'
-      },
-      {
-        id: 6,
-        text: 'O João foi visto a usar um relógio igual ao do Afonso no dia seguinte.'
-      }
-    ],
+    title: 'O Mistério do Jogo de Futebol',
+    scenario: `Durante um importante jogo de futebol das crianças de Azenhas do Mar, a taça que seria entregue à equipa vencedora desapareceu do gabinete do diretor da escola. A porta ficou destrancada durante o jogo, já que muitas pessoas entravam e saíam do edifício.
+
+    Quatro pessoas foram vistas perto do gabinete:
+    
+    Gonçalo, o aluno cujo time perdeu o jogo anterior, disse: "Estava à procura da casa de banho, enganei-me no corredor".
+    Francisco, o filho do árbitro, disse: "Fui buscar o kit de primeiros socorros para um colega que se magoou".
+    Martim, o capitão da equipa adversária, disse: "Nunca entrei no edifício durante o jogo, estive sempre no campo".
+    Lorena, a irmã de um jogador, disse: "Apenas passei pelo corredor para ir buscar água ao bebedouro".
+    
+    A funcionária Janine viu um jovem com uma mochila azul a sair apressadamente do gabinete. Durante o jogo, ocorreu uma discussão acalorada entre o árbitro e o treinador da equipa da escola.
+    
+    Quem apanhou a taça?`,
     suspects: [
-      {
-        id: 1,
-        name: 'João',
-        description: 'Saiu mais cedo da aula e foi visto com um relógio igual no dia seguinte.',
-        isGuilty: true
-      },
-      {
-        id: 2,
-        name: 'Sofia',
-        description: 'Esteve sentada no banco toda a aula e tem um relógio similar.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Marco',
-        description: 'Foi o último a sair do ginásio depois da aula.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Gonçalo', isGuilty: false },
+      { id: 2, name: 'Francisco', isGuilty: true },
+      { id: 3, name: 'Martim', isGuilty: false },
+      { id: 4, name: 'Lorena', isGuilty: false }
     ],
-    hint: 'Pensa em quem foi visto com um relógio igual depois do desaparecimento.',
-    solution: 'O João pegou o relógio do Afonso. Ele saiu mais cedo da aula, o que lhe deu a oportunidade perfeita para pegar o relógio sem ser notado. A prova definitiva é que ele foi visto a usar um relógio igual ao do Afonso no dia seguinte.'
+    clues: [
+      "Janine viu um jovem com mochila azul a sair apressadamente do gabinete.",
+      "Francisco usa uma mochila azul e admitiu ter entrado no edifício.",
+      "Houve uma discussão entre o árbitro (pai de Francisco) e o treinador.",
+      "Martim afirma nunca ter entrado no edifício durante o jogo."
+    ],
+    explanation: "Francisco é o culpado. Ele foi visto com uma mochila azul a sair apressadamente do gabinete do diretor. Como filho do árbitro, que teve uma discussão com o treinador da escola, ele poderia estar a vingar-se pelo pai. A sua desculpa de buscar o kit de primeiros socorros é suspeita, pois esses kits normalmente ficam no campo ou com os treinadores, não no gabinete do diretor.",
+    difficulty: "médio"
   },
   {
     id: 25,
-    title: 'O Enigma da Pintura Alterada',
-    story: 'Durante a aula de arte, a turma estava a fazer pinturas para uma exposição. Quando a professora voltou após uma breve ausência, descobriu que alguém tinha modificado a pintura da Diana, adicionando rabiscos que estragaram o trabalho. Quem será o responsável?',
-    difficulty: 'difícil',
-    clues: [
-      {
-        id: 1,
-        text: 'Os rabiscos foram feitos com tinta verde, uma cor que não estava sendo usada pela Diana.'
-      },
-      {
-        id: 2,
-        text: 'A Vera estava sentada ao lado da Diana e as duas competiram pelo primeiro lugar no concurso de arte do mês passado.'
-      },
-      {
-        id: 3,
-        text: 'O Tomás estava usando tinta verde no seu projeto e tem manchas desta tinta nas mãos.'
-      },
-      {
-        id: 4,
-        text: 'A Catarina estava no outro lado da sala e não se levantou durante a ausência da professora.'
-      },
-      {
-        id: 5,
-        text: 'A Vera é a única que não tem álibi, pois foi ao lavatório lavar os pincéis durante a ausência da professora.'
-      },
-      {
-        id: 6,
-        text: 'O Tomás e a Diana são bons amigos e sempre se ajudam nas aulas de arte.'
-      }
-    ],
+    title: 'O Caso da Pensão Desaparecida',
+    scenario: `Na Pensão Sisudo em Azenhas do Mar, uma idosa hospedada, a Sra. Khauani, relatou que o envelope com a sua pensão mensal desapareceu do quarto. Ela lembra-se de o ter deixado na gaveta da mesa de cabeceira antes de sair para o pequeno-almoço.
+
+    Quatro pessoas entraram no quarto naquela manhã:
+    
+    Cláudia, a empregada de limpeza, disse: "Fiz apenas a cama e limpei a casa de banho, não abri gavetas".
+    Ricardo, o técnico de manutenção, disse: "Fui verificar uma torneira que pingava, terminei em cinco minutos".
+    Marivania, a rececionista, disse: "Entrei para deixar o jornal diário, como a senhora pede sempre".
+    Márcio, o novo funcionário, disse: "Levei toalhas limpas, mas a Sra. Khauani ainda estava no quarto quando entrei".
+    
+    A Sra. Khauani confirma que Márcio trouxe as toalhas enquanto ela ainda estava lá. Uma hóspede do quarto ao lado viu alguém a mexer nas gavetas do quarto quando passou pela porta entreaberta, mas não conseguiu ver quem era.
+    
+    Quem apanhou o envelope com o dinheiro?`,
     suspects: [
-      {
-        id: 1,
-        name: 'Vera',
-        description: 'Estava sentada ao lado da Diana e foi ao lavatório lavar os pincéis.',
-        isGuilty: true
-      },
-      {
-        id: 2,
-        name: 'Tomás',
-        description: 'Estava usando tinta verde e tem manchas desta tinta nas mãos.',
-        isGuilty: false
-      },
-      {
-        id: 3,
-        name: 'Catarina',
-        description: 'Estava no outro lado da sala e não se levantou.',
-        isGuilty: false
-      }
+      { id: 1, name: 'Cláudia', isGuilty: false },
+      { id: 2, name: 'Ricardo', isGuilty: true },
+      { id: 3, name: 'Marivania', isGuilty: false },
+      { id: 4, name: 'Márcio', isGuilty: false }
     ],
-    hint: 'Pensa em quem tinha motivo, oportunidade e não tem álibi verificável.',
-    solution: 'A Vera é a responsável por estragar a pintura da Diana. Ela estava sentada ao lado da Diana, tinha uma rivalidade com ela devido ao concurso de arte anterior, e não tem álibi pois supostamente estava no lavatório. Ela aproveitou a ausência da professora para sabotar o trabalho da sua rival.'
+    clues: [
+      "Uma hóspede viu alguém a mexer nas gavetas.",
+      "Márcio esteve no quarto enquanto a Sra. Khauani ainda estava lá.",
+      "Cláudia afirma não ter aberto gavetas.",
+      "Ricardo foi consertar uma torneira, o que poderia ser uma desculpa para entrar no quarto."
+    ],
+    explanation: "Ricardo é o culpado. A sua tarefa de verificar uma torneira daria a ele poucos minutos sozinho no quarto. A hóspede do quarto ao lado viu alguém a mexer nas gavetas, o que contradiz a afirmação de Cláudia de que não abriu gavetas. Márcio esteve no quarto com a Sra. Khauani presente, e Marivania apenas deixou o jornal, uma tarefa rápida que dificilmente daria tempo para procurar nas gavetas.",
+    difficulty: "médio"
   }
 ];

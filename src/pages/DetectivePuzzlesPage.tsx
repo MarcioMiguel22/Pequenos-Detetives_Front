@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { detectivePuzzles } from '../data/detective-puzzles';
 import { DifficultyLevel } from '../types/puzzle';
-import DifficultySelector from '../components/DifficultySelector';
-import '../styles/PuzzlesPage.css';
 import DetectivePuzzleCard from '../components/DetectivePuzzleCard';
-
+import DifficultySelector from '../components/DifficultySelector';
+import '../styles/DetectivePuzzlesPage.css';
 
 export default function DetectivePuzzlesPage() {
   const { id } = useParams();
@@ -38,29 +37,25 @@ export default function DetectivePuzzlesPage() {
   );
   
   const handleCorrectAnswer = () => {
-    // Add the current puzzle to completed array if not already there
     if (!completedPuzzles.includes(currentPuzzleId)) {
-      const updatedCompletedPuzzles = [...completedPuzzles, currentPuzzleId];
-      setCompletedPuzzles(updatedCompletedPuzzles);
-      
-      // Save immediately to localStorage
-      localStorage.setItem('detectivePuzzleProgress', JSON.stringify({
-        completed: updatedCompletedPuzzles,
-        current: currentPuzzleId
-      }));
+      setCompletedPuzzles([...completedPuzzles, currentPuzzleId]);
     }
   };
-
+  
   const handleNextPuzzle = () => {
-    // If all puzzles are completed, go to result page
-    if (completedPuzzles.length >= detectivePuzzles.length) {
-      navigate('/result?type=detective');
-      return;
-    }
+    // Find the next puzzle - prioritize unsolved puzzles
+    const unsolvedPuzzles = detectivePuzzles.filter(p => !completedPuzzles.includes(p.id) && p.id !== currentPuzzleId);
     
-    // Find next puzzle
-    const nextPuzzleId = detectivePuzzles.find(p => !completedPuzzles.includes(p.id) && p.id !== currentPuzzleId)?.id;
-    if (nextPuzzleId) {
+    if (unsolvedPuzzles.length > 0) {
+      // If there are unsolved puzzles, go to the first one
+      const nextPuzzleId = unsolvedPuzzles[0].id;
+      navigate(`/detective/${nextPuzzleId}`);
+      setCurrentPuzzleId(nextPuzzleId);
+    } else {
+      // If all puzzles are solved, go to the next one in sequence or back to the first
+      const currentIndex = detectivePuzzles.findIndex(p => p.id === currentPuzzleId);
+      const nextIndex = (currentIndex + 1) % detectivePuzzles.length;
+      const nextPuzzleId = detectivePuzzles[nextIndex].id;
       navigate(`/detective/${nextPuzzleId}`);
       setCurrentPuzzleId(nextPuzzleId);
     }
@@ -72,14 +67,14 @@ export default function DetectivePuzzlesPage() {
   };
   
   if (!currentPuzzle) {
-    return <div className="loading">A carregar enigma...</div>;
+    return <div className="loading">Carregando caso...</div>;
   }
   
   return (
-    <div className="puzzles-page">
-      <div className="puzzles-container">
+    <div className="detective-puzzles-page">
+      <div className="detective-puzzles-container">
         <div className="puzzle-selection">
-          <h2>Escolhe um Enigma de Detetive</h2>
+          <h2>Casos de Detetive</h2>
           <DifficultySelector 
             selectedDifficulty={filterDifficulty}
             onSelectDifficulty={setFilterDifficulty}
@@ -93,10 +88,11 @@ export default function DetectivePuzzlesPage() {
                   completedPuzzles.includes(puzzle.id) ? 'completed' : ''
                 }`}
                 onClick={() => selectPuzzle(puzzle.id)}
+                title={completedPuzzles.includes(puzzle.id) ? "Podes tentar novamente!" : "Ainda não resolveste"}
               >
                 <span className="puzzle-number">{puzzle.id}</span>
                 <span className="puzzle-title">{puzzle.title}</span>
-                {completedPuzzles.includes(puzzle.id) && <span className="completed-badge">✓</span>}
+                {completedPuzzles.includes(puzzle.id) && <span className="completed-badge" title="Já resolveste este caso">✓</span>}
               </div>
             ))}
           </div>
@@ -105,17 +101,15 @@ export default function DetectivePuzzlesPage() {
         <div className="current-puzzle">
           {completedPuzzles.includes(currentPuzzleId) && (
             <div className="retry-banner">
-              Já resolveste este enigma! Queres tentar novamente?
+              Já resolveste este caso! Queres tentar novamente?
             </div>
           )}
-          {currentPuzzle && (
-            <DetectivePuzzleCard 
-              puzzle={currentPuzzle} 
-              onCorrectAnswer={handleCorrectAnswer}
-              onNextPuzzle={handleNextPuzzle}
-              isRetry={completedPuzzles.includes(currentPuzzleId)}
-            />
-          )}
+          <DetectivePuzzleCard 
+            puzzle={currentPuzzle} 
+            onCorrectAnswer={handleCorrectAnswer}
+            onNextPuzzle={handleNextPuzzle}
+            isRetry={completedPuzzles.includes(currentPuzzleId)}
+          />
         </div>
       </div>
       
@@ -127,7 +121,7 @@ export default function DetectivePuzzlesPage() {
             style={{ width: `${(completedPuzzles.length / detectivePuzzles.length) * 100}%` }}
           ></div>
         </div>
-        <p>{completedPuzzles.length} de {detectivePuzzles.length} enigmas resolvidos</p>
+        <p>{completedPuzzles.length} de {detectivePuzzles.length} casos resolvidos</p>
       </div>
     </div>
   );
