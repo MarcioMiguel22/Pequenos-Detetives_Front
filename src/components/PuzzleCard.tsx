@@ -45,6 +45,9 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer, isRetry = false }:
     if (isCorrect) {
       setIsCorrectAnswer(true);
       setShowResult(true);
+      // Tocar som de resposta correta (plin!)
+      playCorrectSound();
+      
       // If this is a retry, we can provide a different success message or behavior
       if (isRetry) {
         // We can play a different sound or show a different animation for retried puzzles
@@ -108,6 +111,39 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer, isRetry = false }:
       }, 1500);
     } catch (error) {
       console.log('Erro ao reproduzir o som de resposta errada:', error);
+    }
+  };
+
+  // Função para tocar o som "plin" para respostas corretas
+  const playCorrectSound = () => {
+    try {
+      // Criar um oscilador usando a Web Audio API
+      const audioContext = new (window.AudioContext || 
+        ((window as unknown) as WindowWithWebkitAudio).webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+
+      // Configurar o tipo de onda e frequência para um som agudo e agradável
+      oscillator.type = 'sine'; // Onda sinusoidal para um som mais "limpo"
+      oscillator.frequency.setValueAtTime(880, audioContext.currentTime); // Lá agudo (A5)
+      
+      // Configurar um breve "ataque" e "decaimento" rápido para som de "plin"
+      gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+      gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
+
+      // Ligar o oscilador ao controlo de volume e depois aos altifalantes
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      // Iniciar e parar o som após um curto período
+      oscillator.start();
+      setTimeout(() => {
+        oscillator.stop();
+        audioContext.close();
+      }, 500);
+    } catch (error) {
+      console.log('Erro ao reproduzir o som de resposta correta:', error);
     }
   };
 
