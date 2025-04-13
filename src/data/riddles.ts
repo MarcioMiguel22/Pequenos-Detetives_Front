@@ -7,9 +7,9 @@ export const riddles: Riddle[] = [
     question: "O que tem dentes mas não morde?",
     answer: "Pente",
     difficulty: "fácil",
-    hint: "Usamos para arrumar o cabelo",
+    hint: "Usamos para arranjar o cabelo",
     contextualOptions: [
-      { text: "Podemos encontrar na casa de banho para arrumar o cabelo", isCorrect: true },
+      { text: "Podemos encontrar na casa de banho para arranjar o cabelo", isCorrect: true },
       { text: "Não está na cozinha e não serve para cortar alimentos", isCorrect: false },
       { text: "Não usamos para escrever nem para desenhar", isCorrect: false }
     ]
