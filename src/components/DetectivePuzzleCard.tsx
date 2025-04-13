@@ -105,7 +105,7 @@ export default function DetectivePuzzleCard({
   };
 
   return (
-    <div className="puzzle-card detective-puzzle">
+    <div className="detective-puzzle-card">
       <div className="puzzle-header">
         <h2>{puzzle.title}</h2>
         <span 
@@ -208,13 +208,12 @@ export default function DetectivePuzzleCard({
       )}
 
       <div className="action-buttons">
-        {!isCorrectAnswer && !showResult && (
+        {!isCorrectAnswer && !showResult && selectedSuspect !== null && (
           <button 
             className="submit-button" 
-            disabled={selectedSuspect === null}
             onClick={handleSubmit}
           >
-            Resolver o Caso
+            Verificar Resposta
           </button>
         )}
 
@@ -233,6 +232,16 @@ export default function DetectivePuzzleCard({
             onClick={handleNextPuzzle}
           >
             Próximo Caso →
+          </button>
+        )}
+        
+        {/* Novo botão que sempre está visível para pular para o próximo caso */}
+        {!isCorrectAnswer && (
+          <button 
+            className="skip-button"
+            onClick={handleNextPuzzle}
+          >
+            Pular Caso →
           </button>
         )}
       </div>

@@ -72,7 +72,7 @@ export default function DetectivePuzzlesPage() {
   };
   
   if (!currentPuzzle) {
-    return <div className="loading">Carregando enigma...</div>;
+    return <div className="loading">A carregar enigma...</div>;
   }
   
   return (

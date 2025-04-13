@@ -1,8 +1,8 @@
 .puzzle-card {
-  background-color: white;
+  background-color: var(--card-bg, white);
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -109,6 +109,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+[data-theme='dark'] .answer-option:hover {
+  background-color: #3a4a63;  /* Tom mais suave e quente no escuro */
+}
+
+[data-theme='dark'] .answer-option.selected {
+  border-color: var(--primary-color);
+  background-color: #2d4063;  /* Azul mais escuro e suave */
 }
 
 .answer-text {
@@ -305,10 +314,28 @@
   transform: translateY(-2px);
 }
 
+.skip-button {
+  padding: 0.8rem 1rem;
+  background-color: #7f8c8d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  text-align: center;
+}
+
+.skip-button:hover {
+  background-color: #95a5a6;
+  transform: translateY(-2px);
+}
+
 .action-buttons {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
+  justify-content: space-between;
 }
 
 @keyframes pulse-subtle {

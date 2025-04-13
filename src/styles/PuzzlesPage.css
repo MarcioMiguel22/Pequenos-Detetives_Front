@@ -21,10 +21,10 @@
 
 .puzzle-selection {
   flex: 1;
-  background-color: white;
+  background-color: var(--card-bg, white);
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
 }
 
 .puzzle-selection h2 {
@@ -50,6 +50,15 @@
   background-color: var(--light-gray);
   cursor: pointer;
   transition: background-color 0.2s;
+}
+
+[data-theme='dark'] .puzzle-item:hover {
+  background-color: #3a4a63; /* Cor mais suave para hover em modo escuro */
+}
+
+[data-theme='dark'] .puzzle-item.active {
+  background-color: #3b5998; /* Azul mais escuro e menos vibrante */
+  color: #e0e0e0; /* Texto não tão branco */
 }
 
 .puzzle-item:hover {
@@ -102,10 +111,10 @@
 }
 
 .progress-section {
-  background-color: white;
+  background-color: var(--card-bg, white);
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
 }
 
 .progress-section h3 {

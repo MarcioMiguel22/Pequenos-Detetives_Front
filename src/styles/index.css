@@ -11,6 +11,7 @@
   --text-color: #333;
   --light-gray: #f0f2f5;
   --border-color: #e1e4e8;
+  --card-bg: #ffffff;
   
   /* Navbar Light Theme */
   --navbar-bg: #ff9e80;
@@ -22,22 +23,27 @@
 }
 
 [data-theme='dark'] {
-  /* Dark theme */
-  --bg-color: #1a1a2e;
-  --text-color: #e6e6e6;
-  --light-gray: #2c2c44;
-  --border-color: #4a4a6a;
+  /* Dark theme - melhorado para ser mais amigável aos olhos */
+  --bg-color: #1a202c;  /* Tom de azul escuro em vez de preto puro */
+  --text-color: #e0e0e0;  /* Cinza claro em vez de branco puro */
+  --light-gray: #2d3748;  /* Cinza azulado escuro */
+  --border-color: #4a5568;  /* Borda mais suave */
+  --card-bg: #252d3c;  /* Fundo de cartão menos preto, com tom azulado */
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);  /* Sombra mais pronunciada */
   
-  /* Navbar Dark Theme */
-  --navbar-bg: #4a148c;
-  --navbar-text: #e1bee7;
-  --navbar-hover: #7b1fa2;
-  --navbar-text-hover: #f3e5f5;
-  --navbar-button-bg: #6a1b9a;
-  --navbar-button-hover: #8e24aa;
+  /* Ajuste de cores primárias e secundárias para o tema escuro */
+  --primary-color: #63b3ed;  /* Azul mais suave */
+  --secondary-color: #fc8181;  /* Vermelho mais suave */
+  --success-color: #68d391;  /* Verde mais suave */
+  --error-color: #f56565;  /* Vermelho de erro mais suave */
   
-  /* Adjust other colors for dark mode */
-  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Navbar Dark Theme - cores mais suaves */
+  --navbar-bg: #2d3748;
+  --navbar-text: #e0e0e0;
+  --navbar-hover: #4a5568;
+  --navbar-text-hover: #ffffff;
+  --navbar-button-bg: #4a5568;
+  --navbar-button-hover: #718096;
 }
 
 * {

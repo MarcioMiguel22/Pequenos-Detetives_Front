@@ -249,6 +249,16 @@ export default function PuzzleCard({ puzzle, onCorrectAnswer, isRetry = false }:
             Próximo Enigma →
           </button>
         )}
+        
+        {/* Botão para avançar para o próximo enigma */}
+        {!isCorrectAnswer && (
+          <button 
+            className="skip-button"
+            onClick={handleNextPuzzle}
+          >
+            Avançar Enigma →
+          </button>
+        )}
       </div>
 
       {showResult && (
