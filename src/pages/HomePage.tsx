@@ -22,10 +22,10 @@ export default function HomePage() {
             <p>Enigmas básicos de múltipla escolha</p>
           </Link>
           
-          <Link to="/riddles" className="game-option">
-            <div className="option-icon">❓</div>
-            <h3>Advinhas Complicadas</h3>
-            <p>Adivinhas tradicionais para resolver</p>
+          <Link to="/challenge-riddles" className="game-option">
+            <div className="option-icon">🎯</div>
+            <h3>Advinhas Desafiantes</h3>
+            <p>Escreve a resposta para enigmas mais difíceis</p>
           </Link>
           
           <Link to="/detective" className="game-option">
@@ -33,6 +33,8 @@ export default function HomePage() {
             <h3>Enigmas de Detetive</h3>
             <p>Casos para solucionar como detetive</p>
           </Link>
+          
+       
         </div>
       </div>
       
@@ -69,11 +71,11 @@ export default function HomePage() {
           <Link to="/puzzles" className="cta-button">
             Enigmas Simples
           </Link>
-          <Link to="/riddles" className="cta-button">
-            Advinhas Complicadas
-          </Link>
           <Link to="/detective" className="cta-button">
             Enigmas de Detetive
+          </Link>
+          <Link to="/challenge-riddles" className="cta-button">
+            Advinhas Desafiantes
           </Link>
         </div>
       </div>
