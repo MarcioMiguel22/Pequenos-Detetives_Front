@@ -5,19 +5,18 @@ import '../styles/DetectivePuzzleCard.css';
 interface DetectivePuzzleCardProps {
   puzzle: DetectivePuzzle;
   onCorrectAnswer: () => void;
-  onNextPuzzle: () => void; // Add this new prop
+  onNextPuzzle: () => void; 
   isRetry?: boolean;
 }
 
 export default function DetectivePuzzleCard({ 
   puzzle, 
   onCorrectAnswer, 
-  onNextPuzzle, // Include in destructuring
+  onNextPuzzle,
   isRetry = false 
 }: DetectivePuzzleCardProps) {
   const [selectedSuspect, setSelectedSuspect] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
-  const [showHint, setShowHint] = useState(false);
   const [showClues, setShowClues] = useState<number[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
@@ -27,7 +26,6 @@ export default function DetectivePuzzleCard({
     setSelectedSuspect(null);
     setShowResult(false);
     setIsCorrectAnswer(false);
-    setShowHint(false);
     setShowClues([]);
   }, [puzzle.id]);
 
@@ -70,11 +68,11 @@ export default function DetectivePuzzleCard({
     onNextPuzzle();
   };
 
-  const toggleClue = (clueId: number) => {
-    if (showClues.includes(clueId)) {
-      setShowClues(showClues.filter(id => id !== clueId));
+  const toggleClue = (clueIndex: number) => {
+    if (showClues.includes(clueIndex)) {
+      setShowClues(showClues.filter(id => id !== clueIndex));
     } else {
-      setShowClues([...showClues, clueId]);
+      setShowClues([...showClues, clueIndex]);
     }
   };
 
@@ -118,10 +116,10 @@ export default function DetectivePuzzleCard({
 
       <div className="story-container">
         <h3>O Caso</h3>
-        <p className="detective-story">{puzzle.story}</p>
+        <p className="detective-story">{puzzle.scenario}</p>
         <button 
           className={`audio-button ${isPlaying ? 'playing' : ''}`} 
-          onClick={() => readText(puzzle.story)}
+          onClick={() => readText(puzzle.scenario)}
           aria-label={isPlaying ? "Parar leitura" : "Ouvir a história"}
         >
           {isPlaying ? '🔊' : '🔈'}
@@ -131,22 +129,21 @@ export default function DetectivePuzzleCard({
       <div className="clues-container">
         <h3>Pistas</h3>
         <div className="clues-list">
-          {puzzle.clues.map(clue => (
-            <div key={clue.id} className="clue-item">
+          {puzzle.clues.map((clue, index) => (
+            <div key={index} className="clue-item">
               <button 
-                className={`clue-toggle ${showClues.includes(clue.id) ? 'active' : ''}`}
-                onClick={() => toggleClue(clue.id)}
+                className={`clue-toggle ${showClues.includes(index) ? 'active' : ''}`}
+                onClick={() => toggleClue(index)}
               >
-                Pista #{clue.id} {showClues.includes(clue.id) ? '👁️' : '👁️‍🗨️'}
+                Pista #{index + 1} {showClues.includes(index) ? '👁️' : '👁️‍🗨️'}
               </button>
               
-              {showClues.includes(clue.id) && (
+              {showClues.includes(index) && (
                 <div className="clue-content">
-                  <p>{clue.text}</p>
-                  {clue.image && <img src={clue.image} alt={`Pista ${clue.id}`} />}
+                  <p>{clue}</p>
                   <button 
                     className="clue-audio-button"
-                    onClick={() => readText(clue.text)}
+                    onClick={() => readText(clue)}
                   >
                     🔈
                   </button>
@@ -172,40 +169,11 @@ export default function DetectivePuzzleCard({
             >
               <div className="suspect-info">
                 <h4>{suspect.name}</h4>
-                <p>{suspect.description}</p>
               </div>
-              {suspect.image && (
-                <div className="suspect-image">
-                  <img src={suspect.image} alt={suspect.name} />
-                </div>
-              )}
             </div>
           ))}
         </div>
       </div>
-
-      {puzzle.hint && (
-        <div className="hint-section">
-          <button 
-            className="hint-button" 
-            onClick={() => setShowHint(!showHint)}
-          >
-            {showHint ? 'Esconder Dica' : 'Mostrar Dica'}
-          </button>
-          {showHint && (
-            <div className="hint-text-container">
-              <p className="hint-text">💡 {puzzle.hint}</p>
-              <button 
-                className="hint-audio-button"
-                onClick={() => readText(puzzle.hint || '')}
-                aria-label="Ouvir dica"
-              >
-                🔈
-              </button>
-            </div>
-          )}
-        </div>
-      )}
 
       <div className="action-buttons">
         {!isCorrectAnswer && !showResult && selectedSuspect !== null && (
@@ -241,7 +209,7 @@ export default function DetectivePuzzleCard({
             className="skip-button"
             onClick={handleNextPuzzle}
           >
-            Pular Caso →
+            Avançar Caso →
           </button>
         )}
       </div>
@@ -253,7 +221,7 @@ export default function DetectivePuzzleCard({
               <p>{isRetry 
                 ? '🎉 Resolveste este caso novamente!' 
                 : '🎉 Caso resolvido com sucesso!'}</p>
-              <p className="solution-text">{puzzle.solution}</p>
+              <p className="solution-text">{puzzle.explanation}</p>
             </div>
           ) : (
             <p>😢 Não é este o culpado! Continua a investigar!</p>
