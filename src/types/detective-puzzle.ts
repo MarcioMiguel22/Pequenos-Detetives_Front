@@ -15,3 +15,8 @@ export interface DetectivePuzzle {
   explanation: string;
   difficulty: DifficultyLevel;
 }
+
+export interface UserDetectiveProgress {
+  completedPuzzles: number[];
+  currentPuzzle: number;
+}

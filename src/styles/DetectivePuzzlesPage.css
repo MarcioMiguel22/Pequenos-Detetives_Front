@@ -1,0 +1,155 @@
+.detective-puzzles-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.detective-puzzles-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .detective-puzzles-container {
+    flex-direction: row;
+  }
+}
+
+.puzzle-selection {
+  flex: 1;
+  background-color: var(--card-bg, white);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: var(--card-shadow);
+}
+
+.puzzle-selection h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.puzzle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.puzzle-item {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  border-radius: 8px;
+  background-color: var(--light-gray);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+[data-theme='dark'] .puzzle-item:hover {
+  background-color: #3a4a63;
+}
+
+[data-theme='dark'] .puzzle-item.active {
+  background-color: #3b5998;
+  color: #e0e0e0;
+}
+
+.puzzle-item:hover {
+  background-color: #e5e9f0;
+}
+
+.puzzle-item.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.puzzle-item.completed {
+  border-left: 4px solid var(--success-color);
+}
+
+.puzzle-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  margin-right: 0.8rem;
+}
+
+.puzzle-item.active .puzzle-number {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.puzzle-title {
+  flex: 1;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.completed-badge {
+  margin-left: 0.5rem;
+  color: var(--success-color);
+  font-weight: bold;
+}
+
+.current-puzzle {
+  flex: 2;
+}
+
+.progress-section {
+  background-color: var(--card-bg, white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.progress-section h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.progress-bar {
+  height: 12px;
+  background-color: var(--light-gray);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--success-color);
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.progress-section p {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.retry-banner {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+  border-left: 4px solid #ffeeba;
+}

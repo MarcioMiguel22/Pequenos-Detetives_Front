@@ -113,7 +113,7 @@ export default function DetectivePuzzleCard({
           {puzzle.difficulty}
         </span>
       </div>
-
+      
       <div className="story-container">
         <h3>O Caso</h3>
         <p className="detective-story">{puzzle.scenario}</p>
