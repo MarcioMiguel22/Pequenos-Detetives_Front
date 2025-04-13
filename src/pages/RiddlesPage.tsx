@@ -62,14 +62,14 @@ export default function RiddlesPage() {
   };
   
   if (!currentRiddle) {
-    return <div className="loading">A carregar adivinha...</div>;
+    return <div className="loading">A carregar advinhas...</div>;
   }
   
   return (
     <div className="puzzles-page">
       <div className="puzzles-container">
         <div className="puzzle-selection">
-          <h2>Escolhe uma Adivinha</h2>
+          <h2>Escolhe uma Advinha Complicada</h2>
           <DifficultySelector 
             selectedDifficulty={filterDifficulty}
             onSelectDifficulty={setFilterDifficulty}
@@ -114,7 +114,7 @@ export default function RiddlesPage() {
             style={{ width: `${(completedRiddles.length / riddles.length) * 100}%` }}
           ></div>
         </div>
-        <p>{completedRiddles.length} de {riddles.length} adivinhas resolvidas</p>
+        <p>{completedRiddles.length} de {riddles.length} advinhas resolvidas</p>
       </div>
     </div>
   );

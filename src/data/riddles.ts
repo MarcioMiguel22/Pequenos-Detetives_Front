@@ -243,7 +243,7 @@ export const riddles: Riddle[] = [
     difficulty: "médio",
     hint: "Vem do céu quando o tempo está nublado",
     contextualOptions: [
-      { text: "Molha-nos quando saímos sem guarda-chuva", isCorrect: true },
+      { text: "Molha-nos quando saímos sem chapéu-de-chuva", isCorrect: true },
       { text: "É essencial para a vida na Terra", isCorrect: false },
       { text: "Pode ser acompanhada por trovões e relâmpagos", isCorrect: false }
     ]
@@ -464,7 +464,7 @@ export const riddles: Riddle[] = [
     difficulty: "médio",
     hint: "Acontece quando ficamos doentes",
     contextualOptions: [
-      { text: "Faz-nos espirrar e ter tosse quando estamos doentes", isCorrect: true },
+      { text: "Faz-nos espirrar e ter tosse quando estamos constipados", isCorrect: true },
       { text: "É causada por vírus ou mudanças de temperatura", isCorrect: false },
       { text: "Pode ser tratada com repouso e medicamentos", isCorrect: false }
     ]
@@ -615,10 +615,10 @@ export const riddles: Riddle[] = [
   {
     id: 48,
     title: 'O Enigma do Médico',
-    question: "Um pai e um filho estão num acidente de carro. O pai morre e o filho é levado às pressas para o hospital. Lá, o médico olha para o menino e diz: Eu não posso operá-lo, ele é meu filho! Como isso é possível?",
+    question: "Um pai e um filho estão num acidente de automóvel. O pai morre e o filho é levado com urgência para o hospital. Lá, o médico olha para o menino e diz: Eu não posso operá-lo, ele é meu filho! Como é possível?",
     answer: "O médico é a mãe",
     difficulty: "difícil",
-    hint: "Pense em quem mais poderia ser um dos pais do menino",
+    hint: "Pensa em quem mais poderia ser um dos pais do menino",
     contextualOptions: [
       { text: "É uma pessoa que pode ter filhos e também uma profissão", isCorrect: true },
       { text: "É uma questão de lógica e não de magia", isCorrect: false },
