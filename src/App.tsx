@@ -7,6 +7,7 @@ import PuzzlesPage from './pages/PuzzlesPage';
 import ResultPage from './pages/ResultPage';
 import DetectivePuzzlesPage from './pages/DetectivePuzzlesPage';
 import ChallengeRiddlesPage from './pages/ChallengeRiddlesPage';
+import MysteryGamePage from './pages/MysteryGamePage';
 import './styles/App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
               <Route path="/challenge-riddles" element={<Navigate to="/challenge-riddles/1" replace />} />
               <Route path="/challenge-riddles/:id" element={<ChallengeRiddlesPage />} />
               <Route path="/result" element={<ResultPage />} />
+              <Route path="/mystery-game" element={<MysteryGamePage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
