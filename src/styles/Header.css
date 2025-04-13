@@ -1,144 +1,407 @@
 .header {
-  background-color: var(--navbar-bg);
+  position: relative;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.4s ease;
+  overflow: visible;
+}
+
+/* Tema claro */
+.header.light {
+  background: linear-gradient(to right, #ffb347, #ffcc33);
+  color: #7b2d26;
+}
+
+/* Tema escuro */
+.header.dark {
+  background: linear-gradient(to right, #4a148c, #7b1fa2);
+  color: #e1bee7;
+}
+
+/* Efeito de borda divertida para crianças */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--primary-color) 0px,
+    var(--primary-color) 10px,
+    var(--secondary-color) 10px,
+    var(--secondary-color) 20px
+  );
+  border-radius: 0 0 8px 8px;
+}
+
+/* Logo e animação */
+.logo-container {
+  flex: 0 0 auto;
+  transition: transform 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 12px;
+  overflow: visible; /* Alterado de 'hidden' para 'visible' */
+  max-width: 100%; /* Garante que não ultrapasse a largura do container pai */
+}
+
+.logo-container.bounce {
+  animation: logoBounce 0.8s ease;
+}
+
+@keyframes logoBounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-15px); }
+  60% { transform: translateY(-10px); }
+  80% { transform: translateY(-5px); }
+}
+
+.logo-animation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap; /* Evita que os elementos quebrem para a próxima linha */
+}
+
+.detective-icon {
+  font-size: 1.8rem;
+  animation: detectiveWave 3s infinite;
+  transform-origin: 70% 70%;
+}
+
+.detective-icon:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.detective-icon:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+@keyframes detectiveWave {
+  0%, 100% { transform: rotate(0deg); }
+  10% { transform: rotate(15deg); }
+  20% { transform: rotate(-10deg); }
+  30% { transform: rotate(10deg); }
+  40% { transform: rotate(0deg); }
+}
+
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  background-image: linear-gradient(to right, #ff8a00, #e52e71);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 0.3s ease;
+  overflow: visible; /* Garante que o texto não seja cortado */
+}
+
+.header.dark .logo-text {
+  background-image: linear-gradient(to right, #c2e59c, #64b3f4);
+}
+
+/* Menu toggle button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 1010;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  width: 50px;
+  height: 50px;
   position: relative;
 }
 
-.logo h1 {
-  color: var(--navbar-text);
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-.nav {
-  display: block;
-}
-
-.nav ul {
+.menu-toggle-inner {
+  width: 100%;
+  height: 100%;
   display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
-
-.nav a {
-  color: var(--navbar-text);
-  font-weight: 600;
-  padding: 0.5rem;
-  border-radius: 8px;
-  transition: background-color 0.2s;
-}
-
-.nav a:hover {
-  background-color: var(--navbar-hover);
-  color: var(--navbar-text-hover);
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--navbar-button-bg);
-  transition: transform 0.3s ease, background-color 0.3s;
-}
-
-.theme-toggle:hover {
-  transform: rotate(30deg);
-  background-color: var(--navbar-button-hover);
-}
-
-/* Hamburger Menu */
-.hamburger-menu {
-  display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
-  height: 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 10;
+  align-items: center;
+  padding: 10px 0;
 }
 
-.hamburger-menu span {
+.menu-toggle span {
   display: block;
-  width: 100%;
-  height: 3px;
-  background: var(--navbar-text);
-  border-radius: 3px;
+  width: 30px;
+  height: 4px;
+  border-radius: 4px;
   transition: all 0.3s ease;
 }
 
-/* Hamburger Animation */
-.hamburger-menu.open span:first-child {
-  transform: translateY(8px) rotate(45deg);
+.header.light .menu-toggle span {
+  background-color: #7b2d26;
 }
 
-.hamburger-menu.open span:nth-child(2) {
+.header.dark .menu-toggle span {
+  background-color: #e1bee7;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
   opacity: 0;
 }
 
-.hamburger-menu.open span:last-child {
-  transform: translateY(-8px) rotate(-45deg);
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
 }
 
-@media (max-width: 768px) {
-  .header {
-    padding: 1rem;
+/* Navigation */
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link, .theme-toggle-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header.light .nav-link, .header.light .theme-toggle-button {
+  color: #7b2d26;
+}
+
+.header.dark .nav-link, .header.dark .theme-toggle-button {
+  color: #e1bee7;
+}
+
+.nav-link:hover, .theme-toggle-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.header.light .nav-link:hover, .header.light .theme-toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.header.dark .nav-link:hover, .header.dark .theme-toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active .nav-link {
+  position: relative;
+  font-weight: 700;
+}
+
+.header.light .nav-item.active .nav-link {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.header.dark .nav-item.active .nav-link {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item.active .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath fill='%23FFC107' d='M12 12L0 0h24z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+.nav-icon {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Theme toggle specific */
+.theme-toggle-button {
+  overflow: hidden;
+  position: relative;
+}
+
+.theme-icon {
+  font-size: 1.5rem;
+  transition: all 0.5s ease;
+}
+
+.theme-toggle-button:hover .theme-icon {
+  animation: spin 1s linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Ícone específico para Advinhas Simples */
+.puzzles-icon {
+  color: #2ecc71; /* Cor verde */
+  font-size: 1.4rem;
+  text-shadow: 0 0 3px rgba(46, 204, 113, 0.5);
+}
+
+/* Mobile menu backdrop */
+.nav-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 990;
+  display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
   }
   
-  .logo h1 {
-    font-size: 1.5rem;
-  }
-  
-  .hamburger-menu {
-    display: flex;
-  }
-  
-  .nav {
+  .main-nav {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 70%;
+    width: 280px;
     height: 100vh;
-    background-color: var(--navbar-bg);
-    transition: right 0.3s ease;
-    z-index: 5;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    padding-top: 80px;
+    background: inherit;
+    transition: right 0.4s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 5rem 1rem 2rem;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
   }
   
-  .nav.open {
+  .main-nav.open {
     right: 0;
   }
   
-  .nav ul {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 2rem;
-  }
-  
-  .nav li {
-    width: 100%;
-    margin-bottom: 1.5rem;
-  }
-  
-  .nav a {
+  .nav-backdrop {
     display: block;
-    width: 100%;
-    padding: 1rem;
-    border-radius: 8px;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+  
+  .nav-link, .theme-toggle-button {
+    justify-content: flex-start;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .nav-item.active .nav-link::after {
+    display: none;
+  }
+  
+  .logo-container {
+    max-width: 60%; /* Reduz o tamanho para dar mais espaço ao menu */
+  }
+  
+  .logo-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    padding: 0.8rem;
+  }
+  
+  .logo-container {
+    max-width: 70%;
+    padding: 0.3rem;
+  }
+  
+  .logo-text {
+    font-size: 0.95rem; /* Reduz ainda mais a fonte */
+  }
+  
+  .detective-icon {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .logo-text {
+    font-size: 1rem;
+  }
+  
+  .detective-icon {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .logo-container {
+    max-width: 65%;
+  }
+  
+  .logo-text {
+    font-size: 0.85rem; /* Ainda menor para dispositivos muito pequenos */
+  }
+  
+  .detective-icon {
+    font-size: 1rem;
+  }
+  
+  .logo-animation {
+    gap: 0.3rem; /* Espaçamento menor entre os elementos */
   }
 }
