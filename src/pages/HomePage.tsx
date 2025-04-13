@@ -15,9 +15,25 @@ export default function HomePage() {
           criativos e educativos.
         </p>
         
-        <Link to="/puzzles" className="start-button">
-          Começar a Aventura!
-        </Link>
+        <div className="game-options">
+          <Link to="/puzzles" className="game-option">
+            <div className="option-icon">🎮</div>
+            <h3>Enigmas Simples</h3>
+            <p>Enigmas básicos de múltipla escolha</p>
+          </Link>
+          
+          <Link to="/riddles" className="game-option">
+            <div className="option-icon">❓</div>
+            <h3>Advinhas Complicadas</h3>
+            <p>Adivinhas tradicionais para resolver</p>
+          </Link>
+          
+          <Link to="/detective" className="game-option">
+            <div className="option-icon">🕵️</div>
+            <h3>Enigmas de Detetive</h3>
+            <p>Casos para solucionar como detetive</p>
+          </Link>
+        </div>
       </div>
       
       <div className="features-section">
@@ -49,9 +65,17 @@ export default function HomePage() {
       <div className="cta-section">
         <h2>Preparado para desvendar os mistérios?</h2>
         <p>Entra nesta missão com os Pequenos Detetives!</p>
-        <Link to="/puzzles" className="cta-button">
-          Resolver Enigmas Agora
-        </Link>
+        <div className="cta-buttons">
+          <Link to="/puzzles" className="cta-button">
+            Enigmas Simples
+          </Link>
+          <Link to="/riddles" className="cta-button">
+            Advinhas Complicadas
+          </Link>
+          <Link to="/detective" className="cta-button">
+            Enigmas de Detetive
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { puzzles } from '../data/puzzles';
+import { detectivePuzzles } from '../data/detective-puzzles';
 import { DifficultyLevel } from '../types/puzzle';
-import PuzzleCard from '../components/PuzzleCard';
 import DifficultySelector from '../components/DifficultySelector';
 import '../styles/PuzzlesPage.css';
+import DetectivePuzzleCard from '../components/DetectivePuzzleCard';
 
-export default function PuzzlesPage() {
+
+export default function DetectivePuzzlesPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [currentPuzzleId, setCurrentPuzzleId] = useState<number>(Number(id) || 1);
@@ -15,7 +16,7 @@ export default function PuzzlesPage() {
   
   // Load progress from localStorage
   useEffect(() => {
-    const savedProgress = localStorage.getItem('puzzleProgress');
+    const savedProgress = localStorage.getItem('detectivePuzzleProgress');
     if (savedProgress) {
       const { completed } = JSON.parse(savedProgress);
       setCompletedPuzzles(completed);
@@ -24,59 +25,61 @@ export default function PuzzlesPage() {
   
   // Save progress to localStorage
   useEffect(() => {
-    localStorage.setItem('puzzleProgress', JSON.stringify({
+    localStorage.setItem('detectivePuzzleProgress', JSON.stringify({
       completed: completedPuzzles,
       current: currentPuzzleId
     }));
   }, [completedPuzzles, currentPuzzleId]);
   
-  const currentPuzzle = puzzles.find(p => p.id === currentPuzzleId);
+  const currentPuzzle = detectivePuzzles.find(p => p.id === currentPuzzleId);
   
-  const filteredPuzzles = puzzles.filter(puzzle => 
+  const filteredPuzzles = detectivePuzzles.filter(puzzle => 
     filterDifficulty === 'todos' || puzzle.difficulty === filterDifficulty
   );
   
   const handleCorrectAnswer = () => {
+    // Add the current puzzle to completed array if not already there
     if (!completedPuzzles.includes(currentPuzzleId)) {
-      setCompletedPuzzles([...completedPuzzles, currentPuzzleId]);
+      const updatedCompletedPuzzles = [...completedPuzzles, currentPuzzleId];
+      setCompletedPuzzles(updatedCompletedPuzzles);
+      
+      // Save immediately to localStorage
+      localStorage.setItem('detectivePuzzleProgress', JSON.stringify({
+        completed: updatedCompletedPuzzles,
+        current: currentPuzzleId
+      }));
     }
-    
+  };
+
+  const handleNextPuzzle = () => {
     // If all puzzles are completed, go to result page
-    if (completedPuzzles.length === puzzles.length - 1 && !completedPuzzles.includes(currentPuzzleId)) {
-      navigate('/result');
+    if (completedPuzzles.length >= detectivePuzzles.length) {
+      navigate('/result?type=detective');
       return;
     }
     
-    // Find next puzzle - prioritize unsolved puzzles
-    const unsolvedPuzzles = puzzles.filter(p => !completedPuzzles.includes(p.id) && p.id !== currentPuzzleId);
-    
-    if (unsolvedPuzzles.length > 0) {
-      // If there are unsolved puzzles, go to the first one
-      const nextPuzzleId = unsolvedPuzzles[0].id;
-      navigate(`/puzzles/${nextPuzzleId}`);
+    // Find next puzzle
+    const nextPuzzleId = detectivePuzzles.find(p => !completedPuzzles.includes(p.id) && p.id !== currentPuzzleId)?.id;
+    if (nextPuzzleId) {
+      navigate(`/detective/${nextPuzzleId}`);
       setCurrentPuzzleId(nextPuzzleId);
-    } else {
-      // If all puzzles are solved, stay on the current one or go to result page
-      if (completedPuzzles.length >= puzzles.length - 1) {
-        navigate('/result');
-      }
     }
   };
   
   const selectPuzzle = (id: number) => {
-    navigate(`/puzzles/${id}`);
+    navigate(`/detective/${id}`);
     setCurrentPuzzleId(id);
   };
   
   if (!currentPuzzle) {
-    return <div className="loading">Carregando advinha...</div>;
+    return <div className="loading">A carregar enigma...</div>;
   }
   
   return (
     <div className="puzzles-page">
       <div className="puzzles-container">
         <div className="puzzle-selection">
-          <h2>Escolhe uma Advinha Simples</h2>
+          <h2>Escolhe um Enigma de Detetive</h2>
           <DifficultySelector 
             selectedDifficulty={filterDifficulty}
             onSelectDifficulty={setFilterDifficulty}
@@ -90,11 +93,10 @@ export default function PuzzlesPage() {
                   completedPuzzles.includes(puzzle.id) ? 'completed' : ''
                 }`}
                 onClick={() => selectPuzzle(puzzle.id)}
-                title={completedPuzzles.includes(puzzle.id) ? "Podes tentar novamente!" : "Ainda não respondeste"}
               >
                 <span className="puzzle-number">{puzzle.id}</span>
                 <span className="puzzle-title">{puzzle.title}</span>
-                {completedPuzzles.includes(puzzle.id) && <span className="completed-badge" title="Já respondeste corretamente">✓</span>}
+                {completedPuzzles.includes(puzzle.id) && <span className="completed-badge">✓</span>}
               </div>
             ))}
           </div>
@@ -103,14 +105,17 @@ export default function PuzzlesPage() {
         <div className="current-puzzle">
           {completedPuzzles.includes(currentPuzzleId) && (
             <div className="retry-banner">
-              Já resolveste esta advinha! Queres tentar novamente?
+              Já resolveste este enigma! Queres tentar novamente?
             </div>
           )}
-          <PuzzleCard 
-            puzzle={currentPuzzle} 
-            onCorrectAnswer={handleCorrectAnswer} 
-            isRetry={completedPuzzles.includes(currentPuzzleId)}
-          />
+          {currentPuzzle && (
+            <DetectivePuzzleCard 
+              puzzle={currentPuzzle} 
+              onCorrectAnswer={handleCorrectAnswer}
+              onNextPuzzle={handleNextPuzzle}
+              isRetry={completedPuzzles.includes(currentPuzzleId)}
+            />
+          )}
         </div>
       </div>
       
@@ -119,10 +124,10 @@ export default function PuzzlesPage() {
         <div className="progress-bar">
           <div 
             className="progress-fill" 
-            style={{ width: `${(completedPuzzles.length / puzzles.length) * 100}%` }}
+            style={{ width: `${(completedPuzzles.length / detectivePuzzles.length) * 100}%` }}
           ></div>
         </div>
-        <p>{completedPuzzles.length} de {puzzles.length} advinhas resolvidas</p>
+        <p>{completedPuzzles.length} de {detectivePuzzles.length} enigmas resolvidos</p>
       </div>
     </div>
   );

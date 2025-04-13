@@ -1,0 +1,148 @@
+.detective-puzzle {
+  max-width: 800px;
+}
+
+.story-container {
+  background-color: #f9f7f1;
+  border-left: 4px solid #795548;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.detective-story {
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.clues-container,
+.suspects-container {
+  margin-bottom: 1.5rem;
+}
+
+.clues-container h3,
+.suspects-container h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.clues-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.clue-item {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.clue-toggle {
+  width: 100%;
+  text-align: left;
+  padding: 0.8rem;
+  background-color: var(--light-gray);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clue-toggle.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.clue-content {
+  padding: 1rem;
+  background-color: white;
+  border-top: 1px solid var(--border-color);
+}
+
+.clue-content p {
+  margin-bottom: 0.8rem;
+}
+
+.clue-content img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+}
+
+.clue-audio-button {
+  background-color: var(--light-gray);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.suspects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.suspect-item {
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.suspect-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+}
+
+.suspect-item.selected {
+  border-color: var(--primary-color);
+  background-color: #e5f2ff;
+}
+
+.suspect-item.correct {
+  border-color: var(--success-color);
+  background-color: rgba(46, 204, 113, 0.1);
+}
+
+.suspect-item.incorrect {
+  border-color: var(--error-color);
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+.suspect-info h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.suspect-image {
+  margin-top: 1rem;
+}
+
+.suspect-image img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.solution-text {
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .suspects-list {
+    grid-template-columns: 1fr;
+  }
+}
