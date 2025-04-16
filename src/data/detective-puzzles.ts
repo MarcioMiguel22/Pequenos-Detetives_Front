@@ -93,7 +93,7 @@ export const detectivePuzzles: DetectivePuzzle[] = [
   {
     id: 4,
     title: 'O Mistério da Carteira Perdida',
-    scenario: `No restaurante Buzio em Azenhas do Mar, o senhor Gonçalo perdeu a sua carteira durante o almoço. Ele só notou depois de sair do restaurante. Quando voltou, a carteira não estava no local onde ele tinha almoçado.
+    scenario: `No restaurante Sabores do Mar em Azenhas do Mar, o senhor Gonçalo perdeu a sua carteira durante o almoço. Ele só notou depois de sair do restaurante. Quando voltou, a carteira não estava no local onde ele tinha almoçado.
 
     Quatro funcionários estavam a trabalhar naquela zona do restaurante:
     
@@ -128,7 +128,7 @@ export const detectivePuzzles: DetectivePuzzle[] = [
     Quatro pessoas foram vistas perto da praia na noite anterior:
     
     Ricardo disse: "Estive a pescar ao pôr-do-sol, mas fui para casa cedo porque começou a ficar frio".
-    Marivania disse: "Fui dar um passeio pela praia depois do jantar no restaurante Nortada".
+    Marivania disse: "Fui dar um passeio pela praia depois do jantar no restaurante Ondas Azuis".
     Tiago disse: "Regressei a casa tarde porque estive no Bar Loureiro até à hora de fechar".
     Cláudia disse: "Estava a tirar fotografias ao luar, mas apenas na parte superior da falésia, nunca desci à praia".
     
@@ -152,8 +152,8 @@ export const detectivePuzzles: DetectivePuzzle[] = [
   },
   {
     id: 6,
-    title: 'O Roubo no Café das Patrícias',
-    scenario: `No Café das Patrícias em Azenhas do Mar, alguém entrou durante a manhã e roubou dinheiro da caixa registadora. A proprietária, Khauani, chegou às 8h e encontrou a caixa aberta, mas a porta não estava forçada.
+    title: 'O Roubo no Café Horizonte',
+    scenario: `No Café Horizonte em Azenhas do Mar, alguém entrou durante a manhã e roubou dinheiro da caixa registadora. A proprietária, Khauani, chegou às 8h e encontrou a caixa aberta, mas a porta não estava forçada.
 
     Quatro pessoas têm chaves do café:
     
@@ -482,8 +482,8 @@ export const detectivePuzzles: DetectivePuzzle[] = [
   },
   {
     id: 17,
-    title: 'O Caso do Restaurante O Crôa',
-    scenario: `No restaurante O Crôa em Azenhas do Mar, o gerente Hélio descobriu que alguém alterou a receita do famoso prato de bacalhau, reduzindo a quantidade de ingredientes mas mantendo o preço. Os clientes começaram a reclamar que as porções estavam menores.
+    title: 'O Caso do Restaurante Maresia',
+    scenario: `No restaurante Maresia em Azenhas do Mar, o gerente Hélio descobriu que alguém alterou a receita do famoso prato de bacalhau, reduzindo a quantidade de ingredientes mas mantendo o preço. Os clientes começaram a reclamar que as porções estavam menores.
 
     Quatro pessoas têm acesso às receitas e aos ingredientes:
     
@@ -542,8 +542,8 @@ export const detectivePuzzles: DetectivePuzzle[] = [
   },
   {
     id: 19,
-    title: 'O Enigma do Bar Loureiro',
-    scenario: `No Bar Loureiro em Azenhas do Mar, ocorreu um incidente durante uma noite movimentada. A coleção de rótulos antigos que decorava a parede principal foi danificada, com alguns itens raros desaparecidos. O dono, Denis, suspeita que foi um ato deliberado.
+    title: 'O Enigma do Bar Falésia',
+    scenario: `No Bar Falésia em Azenhas do Mar, ocorreu um incidente durante uma noite movimentada. A coleção de rótulos antigos que decorava a parede principal foi danificada, com alguns itens raros desaparecidos. O dono, Denis, suspeita que foi um ato deliberado.
 
     Quatro pessoas estiveram no bar naquela noite:
     
@@ -602,8 +602,8 @@ export const detectivePuzzles: DetectivePuzzle[] = [
   },
   {
     id: 21,
-    title: 'O Caso do Restaurante Adraga',
-    scenario: `No restaurante Adraga em Azenhas do Mar, o dono descobriu que várias garrafas de vinho raro da sua adega privada foram substituídas por garrafas mais baratas com rótulos falsificados. O alarme da adega não foi acionado, o que indica que alguém tinha o código de acesso.
+    title: 'O Caso do Restaurante Vento do Mar',
+    scenario: `No restaurante Vento do Mar em Azenhas do Mar, o dono descobriu que várias garrafas de vinho raro da sua adega privada foram substituídas por garrafas mais baratas com rótulos falsificados. O alarme da adega não foi acionado, o que indica que alguém tinha o código de acesso.
 
     Quatro pessoas conheciam o código:
     
@@ -662,8 +662,8 @@ export const detectivePuzzles: DetectivePuzzle[] = [
   },
   {
     id: 23,
-    title: 'O Enigma do Café das Patrícias',
-    scenario: `O Café das Patrícias em Azenhas do Mar começou a receber críticas online negativas e falsas que afetaram gravemente o movimento de clientes. As críticas mencionavam problemas de higiene e mau atendimento que eram completamente fabricados.
+    title: 'O Enigma do Café Horizonte',
+    scenario: `O Café Horizonte em Azenhas do Mar começou a receber críticas online negativas e falsas que afetaram gravemente o movimento de clientes. As críticas mencionavam problemas de higiene e mau atendimento que eram completamente fabricados.
 
     Quatro pessoas poderiam ter motivos para prejudicar o negócio:
     
@@ -672,7 +672,7 @@ export const detectivePuzzles: DetectivePuzzle[] = [
     Hélio, o fornecedor de café cujo contrato não foi renovado, disse: "Tenho muitos outros clientes, um café a menos não me afeta".
     Denis, o vizinho que se queixava do barulho, disse: "Já resolvemos as nossas diferenças, agora fecham mais cedo à noite".
     
-    Uma análise técnica descobriu que todas as críticas falsas foram publicadas a partir do mesmo IP, localizado em Azenhas do Mar. Nas redes sociais, uma das pessoas foi vista a comentar sobre a queda no movimento do Café das Patrícias, antes mesmo de isso se tornar público.
+    Uma análise técnica descobriu que todas as críticas falsas foram publicadas a partir do mesmo IP, localizado em Azenhas do Mar. Nas redes sociais, uma das pessoas foi vista a comentar sobre a queda no movimento do Café Horizonte, antes mesmo de isso se tornar público.
     
     Quem publicou as críticas falsas?`,
     suspects: [
@@ -722,8 +722,8 @@ export const detectivePuzzles: DetectivePuzzle[] = [
   },
   {
     id: 25,
-    title: 'O Caso da Pensão Desaparecida',
-    scenario: `Na Pensão Sisudo em Azenhas do Mar, uma idosa hospedada, a Sra. Khauani, relatou que o envelope com a sua pensão mensal desapareceu do quarto. Ela lembra-se de o ter deixado na gaveta da mesa de cabeceira antes de sair para o pequeno-almoço.
+    title: 'O Caso da Pensão Vista Mar',
+    scenario: `Na Pensão Vista Mar em Azenhas do Mar, uma idosa hospedada, a Sra. Khauani, relatou que o envelope com a sua pensão mensal desapareceu do quarto. Ela lembra-se de o ter deixado na gaveta da mesa de cabeceira antes de sair para o pequeno-almoço.
 
     Quatro pessoas entraram no quarto naquela manhã:
     

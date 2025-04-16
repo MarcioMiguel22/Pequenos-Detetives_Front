@@ -91,8 +91,8 @@ export const puzzles: Puzzle[] = [
     question: 'Se eu disser "BOLA" de trás para frente, como fica?',
     difficulty: 'difícil',
     answers: [
-      { id: 1, text: 'LOBA', isCorrect: true },
-      { id: 2, text: 'ALOB', isCorrect: false },
+      { id: 1, text: 'ALOB', isCorrect: true },
+      { id: 2, text: 'LOBA', isCorrect: false },
       { id: 3, text: 'LOAB', isCorrect: false }
     ],
     hint: 'Troque a ordem das letras completamente'
@@ -1200,5 +1200,305 @@ export const puzzles: Puzzle[] = [
       { id: 3, text: 'A', isCorrect: true }
     ],
     hint: 'É uma letra do alfabeto'
+  },
+  {
+    id: 101,
+    title: 'O Mistério do Jardim',
+    question: 'A Madalena e o Cristóvão estão a regar flores. Se cada criança rega 5 flores, quantas flores são regadas no total?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '5 flores', isCorrect: false },
+      { id: 2, text: '10 flores', isCorrect: true },
+      { id: 3, text: '15 flores', isCorrect: false }
+    ],
+    hint: 'Tens de somar: 5 + 5'
+  },
+  {
+    id: 102,
+    title: 'As Guloseimas da Tia Andreia',
+    question: 'A tia Andreia trouxe doces para a Sofia e o Sebastião. Deu 3 doces para cada um. Quantos doces trouxe no total?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '3 doces', isCorrect: false },
+      { id: 2, text: '5 doces', isCorrect: false },
+      { id: 3, text: '6 doces', isCorrect: true }
+    ],
+    hint: 'Precisas multiplicar: 2 crianças × 3 doces'
+  },
+  {
+    id: 103,
+    title: 'O Segredo da Festa Surpresa',
+    question: 'O Vasco quer organizar uma festa surpresa para o Jaime. Se convidar a Alba, a Inês, o Afonso, a Mia e o Manuel, quantos amigos estarão na festa?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: '5 amigos', isCorrect: true },
+      { id: 2, text: '6 amigos', isCorrect: false },
+      { id: 3, text: '7 amigos', isCorrect: false }
+    ],
+    hint: 'Conta os nomes: Alba, Inês, Afonso, Mia e Manuel'
+  },
+  {
+    id: 104,
+    title: 'A Corrida dos Amigos',
+    question: 'Numa corrida, o Matty chegou em primeiro lugar, a Leonor em segundo e o Tiago em terceiro. Quem chegou antes da Leonor?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: 'Tiago', isCorrect: false },
+      { id: 2, text: 'Matty', isCorrect: true },
+      { id: 3, text: 'Ninguém', isCorrect: false }
+    ],
+    hint: 'Pensa na ordem: primeiro, segundo, terceiro...'
+  },
+  {
+    id: 105,
+    title: 'A Música da Professora Graça',
+    question: 'A professora Graça tem 8 instrumentos musicais. Se ela der 3 para a Teresa usar na aula, com quantos instrumentos fica?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '5 instrumentos', isCorrect: true },
+      { id: 2, text: '6 instrumentos', isCorrect: false },
+      { id: 3, text: '3 instrumentos', isCorrect: false }
+    ],
+    hint: 'Tens de subtrair: 8 - 3'
+  },
+  {
+    id: 106,
+    title: 'O Livro de Histórias',
+    question: 'A Pipa leu um livro de contos para o Sebastião e a Madalena. Se o livro tem 10 contos e ela leu 4, quantos ainda faltam ler?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '4 contos', isCorrect: false },
+      { id: 2, text: '6 contos', isCorrect: true },
+      { id: 3, text: '8 contos', isCorrect: false }
+    ],
+    hint: 'Precisas subtrair: 10 - 4'
+  },
+  {
+    id: 107,
+    title: 'A Coleção de Carrinhos',
+    question: 'O Pipo tem 7 carrinhos e o Manuel tem 5 carrinhos. Quantos carrinhos têm os dois juntos?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '10 carrinhos', isCorrect: false },
+      { id: 2, text: '12 carrinhos', isCorrect: true },
+      { id: 3, text: '13 carrinhos', isCorrect: false }
+    ],
+    hint: 'Tens de somar: 7 + 5'
+  },
+  {
+    id: 108,
+    title: 'O Mistério das Cores',
+    question: 'A Dóris tem lápis de cor vermelho, azul e verde. O Diogo tem lápis amarelo e laranja. Quantas cores diferentes podem usar juntos?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: '3 cores', isCorrect: false },
+      { id: 2, text: '5 cores', isCorrect: true },
+      { id: 3, text: '8 cores', isCorrect: false }
+    ],
+    hint: 'Conta todas as cores: vermelho, azul, verde, amarelo e laranja'
+  },
+  {
+    id: 109,
+    title: 'As Gomas de São Martinho',
+    question: 'A Vanessa comprou gomas para distribuir. Deu 2 gomas à Cáca, 2 gomas à Sofia e 2 gomas à Mia. Quantas gomas distribuiu?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '4 gomas', isCorrect: false },
+      { id: 2, text: '6 gomas', isCorrect: true },
+      { id: 3, text: '8 gomas', isCorrect: false }
+    ],
+    hint: 'Multiplicar: 3 meninas × 2 gomas'
+  },
+  {
+    id: 110,
+    title: 'A Aula de Natação',
+    question: 'Na aula de natação do Mário, o Vasco nadou 4 piscinas, a Alba nadou 3 piscinas e o Jaime nadou 5 piscinas. Quem nadou mais piscinas?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: 'Vasco', isCorrect: false },
+      { id: 2, text: 'Alba', isCorrect: false },
+      { id: 3, text: 'Jaime', isCorrect: true }
+    ],
+    hint: 'Compara os números: 4, 3 e 5'
+  },
+  {
+    id: 111,
+    title: 'O Enigma das Maçãs',
+    question: 'A Diana tem 8 maçãs. Dá 2 à Meggy e depois compra mais 3. Com quantas maçãs fica a Diana?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: '9 maçãs', isCorrect: true },
+      { id: 2, text: '10 maçãs', isCorrect: false },
+      { id: 3, text: '13 maçãs', isCorrect: false }
+    ],
+    hint: 'Tens de calcular: 8 - 2 + 3'
+  },
+  {
+    id: 112,
+    title: 'A Idade dos Irmãos',
+    question: 'O Cristóvão tem 6 anos. A sua irmã Leonor tem 9 anos. Quantos anos mais velha é a Leonor?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '2 anos', isCorrect: false },
+      { id: 2, text: '3 anos', isCorrect: true },
+      { id: 3, text: '4 anos', isCorrect: false }
+    ],
+    hint: 'Tens de subtrair: 9 - 6'
+  },
+  {
+    id: 113,
+    title: 'A Partilha das Bolachas',
+    question: 'A Rita fez 12 bolachas. Quer dividi-las igualmente entre a Madalena, o Afonso e o Pipo. Quantas bolachas receberá cada criança?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: '3 bolachas', isCorrect: false },
+      { id: 2, text: '4 bolachas', isCorrect: true },
+      { id: 3, text: '6 bolachas', isCorrect: false }
+    ],
+    hint: 'Tens de dividir: 12 ÷ 3'
+  },
+  {
+    id: 114,
+    title: 'A Viagem de Autocarro',
+    question: 'No autocarro escolar da Rosa, entraram 5 crianças na primeira paragem e mais 3 na segunda. Quantas crianças estão agora no autocarro?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '5 crianças', isCorrect: false },
+      { id: 2, text: '8 crianças', isCorrect: true },
+      { id: 3, text: '15 crianças', isCorrect: false }
+    ],
+    hint: 'Precisas somar: 5 + 3'
+  },
+  {
+    id: 115,
+    title: 'O Caso das Moedas Perdidas',
+    question: 'O Pedro tinha 10 moedas no bolso. Quando chegou a casa, só tinha 7. Quantas moedas perdeu pelo caminho?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '3 moedas', isCorrect: true },
+      { id: 2, text: '4 moedas', isCorrect: false },
+      { id: 3, text: '7 moedas', isCorrect: false }
+    ],
+    hint: 'Tens de subtrair: 10 - 7'
+  },
+  {
+    id: 116,
+    title: 'O Desafio da Céu',
+    question: 'A professora Céu desafiou os alunos a escreverem uma história com exatamente 5 frases. Se a Inês já escreveu 3 frases, quantas faltam?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '1 frase', isCorrect: false },
+      { id: 2, text: '2 frases', isCorrect: true },
+      { id: 3, text: '5 frases', isCorrect: false }
+    ],
+    hint: 'Precisas subtrair: 5 - 3'
+  },
+  {
+    id: 117,
+    title: 'As Estantes da Biblioteca',
+    question: 'A Magali estava a arrumar livros. Colocou 4 livros na primeira prateleira e 6 na segunda. Quantos livros arrumou no total?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '8 livros', isCorrect: false },
+      { id: 2, text: '10 livros', isCorrect: true },
+      { id: 3, text: '12 livros', isCorrect: false }
+    ],
+    hint: 'Tens de somar: 4 + 6'
+  },
+  {
+    id: 118,
+    title: 'A Altura dos Amigos',
+    question: 'O Manuel é mais alto que a Sofia, mas mais baixo que o Matty. Quem é o mais alto dos três?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: 'Manuel', isCorrect: false },
+      { id: 2, text: 'Sofia', isCorrect: false },
+      { id: 3, text: 'Matty', isCorrect: true }
+    ],
+    hint: 'Se Manuel é mais baixo que Matty, então Matty deve ser...'
+  },
+  {
+    id: 119,
+    title: 'O Torneio de Futebol',
+    question: 'No torneio organizado pelo Tiago, cada equipa tem 5 jogadores. Se participam 4 equipas, quantos jogadores há no total?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: '9 jogadores', isCorrect: false },
+      { id: 2, text: '20 jogadores', isCorrect: true },
+      { id: 3, text: '25 jogadores', isCorrect: false }
+    ],
+    hint: 'Precisas multiplicar: 4 equipas × 5 jogadores'
+  },
+  {
+    id: 120,
+    title: 'As Cadeiras da Sala',
+    question: 'Na sala de aula da professora Graça, há 6 mesas e cada mesa tem 2 cadeiras. Quantas cadeiras há no total?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '8 cadeiras', isCorrect: false },
+      { id: 2, text: '12 cadeiras', isCorrect: true },
+      { id: 3, text: '14 cadeiras', isCorrect: false }
+    ],
+    hint: 'Tens de multiplicar: 6 mesas × 2 cadeiras'
+  },
+  {
+    id: 121,
+    title: 'O Último Bolo',
+    question: 'A Andreia fez 15 bolos. O Diogo comeu alguns e agora restam 9. Quantos bolos comeu o Diogo?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: '5 bolos', isCorrect: false },
+      { id: 2, text: '6 bolos', isCorrect: true },
+      { id: 3, text: '9 bolos', isCorrect: false }
+    ],
+    hint: 'Precisas subtrair: 15 - 9'
+  },
+  {
+    id: 122,
+    title: 'O Enigma das Estrelas',
+    question: 'A professora Teresa pôs 3 estrelas douradas nos trabalhos da Alba e 4 nos trabalhos da Cáca. Quantas estrelas usou no total?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '7 estrelas', isCorrect: true },
+      { id: 2, text: '8 estrelas', isCorrect: false },
+      { id: 3, text: '12 estrelas', isCorrect: false }
+    ],
+    hint: 'Tens de somar: 3 + 4'
+  },
+  {
+    id: 123,
+    title: 'A Contagem dos Lápis',
+    question: 'O Sebastião tinha 10 lápis. Emprestou 2 à Mia e 3 ao Vasco. Com quantos lápis ficou?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: '5 lápis', isCorrect: true },
+      { id: 2, text: '7 lápis', isCorrect: false },
+      { id: 3, text: '8 lápis', isCorrect: false }
+    ],
+    hint: 'Tens de subtrair: 10 - 2 - 3'
+  },
+  {
+    id: 124,
+    title: 'A Loja de Sumos',
+    question: 'Na loja do Mário, um sumo custa 2 euros. Se a Leonor comprar 3 sumos, quanto vai pagar?',
+    difficulty: 'fácil',
+    answers: [
+      { id: 1, text: '5 euros', isCorrect: false },
+      { id: 2, text: '6 euros', isCorrect: true },
+      { id: 3, text: '8 euros', isCorrect: false }
+    ],
+    hint: 'Precisas multiplicar: 3 sumos × 2 euros'
+  },
+  {
+    id: 125,
+    title: 'O Piquenique da Turma',
+    question: 'Para o piquenique, a Pipa trouxe 4 sanduíches, o Tiago trouxe 3 e a Dóris trouxe 5. Quantas sanduíches trouxeram no total?',
+    difficulty: 'médio',
+    answers: [
+      { id: 1, text: '8 sanduíches', isCorrect: false },
+      { id: 2, text: '12 sanduíches', isCorrect: true },
+      { id: 3, text: '15 sanduíches', isCorrect: false }
+    ],
+    hint: 'Tens de somar: 4 + 3 + 5'
   }
 ];
