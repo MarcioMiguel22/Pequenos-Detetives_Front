@@ -100,12 +100,12 @@ export const puzzles: Puzzle[] = [
   {
     id: 9,
     title: 'O Desafio da Matemática',
-    question: 'Se tenho 5 balas e ganho mais 3, com quantas balas fico?',
+    question: 'Se tenho 5 rebuçados e ganho mais 3, com quantas rebuçados fico?',
     difficulty: 'médio',
     answers: [
-      { id: 1, text: '7 balas', isCorrect: false },
-      { id: 2, text: '8 balas', isCorrect: true },
-      { id: 3, text: '15 balas', isCorrect: false }
+      { id: 1, text: '7 rebuçados', isCorrect: false },
+      { id: 2, text: '8 rebuçados', isCorrect: true },
+      { id: 3, text: '15 rebuçados', isCorrect: false }
     ],
     hint: 'Use os dedos para contar: 5 + 3 = ?'
   },
